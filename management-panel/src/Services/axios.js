@@ -30,3 +30,6 @@ export function getMenu (data){
     return axios.get(url+"api/Restaurant/GetRestaurantMenu/"+data)
 }
 
+export function postCategory(data) {
+    return axios.post(url+"api/Categories",data)
+}

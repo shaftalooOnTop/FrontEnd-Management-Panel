@@ -7,6 +7,7 @@ import { addTodo, updateTodo } from "../slices/todoSlice";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
+import { postCategory } from "../Services/axios";
 
 const dropin = {
   hidden: {
@@ -44,6 +45,8 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     }
   }, [type.todo, modalOpen]);
 
+  useEffect(() =>{}, [title]);
+
   const handleSumbit = (e) => {
     e.preventDefault();
     if (title === "") {
@@ -52,13 +55,19 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     }
     if (title) {
       if (type === "add") {
-        dispatch(
-          console.log(title)
-          // addTodo({
-          //   id: uuid(),
-          //   title,
-          // })
-        );
+        
+        postCategory({
+          "categoryName": title,
+          "restaurantId": 2,
+        } ).then(() => {console.log("Added category")})
+        
+        // dispatch(
+          
+        //   // addTodo({
+        //   //   id: uuid(),
+        //   //   title,
+        //   // })
+        // );
         toast.success("Category Added Successfully");
         setModalOpen(false);
       }

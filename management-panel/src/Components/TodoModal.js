@@ -7,6 +7,7 @@ import { addTodo, updateTodo } from "../slices/todoSlice";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
+// import {Restaurant_page} from './restaurant/restaurant_page'
 
 const dropin = {
   hidden: {
@@ -53,12 +54,11 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     if (title) {
       if (type === "add") {
         dispatch(
-          addTodo({
-            id: uuid(),
-            title,
-            status,
-            time: new Date().toLocaleDateString(),
-          })
+          console.log(title)
+          // addTodo({
+          //   id: uuid(),
+          //   title,
+          // })
         );
         toast.success("Category Added Successfully");
         setModalOpen(false);

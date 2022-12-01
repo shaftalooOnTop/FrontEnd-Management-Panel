@@ -1,12 +1,9 @@
 import React,{useState , useEffect , useRef } from "react";
-import Rating from '@mui/material/Rating';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Button} from '@mui/material';
 import {getRestaurant , getMenu} from "../Services/axios"
 import { RstMenu } from "./menu";
 import { CartContext } from "./cart";
-import { Tables } from "./table";
 
 export const Restaurant_page = () => {
   const [rest,setRest] = useState({id : null , name : null , date : null , address : "America"})

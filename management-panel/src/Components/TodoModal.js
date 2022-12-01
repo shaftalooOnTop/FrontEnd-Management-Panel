@@ -8,7 +8,6 @@ import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
 
-
 const dropin = {
   hidden: {
     opacity: 0,
@@ -48,10 +47,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const handleSumbit = (e) => {
     e.preventDefault();
     if (title === "") {
-      toast.error("Please enter a title.");
+      toast.error("Please enter a category.");
       return;
     }
-    if (title && status) {
+    if (title) {
       if (type === "add") {
         dispatch(
           addTodo({
@@ -136,7 +135,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                 </select>
               </label> */}
               <div className={styles.buttonContainer}>
-                <Button type="submit" className={styles.submit}> 
+                <Button type="submit" className={styles.submit}>
                   {type === "update" ? "Update" : "Add"} Category
                 </Button>
                 <Button

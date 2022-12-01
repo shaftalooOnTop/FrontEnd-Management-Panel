@@ -3,8 +3,14 @@ import 'boxicons/css/boxicons.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
 import Blank from './pages/Blank';
-
+import { getBearerToken } from './Services/axios';
+import {useEffect} from 'react';
 function App() {
+  useEffect(() => {
+    getBearerToken().then(x=>{
+      console.log(x);
+    })
+  },[])
   return (
     
     <BrowserRouter>

@@ -1,0 +1,76 @@
+.login-div {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("./background.jpg");
+    background-size: cover;
+}
+
+.login-div::before {    
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.login-form {
+    position: relative;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 70px;
+    background-color: #262626;
+    border: 1px solid #fbc403;
+}
+
+h1.welcome {
+    font-size: 45px;
+    -webkit-text-fill-color: #fbc403;
+    font-weight: bold;
+}
+
+.input {
+    font-size: 20px;
+    height: 50px;
+    border-radius: 12px;
+    border: 1px solid;
+    border-color: black;
+}
+
+.input:hover, .input:focus {
+    border-color: #fbc403;
+}
+
+.forgot-link, .register-link {
+    color: white;
+    margin: 4px;
+}
+
+.register-link:hover, .forgot-link:hover {
+    color:  #fbc403;
+    transition-duration: 0.4s;
+}
+
+.submit {
+    height: 50px;
+    width: 125px;
+    -webkit-text-fill-color: black;
+    background-color: #fbc403;
+    border-width: 0;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.submit:hover {
+    -webkit-text-fill-color: #fbc403;
+    background-color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}

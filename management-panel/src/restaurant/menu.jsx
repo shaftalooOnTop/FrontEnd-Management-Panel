@@ -1,22 +1,36 @@
-import { useState ,useContext} from "react";
-import { CartContext } from "./cart";
+import { useState ,useContext ,useEffect} from "react";
+import { CartContext} from "./cart";
+import { OrderPage } from "./order";
+import { getMenu ,getRestaurant} from "../Services/axios";
 import  TodoModal  from "../Components/TodoModal";
-import AddFood from "../Components/AddFood";
 
-
-
-export function  RstMenu  ({foodTags,foods }) {
+export function  RstMenu  ({id}) {
   const {cart,setCart} = useContext (CartContext);
+  const [foodTags,setFoodTags] = useState ();
+  const [foods,setFoods] = useState();
   const [flag, setFlag] = useState(0);
+  const [restMenu,setMenu] = useState();
   const [modalOpen, setModalOpen] = useState(false);
   const [addFoodOpen, setAddFoodOpen] = useState(false);
 
+  var imgURL= "data:image/png;base64,";
   var forFlag = 0;
 
+  console.log("khar")
 
+  useEffect(() => {
+    getRestaurant(id).then (m => {
+      //console.log(m.data[0].categories[0])
+      setMenu(m.data.menu)
+    }).catch()
+  },[])
+
+  function loadMenu (i) {
+    setFoods(i.foods)
+  }
 
   function inc (t) {
-    t.count+=1
+    t.foodCnt+=1
     console.log("ezafe")
     for (let i = 0 ; i < cart.length ; i++){
       if (t.name === cart[i].name) {
@@ -40,7 +54,7 @@ export function  RstMenu  ({foodTags,foods }) {
   }
 
   function dec (t) {
-    t.count-=1
+    t.foodCnt-=1
     for (let i = 0 ; i < cart.length ; i++){
       if (t.name === cart[i].name) {
         cart[i].order-=1;
@@ -62,9 +76,9 @@ export function  RstMenu  ({foodTags,foods }) {
           <div className="menu">
             <div> 
               <div className="categories">
-                {foodTags?.map (tag => (
+                {restMenu?.map (tag => (
                   //JSON.stringify(tag.categories)
-                    <button /*onClick={() => loadMenu(tag)}*/ className="catButton">{tag}</button>
+                  <button onClick={() => loadMenu(tag)} className="catButton">{tag.categoryName}</button>
                 ))}
                 <button className="catButton addButton" onClick={() => setModalOpen(true)}>Add</button>
                 
@@ -74,24 +88,26 @@ export function  RstMenu  ({foodTags,foods }) {
               <div className="foods">
                 {foods?.map(x => (
                   <div className="newCard">
-                    <img src={x.image} className="imageCard" />
+                    <img src={imgURL+x.image} className="imageCard" />
                     <h2 className="cardTitle">{x.name}</h2>
                     <div className="foodDetails">
-                      <p className="cardDetails">{x.details}</p>
+                      <p className="cardDetails">{/*x.details*/}{x.foodDescription}</p>
                     </div>
                     <p className="price">{x.price}$</p>
+                    <div className="ButtonGroup">
+                    <button className="cardButton" onClick={() => {if (x.foodCnt > 0 && x.foodCnt <= x.count ) {dec(x)}}} >-</button>
+                      <span className="cardButton">{x.foodCnt}</span>
+                      <button className="cardButton" onClick={() => inc(x)}>+</button>
+                    </div>
                   </div>
                 ))}
-
-              <div className="addCard" onClick={() => setModalOpen(true)}>
+                <div className="addCard" onClick={() => setModalOpen(true)}>
                   <p>+</p>
               </div>
               <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
               </div>
             </div>  
           </div>
-          
-          
         </>
     )
 }

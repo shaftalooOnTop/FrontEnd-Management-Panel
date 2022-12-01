@@ -7,7 +7,6 @@ import { addTodo, updateTodo } from "../slices/todoSlice";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
-// import {Restaurant_page} from './restaurant/restaurant_page'
 
 const dropin = {
   hidden: {
@@ -34,7 +33,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const [title, setTitle] = useState("");
   const [status, setStauts] = useState("incomplete");
   const dispatch = useState(""); //need more
-
+  const [categories, setCategories] = useState(["All", "Burger", "Fried", "Dessert", "Pizza", "Sandwitch"]);
   useEffect(() => {
     if (type === "update" && todo) {
       setTitle(todo.title);

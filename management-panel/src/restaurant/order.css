@@ -1,0 +1,84 @@
+.OrderPageHead {
+    text-align: center;
+}
+
+.OrderTab {
+    background-color: #eeba2c ;
+}
+
+.customized-dialog-title {
+    background-color: #161616 ;
+}
+
+.dialog {
+    background-color: #eeba2c;
+    color: white;
+}
+
+.pButton {
+    color: #eeba2c ;
+}
+
+.orderHeaderDialog {
+    color: #161616;
+
+}
+
+.dialogList {
+    margin : 15px;
+}
+
+.methods {
+    margin-top: 40px;
+    text-align: center;
+    color: #161616;
+    margin-bottom: 10px;
+}
+
+.tabG {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color:#262626;
+    border-radius: 5px;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.buttG{
+    padding-top: 10px;
+    padding-bottom:10px ;
+    background-color: #161616;
+    color: #eeba2c;
+    font-size: larger;
+    font-family: gilroy;
+    font-weight: bold;
+    border: none;
+    flex-grow: 1;
+}
+
+.middle {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.buttG:hover {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.ListDialog {
+    margin-bottom: 10px;
+    color: #161616;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+
+.butbut {
+    width: 100%;
+}

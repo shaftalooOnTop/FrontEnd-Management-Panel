@@ -141,7 +141,7 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
               </label>
               
               <label htmlFor="title">
-                Description:
+                Description
                 <input
                   value={foodDescription}
                   type="text"
@@ -149,13 +149,13 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
                   onChange={(e) => setFoodDescription(e.target.value)}
                 />
               </label>
-              <label className="" for="uploadPicture">Upload Food picture: 
+              <label className="uploadImg" for="imageUpload">Upload Food picture 
               <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onChange={(e) => {setImgFile(e.target.files[0])
               // console.log(e.target.files)
               }} />
               </label>
-              <label for="price">Price: </label>
-              <input type="number" id="price" name="price" value={foodPrice} onChange={(e) => setFoodPrice(e.target.value)}/>
+              <label for="price">Price </label>
+              <input className="priceLabel" type="number" id="price" name="price" value={foodPrice} onChange={(e) => setFoodPrice(e.target.value)}/>
 
               <div className={styles.buttonContainer}>
                 <Button type="submit" className={styles.submit}>

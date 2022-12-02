@@ -4,11 +4,10 @@ import { MdOutlineClose } from "react-icons/md";
 import Button from "../Components/Button";
 import { useDispatch } from "react-redux";
 import { addTodo, updateTodo } from "../slices/todoSlice";
-import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
-
-
+import { postCategory } from "../Services/axios";
+import './addFood.css';
 const dropin = {
   hidden: {
     opacity: 0,
@@ -30,61 +29,62 @@ const dropin = {
   },
 };
 
-function TodoModal({ type, modalOpen, setModalOpen, todo }) {
-  const [title, setTitle] = useState("");
+
+function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
+  const [foodName, setFoodName] = useState("");
+  const [foodDescription, setFoodDescription] = useState("");
   const [status, setStauts] = useState("incomplete");
   const dispatch = useState(""); //need more
 
   useEffect(() => {
     if (type === "update" && todo) {
-      setTitle(todo.title);
+      setFoodName(todo.foodName);
       setStauts(todo.status);
     } else {
-      setTitle("");
+      setFoodName("");
       setStauts("incomplete");
     }
-  }, [type.todo, modalOpen]);
+  }, [type.todo, addFoodOpen]);
+
+  // useEffect(() =>{}, [title]);
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    if (title === "") {
-      toast.error("Please enter a title.");
+    if (foodName === "") {
+      toast.error("Please enter a Name.");
       return;
+    } else if (foodDescription === "") {
+      toast.error("Please enter a Food Description.")
     }
-    if (title && status) {
+    if (foodName && foodDescription) {
       if (type === "add") {
-        dispatch(
-          addTodo({
-            id: uuid(),
-            title,
-            status,
-            time: new Date().toLocaleDateString(),
-          })
-        );
-        toast.success("Category Added Successfully");
-        setModalOpen(false);
+        
+        console.log("Added name");
+        toast.success("Food Added Successfully");
+        setAddFoodOpen(false);
       }
-      if (type === "update") {
-        if (todo.title !== title || todo.status !== status) {
-          dispatch(
-            updateTodo({
-              ...todo,
-              title,
-              status,
-            })
-          );
-        } else {
-          toast.error("No Changes Made");
-          return;
-        }
-      }
-      setModalOpen(false);
+      //for edit
+      // if (type === "update") {
+      //   if (todo.foodName !== foodName || todo.status !== status) {
+      //     dispatch(
+      //       updateTodo({
+      //         ...todo,
+      //         foodName,
+      //         status,
+      //       })
+      //     );
+      //   } else {
+      //     toast.error("No Changes Made");
+      //     return;
+      //   }
+      // }
+      setAddFoodOpen(false);
     }
   };
 
   return (
     <AnimatePresence>
-      {modalOpen && (
+      {addFoodOpen && (
         <motion.div
           className={styles.wrapper}
           initial={{ opacity: 0 }}
@@ -100,8 +100,8 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
           >
             <motion.div
               className={styles.closeButton}
-              onClick={() => setModalOpen(false)}
-              onKeyDown={() => setModalOpen(false)}
+              onClick={() => setAddFoodOpen(false)}
+              onKeyDown={() => setAddFoodOpen(false)}
               tabIndex={0}
               role="button"
               initial={{ top: 40, opacity: 0 }}
@@ -112,38 +112,42 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             </motion.div>
             <form className={styles.form} onSubmit={(e) => handleSumbit(e)}>
               <h1 className={styles.formTitle}>
-                {type === "update" ? "Update" : "add"} Category
+                {type === "update" ? "Update" : "add"} Food
               </h1>
               <label htmlFor="title">
                 Name
                 <input
-                  value={title}
+                  value={foodName}
                   type="text"
                   id="title"
-                  onChange={(e) => setTitle(e.target.value)}
+                  onChange={(e) => setFoodName(e.target.value)}
                 />
               </label>
-              {/* <label htmlFor="status">
-                Status
-                <select
-                  name="status"
-                  id="status"
-                  value={status}
-                  onChange={(e) => setStauts(e.target.value)}
-                >
-                  <option value="incomplete">Incomplete</option>
-                  <option value="complete">Complete</option>
-                </select>
-              </label> */}
+              
+              <label htmlFor="title">
+                Description:
+                <input
+                  value={foodDescription}
+                  type="text"
+                  id="title"
+                  onChange={(e) => setFoodDescription(e.target.value)}
+                />
+              </label>
+              <label for="uploadPicture">Upload Food picture: 
+              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
+              </label>
+              <label for="price">Price: </label>
+              <input type="number" id="price" name="price" />
+
               <div className={styles.buttonContainer}>
-                <Button type="submit" className={styles.submit}> 
+                <Button type="submit" className={styles.submit}>
                   {type === "update" ? "Update" : "Add"} Category
                 </Button>
                 <Button
                   type="button"
                   className={styles.submit}
-                  onClick={() => setModalOpen(false)}
-                  onKeyDown={() => setModalOpen(false)}
+                  onClick={() => setAddFoodOpen(false)}
+                  onKeyDown={() => setAddFoodOpen(false)}
                 >
                   Cancel
                 </Button>
@@ -156,4 +160,5 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   );
 }
 
-export default TodoModal;
+export default AddFood;
+

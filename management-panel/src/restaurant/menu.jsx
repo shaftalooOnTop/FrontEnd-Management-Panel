@@ -3,6 +3,7 @@ import { CartContext} from "./cart";
 import { OrderPage } from "./order";
 import { getMenu ,getRestaurant} from "../Services/axios";
 import  TodoModal  from "../Components/TodoModal";
+import  AddFood  from "../Components/AddFood";
 
 export function  RstMenu  ({id}) {
   const {cart,setCart} = useContext (CartContext);
@@ -10,6 +11,7 @@ export function  RstMenu  ({id}) {
   const [foods,setFoods] = useState();
   const [flag, setFlag] = useState(0);
   const [restMenu,setMenu] = useState();
+
   const [modalOpen, setModalOpen] = useState(false);
   const [addFoodOpen, setAddFoodOpen] = useState(false);
 
@@ -101,10 +103,10 @@ export function  RstMenu  ({id}) {
                     </div>
                   </div>
                 ))}
-                <div className="addCard" onClick={() => setModalOpen(true)}>
+                <div className="addCard" onClick={() => setAddFoodOpen(true)}>
                   <p>+</p>
               </div>
-              <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
+              <AddFood type="add" addFoodOpen={addFoodOpen} setAddFoodOpen={setAddFoodOpen} />
               </div>
             </div>  
           </div>

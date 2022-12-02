@@ -33,3 +33,7 @@ export function getMenu (data){
 export function postCategory(data) {
     return axios.post(url+"api/Categories",data)
 }
+
+export function postFood(data) {
+    return axios.post(url+"api/Food",data)
+}

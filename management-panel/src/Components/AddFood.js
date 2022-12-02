@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addTodo, updateTodo } from "../slices/todoSlice";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
-import { postCategory } from "../Services/axios";
+import { postFood } from "../Services/axios";
 import './addFood.css';
 const dropin = {
   hidden: {
@@ -33,6 +33,8 @@ const dropin = {
 function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
   const [foodName, setFoodName] = useState("");
   const [foodDescription, setFoodDescription] = useState("");
+  const [foodPrice, setFoodPrice] = useState("");
+  const [imgFile, setImgFile] = useState("");
   const [status, setStauts] = useState("incomplete");
   const dispatch = useState(""); //need more
 
@@ -58,8 +60,22 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
     }
     if (foodName && foodDescription) {
       if (type === "add") {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(imgFile);
+        fileReader.onload = (event) => {
+          // console.log(event.target.result);
+          postFood({
+            "restaurantId": 2,
+            "name": foodName,
+            "price": foodPrice,
+            "image": event.target.result,
+            "categoryid": 1,
+            "count": 85,
+            "foodDescription": foodDescription,
+          } ).then(() => {console.log("Added Food")})
+        }
         
-        console.log("Added name");
+
         toast.success("Food Added Successfully");
         setAddFoodOpen(false);
       }
@@ -134,10 +150,12 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
                 />
               </label>
               <label for="uploadPicture">Upload Food picture: 
-              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
+              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onChange={(e) => {setImgFile(e.target.files[0])
+              console.log(e.target.files)
+              }} />
               </label>
               <label for="price">Price: </label>
-              <input type="number" id="price" name="price" />
+              <input type="number" id="price" name="price" value={foodPrice} onChange={(e) => setFoodPrice(e.target.value)}/>
 
               <div className={styles.buttonContainer}>
                 <Button type="submit" className={styles.submit}>
@@ -161,4 +179,3 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
 }
 
 export default AddFood;
-

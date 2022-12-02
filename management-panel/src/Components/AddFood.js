@@ -30,7 +30,7 @@ const dropin = {
 };
 
 
-function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
+function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
   const [foodName, setFoodName] = useState("");
   const [foodDescription, setFoodDescription] = useState("");
   const [foodPrice, setFoodPrice] = useState("");
@@ -63,16 +63,16 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
         let fileReader = new FileReader();
         fileReader.readAsDataURL(imgFile);
         fileReader.onload = (event) => {
-          // console.log(event.target.result);
+          console.log(categoryId);
           postFood({
-            "restaurantId": 2,
+            "restaurantId": 1,
             "name": foodName,
             "price": foodPrice,
             "image": event.target.result,
-            "categoryid": 1,
-            "count": 85,
+            "categoryid": categoryId,
+            // "count": 0,
             "foodDescription": foodDescription,
-          } ).then(() => {console.log("Added Food")})
+          } ).then(() => {console.log(categoryId)})
         }
         
 
@@ -149,9 +149,9 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
                   onChange={(e) => setFoodDescription(e.target.value)}
                 />
               </label>
-              <label for="uploadPicture">Upload Food picture: 
+              <label className="" for="uploadPicture">Upload Food picture: 
               <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onChange={(e) => {setImgFile(e.target.files[0])
-              console.log(e.target.files)
+              // console.log(e.target.files)
               }} />
               </label>
               <label for="price">Price: </label>
@@ -159,7 +159,7 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo }) {
 
               <div className={styles.buttonContainer}>
                 <Button type="submit" className={styles.submit}>
-                  {type === "update" ? "Update" : "Add"} Category
+                  {type === "update" ? "Update" : "Add"} Food
                 </Button>
                 <Button
                   type="button"

@@ -37,3 +37,7 @@ export function postCategory(data) {
 export function postFood(data) {
     return axios.post(url+"api/Food",data)
 }
+
+export function putFood(data) {
+    return axios.put(url+"api/Food",data)
+}

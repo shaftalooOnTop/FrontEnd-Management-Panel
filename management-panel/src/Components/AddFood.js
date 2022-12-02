@@ -35,6 +35,7 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
   const [foodDescription, setFoodDescription] = useState("");
   const [foodPrice, setFoodPrice] = useState("");
   const [imgFile, setImgFile] = useState("");
+  const [foodInventory,setFoodInventory] = useState("");
   const [status, setStauts] = useState("incomplete");
   const dispatch = useState(""); //need more
 
@@ -70,7 +71,7 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
             "price": foodPrice,
             "image": event.target.result,
             "categoryid": categoryId,
-            // "count": 0,
+            "count": foodInventory,
             "foodDescription": foodDescription,
           } ).then(() => {console.log(categoryId)})
         }
@@ -155,8 +156,9 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
               }} />
               </label>
               <label for="price">Price </label>
-              <input className="priceLabel" type="number" id="price" name="price" value={foodPrice} onChange={(e) => setFoodPrice(e.target.value)}/>
-
+              <input className="Label" type="number" id="price" name="price" value={foodPrice} onChange={(e) => setFoodPrice(e.target.value)}/>
+              <label for="inventory"> Inventory </label>
+              <input className="Label" type="number" id="inventory" name="inventory" value={foodInventory} onChange={(e) => setFoodInventory(e.target.value)}/>
               <div className={styles.buttonContainer}>
                 <Button type="submit" className={styles.submit}>
                   {type === "update" ? "Update" : "Add"} Food

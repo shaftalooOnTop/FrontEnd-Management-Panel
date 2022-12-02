@@ -7,7 +7,6 @@ import AddFood from "../Components/AddFood";
 
 export function RstMenu({ id }) {
   const { cart, setCart } = useContext(CartContext);
-  const [foodTags, setFoodTags] = useState();
   const [foods, setFoods] = useState();
   const [flag, setFlag] = useState(0);
   const [restMenu, setMenu] = useState();

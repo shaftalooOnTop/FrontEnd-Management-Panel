@@ -3,7 +3,7 @@ import React from 'react';
 import qs from "qs";
 import axios from 'axios'
 import { notification } from 'antd';
-import { postUser } from '../../services/axios';
+import { getbearer } from '../../services/axios';
 
 import 'antd/dist/reset.css';
 import './Login.css';
@@ -12,20 +12,13 @@ export const Login = () => {
 
     const onFinish = (event) =>{
         //console.log(event)
-        let res = qs.stringify({
-            'UserName' : event.username,
-            'Password' : event.password,
-        })
-        //console.log(res)
-        let config = {
-            method: 'post',
-            url: '',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data : res,
-        }
-        postUser(res)
+
+        getbearer({
+          'fullName' : "",
+          'username' : "",
+          'password' : event.password,
+          'email' : event.username
+      })
             .then(function (response) {
                 /*notification.open({
                     message: 'Login was successful.',

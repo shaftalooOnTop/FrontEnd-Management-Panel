@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { getTableRestaurant } from "../../services/axios";
 
 import {
     Modal,
@@ -24,6 +25,26 @@ import './table-managment.css'
 import 'antd/dist/reset.css';
 
 export const Table_managment = () => {
+
+  useEffect(() => {
+    getTableRestaurant()
+    .then((response)=>{
+      console.log("response : ", response.data)
+    })
+  .catch(function (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+        
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    })
+  }, [])
 
     const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -54,10 +75,11 @@ export const Table_managment = () => {
         console.log('changed', value);
       };
 
-      const [form] = Form.useForm();
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-  };
+    const [form] = Form.useForm();
+    
+    const onFinish = (values) => {
+      console.log('Received values of form: ', values);
+    };
 
 
   const add_table_gen = () => {

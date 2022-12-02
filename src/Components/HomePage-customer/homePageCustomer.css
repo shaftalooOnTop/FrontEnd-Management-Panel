@@ -1,0 +1,159 @@
+/***    card    ***/
+
+.card {
+  background: #161616;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px;
+  color: white;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+img.img-res {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  
+}
+
+.card-discription {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+img.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card-discription h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 40px;
+  color: #eeba2c;
+  margin-left: 16px;
+}
+
+.location {
+  margin-left: 25px;
+}
+
+.simple-loc {
+  font-size: 20px;
+}
+
+.tags {
+  margin: 25px;
+}
+
+.simple-tag {
+  background-color: #eeba2c;
+  padding: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 5px;
+  color: #262626;
+  font-weight: bold;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 15px;
+}
+
+/****   list cards ****/
+
+.homePage-customer {
+  background-color: black;
+  font-family: gilroy;
+}
+
+.container {
+  padding: 30px;
+  min-width: auto;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filters {
+  margin-left: auto;
+  margin-right: auto;
+  background: #262626;
+  width: 100%;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+button.simple-filter {
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 35px;
+  font-size: large;
+  font-family: gilroy;
+  color: white;
+  background-color: #161616;
+  border: none;
+  border-radius: 0.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+
+}
+
+button.simple-filter:hover {
+  background-color: #eeba2c;
+  color: black;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.cards-list {
+  border-radius: 20px;
+  background-color: #262626;
+  padding: 5px;
+}
+
+.cards-list::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.simple-card-inlist {
+  float: left;
+  width: 33.33%;
+  background-color: inherit;
+}
+
+.loading {
+}
+
+@media screen and (max-width: 1000px) {
+  .simple-card-inlist {
+    width: 50%;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .simple-card-inlist {
+    width: 100%;
+    display: block;
+  }
+}

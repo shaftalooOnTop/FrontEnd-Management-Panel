@@ -1,0 +1,96 @@
+.table-managment {
+    background-color: #262626;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.table-list {
+    background-color: black;
+    padding: 50px;
+    border-radius: 15px;
+    border: solid 5px #fbc403;
+    text-align: center;
+}
+
+button {
+    margin: 2px;
+    border: solid 2px #fbc403;
+    background-color: black;
+    /*padding: 20px;*/
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fbc403;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    margin-top: 0px;
+    width: 200px;
+}
+
+button.add {
+    background-color: #fbc403;
+    color: black;
+}
+button.add:hover {
+    background-color: black;
+    -webkit-text-fill-color: #fbc403;
+    border: solid 2px #fbc403;
+}
+
+button.remove {
+    border-style: dashed;
+}
+button.remove:hover {
+    background-color: #262626;
+    -webkit-text-fill-color: #fbc403;
+    border-color: #fbc403;
+}
+
+.enter-button-add {
+    margin-top: -150px;
+}
+
+.enter-button-add:hover, .enter-button-remove:hover {
+    background-color: #fbc403;
+    -webkit-text-fill-color: black;
+    border: solid 2px #fbc403;
+}
+
+.modal {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    margin-top: 25px;
+    padding: 0px;
+    display: flex;
+    background-color: white;
+    border: 0px;
+    border-radius: 20px;
+}
+
+.form-item {
+    margin: auto;
+}
+
+.div-form-items-add {
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+
+label {
+    font-weight: bold;
+    -webkit-text-fill-color: black;
+}
+
+.input {
+    float: right;
+    width: 45px;
+}

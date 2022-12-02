@@ -3,6 +3,7 @@ import React from 'react';
 import qs from "qs";
 import axios from 'axios'
 import { notification } from 'antd';
+import { postUser } from '../../services/axios';
 
 import 'antd/dist/reset.css';
 import './Login.css';
@@ -24,7 +25,7 @@ export const Login = () => {
             },
             data : res,
         }
-        axios(config)
+        postUser(res)
             .then(function (response) {
                 /*notification.open({
                     message: 'Login was successful.',

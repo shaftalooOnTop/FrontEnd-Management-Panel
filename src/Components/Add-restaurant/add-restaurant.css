@@ -8,14 +8,16 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #262626;
+    background-color: #161616;
 }
 
 .form {
-    border: solid 4px #fbc403;
-    background-color: #161616;
+    border: solid 1px #262626;
+    background-color: #262626;
     border-radius: 20px;
     padding: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .info {
@@ -50,7 +52,7 @@
 }
 
 .upload {
-    background-color: #fbc403;
+    background-color: #eeba2c;
 }
 
 img.logo {
@@ -58,16 +60,16 @@ img.logo {
     height: 120px;
     object-fit: cover;
     border-radius: 50%;
-    border: solid #fbc403;
+    border: solid #eeba2c;
 }
 
 .button-add {
-    border: solid 2px #fbc403;
-    background-color: black;
+    border: solid 1px #262626;
+    background-color: #eeba2c;
     /*padding: 20px;*/
     border-radius: 10px;
     cursor: pointer;
-    color: #fbc403;
+    color: black;
     height: 50px;
     font-size: 18px;
     font-weight: bold;
@@ -77,9 +79,9 @@ img.logo {
   }
   
 .button-add:hover {
-    -webkit-text-fill-color: black;
-    background-color: #fbc403;
-    border: solid 2px black;
+    -webkit-text-fill-color: white;
+    background-color: #161616;
+    border: solid 1px #161616;
 }
 
 .name-code {
@@ -102,7 +104,7 @@ img.logo {
 }
 
 .site-tag-plus {
-    background-color: #fbc403;
+    background-color: #eeba2c;
     border: 0px;
 }
 
@@ -122,8 +124,9 @@ label::before {
 }
 
 .ant-input {
-    background-color: #262626;
-    border: solid 1px #262626;
+    padding: 12px;
+    background-color: #161616;
+    border: solid 1px #161616;
     color: white;
     transition-duration: 0.4s;
 }
@@ -134,11 +137,11 @@ label::before {
 }
 
 .ant-input:hover, .ant-input:focus {
-    border: solid 1px #fbc403;
+    border: solid 1px white;
 }
 
 a {
-    color: #fbc403;
+    color: #eeba2c;
 }
 
 a:hover {
@@ -154,7 +157,7 @@ h1 {
     margin-bottom: 30px;
     font-size: 45px;
     font-weight: bold;
-    color: #fbc403;
+    color: #eeba2c;
 }
 
 .ant-btn {
@@ -168,7 +171,7 @@ h1 {
 }
 
 .select-city {
-    background-color: #262626;
+    background-color: #161616;
 }
 
 @media screen and (max-width: 900px) {
@@ -189,8 +192,8 @@ h1 {
     }
 
     .button-add {
-        background-color: #fbc403;
-        color: black;
+        background-color: #eeba2c;
+        color: #161616;
     }
 }
   

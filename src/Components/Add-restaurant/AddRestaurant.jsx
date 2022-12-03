@@ -17,6 +17,8 @@ import {
   Upload,
 } from 'antd';
 
+import { postRestaurant } from '../../services/axios';
+
 import 'antd/dist/reset.css';
 import './add-restaurant.css';
 
@@ -117,6 +119,12 @@ export const AddRestaurant = () => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+
+    const data = {
+      "name" : values.name,
+      "address" : values.address,
+      "description" : values.description
+    }
   };
 
 
@@ -199,7 +207,7 @@ export const AddRestaurant = () => {
                   },
                 ]}
                 >
-                  <Input placeholder='number' />
+                  <Input type='number' placeholder='123' />
                 </Form.Item>
             </div>
 
@@ -338,7 +346,7 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-                <Input placeholder='021' minLength={3} maxLength={3} style={{ width: '50%', marginRight: "2px" }} defaultValue=''/>
+                <Input type='number' placeholder='021' minLength={3} maxLength={3} style={{ width: '50%', marginRight: "2px" }} defaultValue=''/>
             </Form.Item>
 
             <Form.Item
@@ -351,7 +359,7 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-                  <Input placeholder='12345678' minLength={8} maxLength={8} style={{ }} defaultValue="" />
+                  <Input type='number' placeholder='12345678' minLength={8} maxLength={8} style={{ }} defaultValue="" />
             </Form.Item>
               </div>
               

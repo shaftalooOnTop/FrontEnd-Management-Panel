@@ -3,7 +3,7 @@ import React from 'react';
 import qs from "qs";
 import axios from 'axios'
 import { notification } from 'antd';
-import { getbearer } from '../../services/axios';
+import { getbearer, S } from '../../services/axios';
 
 import 'antd/dist/reset.css';
 import './Login.css';
@@ -11,34 +11,34 @@ import './Login.css';
 export const Login = () => {
 
     const onFinish = (event) =>{
-        //console.log(event)
+        console.log(event)
 
         getbearer({
-          'fullName' : "",
-          'username' : "",
-          'password' : event.password,
-          'email' : event.username
+          "email": event.email,
+          "password": event.password
+      }).then((response)=>{
+        console.log(response)
+        S("token",response.data.token)
       })
-            .then(function (response) {
-                /*notification.open({
-                    message: 'Login was successful.',
-                    //description: 'User has been successfuly Logged-In.',
-                    type:'success',
-                    style: {borderRadius: '5px', backgroundColor: '#fbc403'}
-                });*/
-                //alert("User has been successfuly signed-up.");
-                window.location.replace("/dashboard")
-                console.log(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-                notification.open({
-                    message: 'Login was NOT successful',
-                    //description: error.response.data,
-                    type:'error',
-                    style: {borderRadius: '5px', backgroundColor: '#fbc403'}
-                });
-                console.log(error.response.data);
-            });
+      .catch(function (error) {
+        notification.open({
+          message: 'Login was NOT successful',
+          //description: error.response.data,
+          type:'error',
+          style: {borderRadius: '5px', backgroundColor: '#fbc403'}
+        });
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+          
+        } else {
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      })
     }
 
     const onFinishFailed = (errorInfo) => {
@@ -58,10 +58,13 @@ export const Login = () => {
         <h1 className='welcome'>WELCOME</h1>
 
         <Form.Item
-          name="username"
-          rules={[{ required: true, message: 'Please input your Username!' }]}
+          name="email"
+          rules={[{ required: true, message: 'Please input your email!' }]}
           >
-          <Input className='input' placeholder="Username" />
+          <Input 
+            type='email' 
+            className='input' 
+            placeholder="example@gmail.com" />
         </Form.Item>
 
         <Form.Item
@@ -71,7 +74,7 @@ export const Login = () => {
           <Input
             className='input'
             type="password"
-            placeholder="Password"
+            placeholder="********"
             />
         </Form.Item>
 

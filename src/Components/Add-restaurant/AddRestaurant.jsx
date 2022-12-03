@@ -182,7 +182,6 @@ export const AddRestaurant = () => {
               </Upload>
             </Form.Item>
 
-            <div className='name-code'>
               <Form.Item className='name'
                 name="name"
                 label="restaurant name"
@@ -195,20 +194,6 @@ export const AddRestaurant = () => {
               >
                 <Input placeholder='restaurant' />
               </Form.Item>
-
-              <Form.Item
-                name="code"
-                label="restaurant code"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your restaurant code!',
-                  },
-                ]}
-                >
-                  <Input type='number' placeholder='123' />
-                </Form.Item>
-            </div>
 
             <Form.Item
               name="tags"
@@ -350,7 +335,7 @@ export const AddRestaurant = () => {
 
             <Form.Item
               name="phone-number"
-              label="Restaurant Phone Number"
+              label="Phone Number"
               rules={[
                 {
                   required: true,

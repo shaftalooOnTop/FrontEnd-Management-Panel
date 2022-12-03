@@ -29,9 +29,6 @@ const getBase64 = (img, callback) => {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
-  /*reader.onload = ((e) => {
-    e.target.value
-  })*/
 };
 
 const beforeUpload = (file) => {
@@ -51,17 +48,20 @@ export const AddRestaurant = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
+  const [imglogo, setImglogo] = useState('')
   const [fileList, setFileList] = useState([])
   const handleCancel = () => setPreviewOpen(false);
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
+      file.preview = getBase64(file.originFileObj);
     }
     setPreviewImage(file.url || file.preview);
     setPreviewOpen(true);
     setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
   };
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList)
+  };
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -169,6 +169,7 @@ export const AddRestaurant = () => {
                   listType="picture-card"
                   fileList={fileList}
                   onPreview={handlePreview}
+                  beforeUpload={beforeUpload}
                   onChange={handleChange}
                   >
                     {fileList.length >= 1 ? null : uploadButton}

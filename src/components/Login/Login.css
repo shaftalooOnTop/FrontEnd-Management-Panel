@@ -27,12 +27,12 @@
     border-radius: 20px;
     padding: 70px;
     background-color: #262626;
-    border: 1px solid #fbc403;
+    border: 1px solid #262626;
 }
 
 h1.welcome {
     font-size: 45px;
-    -webkit-text-fill-color: #fbc403;
+    -webkit-text-fill-color: #eeba2c;
     font-weight: bold;
 }
 
@@ -62,23 +62,27 @@ h1.welcome {
 }
 
 .register-link:hover, .forgot-link:hover {
-    color:  #fbc403;
+    color:  #eeba2c;
     transition-duration: 0.4s;
 }
 
-.submit {
-    height: 50px;
-    width: 125px;
-    -webkit-text-fill-color: black;
-    background-color: #fbc403;
-    border-width: 0;
-    border-radius: 8px;
-    font-size: 20px;
-}
-
-.submit:hover {
-    -webkit-text-fill-color: #fbc403;
-    background-color: black;
+.button-add {
+    border: solid 1px #262626;
+    background-color: #eeba2c;
+    /*padding: 20px;*/
+    border-radius: 10px;
     cursor: pointer;
+    color: black;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
     transition-duration: 0.4s;
+    margin-top: 0px;
+    width: 50%;
+  }
+  
+.button-add:hover {
+    -webkit-text-fill-color: white;
+    background-color: #161616;
+    border: solid 1px #161616;
 }

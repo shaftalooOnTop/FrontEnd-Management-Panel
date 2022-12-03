@@ -86,8 +86,8 @@ export const Login = () => {
         </Form.Item>
 
         <Form.Item>
-          <button className="submit" placeholder="submit">
-            Log in
+          <button className='button-add' htmlType="submit">
+            Submit
           </button>
         </Form.Item>
       </Form>

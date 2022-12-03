@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css";
-import { getUser } from "../../Services/axios";
+import { S, G, getUser, getBearerToken } from "../../Services/axios";
 
 const sidebarNavItems = [
   {
@@ -47,14 +47,26 @@ const Sidebar = () => {
   const [user, setUser] = useState({ name: "Amir Deldar" });
   const [username, setUsername] = useState("amirdldr@gmail.com");
   useEffect(() => {
-    getUser(username)
+    if(typeof(G('token'))!=='string') {
+      getBearerToken("amirdldr@gmail.com","Amir1379").then(x=>{
+        S("token",x.data.token);
+        getUser().then((e) => {
+          console.table(e.data)
+        });
+      });
+    }
+    else{
+      getUser(username)
       .then((e) => {
-        //console.log(e.data.username)
+        console.log(e.data.username)
         setUser({
           name: e.data.username,
         });
       })
-      .catch();
+    }
+    
+    
+    
   }, []);
 
   useEffect(() => {

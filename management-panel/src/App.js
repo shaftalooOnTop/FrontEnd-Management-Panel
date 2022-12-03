@@ -6,11 +6,7 @@ import Blank from './pages/Blank';
 import { getBearerToken } from './Services/axios';
 import {useEffect} from 'react';
 function App() {
-  useEffect(() => {
-    getBearerToken().then(x=>{
-      console.log(x);
-    })
-  },[])
+
   return (
     
     <BrowserRouter>

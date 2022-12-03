@@ -1,7 +1,7 @@
 import { url } from "./consts";
 import axios from "axios";
 
-export function getUser (data){
+export function getUser (){
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
     };
@@ -11,7 +11,7 @@ export function getUser (data){
 export function G(key){
     return localStorage.getItem(key);
 }
-export function S(value,key){
+export function S(key,value){
     localStorage.setItem(key,value);
 }
 

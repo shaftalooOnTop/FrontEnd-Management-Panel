@@ -15,6 +15,7 @@ import {
   Row,
   Select,
   Upload,
+  Modal
 } from 'antd';
 
 import { postRestaurant } from '../../services/axios';
@@ -28,6 +29,9 @@ const getBase64 = (img, callback) => {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
+  /*reader.onload = ((e) => {
+    e.target.value
+  })*/
 };
 
 const beforeUpload = (file) => {
@@ -44,24 +48,23 @@ const beforeUpload = (file) => {
 
 export const AddRestaurant = () => {
 
-  const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
-  const handleChange = (info) => {
-    if (info.file.status === 'uploading') {
-      setLoading(true);
-      return;
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
+  const [fileList, setFileList] = useState([])
+  const handleCancel = () => setPreviewOpen(false);
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
     }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (url) => {
-        setLoading(false);
-        setImageUrl(url);
-      });
-    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
   };
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
   const uploadButton = (
-    <div className='upload-img'>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+    <div>
+      <PlusOutlined />
       <div
         style={{
           marginTop: 8,
@@ -70,7 +73,7 @@ export const AddRestaurant = () => {
         Upload
       </div>
     </div>
-  );
+  )
 
   const [tags, setTags] = useState([]);
   const [inputVisible, setInputVisible] = useState(false);
@@ -123,10 +126,12 @@ export const AddRestaurant = () => {
     const data = {
       "name" : values.name,
       "address" : values.address,
-      "description" : values.description,
+      "description" : values.description + " phone : " + values.phone_code + values.phone_number,
       "tags" : tags,
-      "logoImg" : imageUrl,
+      "logoImg" : ""
     }
+
+    console.log(data)
   };
 
 
@@ -158,42 +163,40 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-              <Upload 
-                name="avatar"
-                listType="picture-card"
-                className="avatar-uploader"
-                showUploadList={false}
-                action=""
-                beforeUpload={beforeUpload}
-                onChange={handleChange}
-                >
-                {imageUrl ? (
+              <>
+                <Upload
+                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  listType="picture-card"
+                  fileList={fileList}
+                  onPreview={handlePreview}
+                  onChange={handleChange}
+                  >
+                    {fileList.length >= 1 ? null : uploadButton}
+                </Upload>
+                <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
                   <img
-                    src={imageUrl}
-                    alt="avatar"
+                    alt="example"
                     style={{
                       width: '100%',
                     }}
+                    src={previewImage}
                   />
-                  ) : 
-                  (
-                    uploadButton
-                  )}
-              </Upload>
+                </Modal>
+              </>
             </Form.Item>
 
-              <Form.Item className='name'
-                name="name"
-                label="restaurant name"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your restaurant name!',
-                  },
-                ]}
+            <Form.Item className='name'
+              name="name"
+              label="restaurant name"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your restaurant name!',
+                },
+              ]}
               >
-                <Input placeholder='restaurant' />
-              </Form.Item>
+              <Input placeholder='restaurant' />
+            </Form.Item>
 
             <Form.Item
               name="tags"
@@ -321,7 +324,7 @@ export const AddRestaurant = () => {
 
               <div className='name-code'>
             <Form.Item
-              name="phone-code"
+              name="phone_code"
               label="Phone code"
               rules={[
                 {
@@ -334,7 +337,7 @@ export const AddRestaurant = () => {
             </Form.Item>
 
             <Form.Item
-              name="phone-number"
+              name="phone_number"
               label="Phone Number"
               rules={[
                 {

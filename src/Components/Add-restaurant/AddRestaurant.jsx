@@ -234,7 +234,7 @@ export const AddRestaurant = () => {
                     <Tag
                       className="edit-tag"
                       key={tag}
-                      closable={index !== 0}
+                      closable={true}
                       onClose={() => handleClose(tag)}
                       >
                       <span
@@ -246,7 +246,7 @@ export const AddRestaurant = () => {
                           }
                         }}
                         >
-                        {isLongTag ? `${tag.slice(0, 20)}...` : tag}
+                          {isLongTag ? `${tag.slice(0, 10)}...` : tag}
                       </span>
                     </Tag>
                   );
@@ -338,7 +338,7 @@ export const AddRestaurant = () => {
               ]}
               >
                 <Input.Group compact>
-                  <Input placeholder='' maxLength={3} style={{ width: '20%' }} defaultValue="021" />
+                  <Input placeholder='021' maxLength={3} style={{ width: '20%', marginRight: "2px" }} defaultValue=''/>
                   <Input placeholder='12345678' maxLength={8} style={{ width: '55%' }} defaultValue="" />
                 </Input.Group>
             </Form.Item>

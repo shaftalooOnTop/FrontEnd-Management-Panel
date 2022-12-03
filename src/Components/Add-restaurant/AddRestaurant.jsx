@@ -123,12 +123,11 @@ export const AddRestaurant = () => {
     const data = {
       "name" : values.name,
       "address" : values.address,
-      "description" : values.description
+      "description" : values.description,
+      "tags" : tags,
+      "logoImg" : imageUrl,
     }
   };
-
-
-
 
 
 

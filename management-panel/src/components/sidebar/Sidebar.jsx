@@ -155,7 +155,7 @@ const Sidebar = () => {
             <Link to={item.to} key={index}>
               <div
                 className={`sidebar__menu__item ${
-                  activeIndex === index ? "active" : ""
+                  activeIndex === index ? "active_btn" : ""
                 }`}
               >
                 <div className="sidebar__menu__item__icon">{item.icon}</div>

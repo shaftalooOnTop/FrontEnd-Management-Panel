@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/modules/modal.module.css";
 import { MdOutlineClose } from "react-icons/md";
-import Button from "../Components/Button";
+import Button from "./Button";
 import { useDispatch } from "react-redux";
 import { addTodo, updateTodo } from "../slices/todoSlice";
 import { v4 as uuid } from "uuid";

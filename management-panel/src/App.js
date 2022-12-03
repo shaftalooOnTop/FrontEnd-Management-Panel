@@ -1,7 +1,7 @@
 import './App.css';
 import 'boxicons/css/boxicons.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AppLayout from './components/layout/AppLayout';
+import AppLayout from './Components/layout/AppLayout';
 import Blank from './pages/Blank';
 import { getBearerToken } from './Services/axios';
 import {useEffect} from 'react';

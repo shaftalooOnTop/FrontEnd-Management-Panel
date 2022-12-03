@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 
+* {
+    font-family: gilroy;
+}
 body {
     color: #2b2b2b;
     font-family: 'Roboto', sans-serif;
@@ -20,7 +18,50 @@ a {
 .blank{
     color: black;
     font-family: Gilroy;
+} 
+
+.AppLayoutAll{
+    width: 100%;
+    box-sizing: border-box;
+    /* display: flex; */
+    margin: -8px;
+    /* margin-top: -8px;
+    margin-right:-8px ; */
+    width: 100%;
 }
-.App {
-    font-family: Gilroy;
-  }
+
+.SideAll {
+    float: left;
+    width: 15%;
+    transition: 0.4s;
+    /* margin-left: -8px;
+    margin-top: -8px; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.ContentAll {
+    float: left;
+    width: 85%;
+    transition: 0.4s;
+    /* margin-left: -8px; */
+}
+
+.hideSide {
+    width: 4%;
+    transition: 0.4s;
+}
+
+.showAll {
+    width: 96%;
+    transition: 0.4s;
+}
+
+/* @media screen and (max-width: 1000px) {
+    .SideAll {   
+        width: 4%;
+    }
+    .ContentAll {
+        width: 96%;
+    }
+  } */

@@ -208,7 +208,7 @@ export const AddRestaurant = () => {
               label="restaurant tags"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Please input your restaurant tags!',
                 },
               ]}
@@ -264,7 +264,7 @@ export const AddRestaurant = () => {
                   <Input
                     ref={inputRef}
                     type="text"
-                    size="large"
+                    size="small"
                     className="tag-input"
                     value={inputValue}
                     onChange={handleInputChange}
@@ -327,9 +327,23 @@ export const AddRestaurant = () => {
                 <Input placeholder='address' />
             </Form.Item>
 
+              <div className='name-code'>
             <Form.Item
-              name="phone"
-              label="Phone Number"
+              name="phone-code"
+              label="Phone code"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your phone code!',
+                },
+              ]}
+              >
+                <Input placeholder='021' minLength={3} maxLength={3} style={{ width: '50%', marginRight: "2px" }} defaultValue=''/>
+            </Form.Item>
+
+            <Form.Item
+              name="phone-number"
+              label="Restaurant Phone Number"
               rules={[
                 {
                   required: true,
@@ -337,12 +351,10 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-                <Input.Group compact>
-                  <Input placeholder='021' maxLength={3} style={{ width: '20%', marginRight: "2px" }} defaultValue=''/>
-                  <Input placeholder='12345678' maxLength={8} style={{ width: '55%' }} defaultValue="" />
-                </Input.Group>
+                  <Input placeholder='12345678' minLength={8} maxLength={8} style={{ }} defaultValue="" />
             </Form.Item>
-
+              </div>
+              
             <Form.Item
               name="description"
               label="description"

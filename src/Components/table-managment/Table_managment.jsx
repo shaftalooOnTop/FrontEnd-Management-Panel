@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect , useState } from "react";
-import { getTableRestaurant } from "../../services/axios";
-import { addTable , deleteTable } from "../../services/axios";
+import { getTableRestaurant } from "../../Services/axios";
+import { addTable , deleteTable } from "../../Services/axios";
 
 import {
     notification,
@@ -34,7 +34,7 @@ return (
     }} 
     >
       
-      <Form className='form'
+      <Form className='form1'
         name="add_table"
         layout='horizontal'
         size='large'
@@ -53,7 +53,7 @@ return (
             },
           ]}
         >
-          <InputNumber className="input" min={1} max={20} defaultValue={0} onChange={onChange} />
+          <InputNumber className="input1" min={1} max={20} defaultValue={0} onChange={onChange} />
         </Form.Item>
 
         <Form.Item 
@@ -66,7 +66,7 @@ return (
             },
           ]}
           >
-          <InputNumber className="input" min={1} max={10} defaultValue={0} onChange={onChange} />
+          <InputNumber className="input1" min={1} max={10} defaultValue={0} onChange={onChange} />
         </Form.Item>
         </div>
 
@@ -96,7 +96,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
     }} 
         >
         <div>
-        <Form className='form'
+        <Form className='form1'
           layout='horizontal'
           size='large'
           form={form}
@@ -114,7 +114,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
               },
             ]}
           >
-            <InputNumber className="input" min={1} max={20} defaultValue={0} onChange={onChange} />
+            <InputNumber className="input1" min={1} max={20} defaultValue={0} onChange={onChange} />
           </Form.Item>
         </Form>
         </div>

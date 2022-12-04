@@ -1,5 +1,5 @@
 import React, { useState,useEffect,useRef } from "react";
-import { postUser } from "../../../services/axios";
+import { postUser } from "../../../Services/axios";
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');

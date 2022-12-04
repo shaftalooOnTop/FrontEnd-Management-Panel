@@ -9,6 +9,7 @@ export function getRestaurantCards (){
     return axios.get(url+"api/Restaurant?tag=all&size=10&number=0")
 }
 
+
 export function getUser (){
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
@@ -59,4 +60,17 @@ export function putFood(data) {
 
 export function postRestaurant (data) {
     return axios.post(url+'api/Restaurant',data)
+}
+
+
+export function getTableRestaurant (id) {
+    return axios.get(url+'api/Table/by restaurant?restaurantid='+id)
+}
+
+export function addTable (data) {
+    return axios.put(url+'api/Table', data)
+}
+
+export function deleteTable (id) {
+    return axios.delete(url+'api/Table/:'+id)
 }

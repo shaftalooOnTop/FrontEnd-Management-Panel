@@ -1,5 +1,5 @@
 .table-managment {
-    background-color: #262626;
+    background-color: #161616;
     display: flex;
     position: relative;
     align-items: center;
@@ -8,17 +8,17 @@
 }
 
 .table-list {
-    background-color: black;
+    background-color: #262626;
     padding: 50px;
     border-radius: 15px;
-    border: solid 5px #fbc403;
+    border-color:  white;
     text-align: center;
 }
 
-button, .ant-btn {
+button1, .ant-btn {
     margin: 2px;
     border: solid 2px #fbc403;
-    background-color: black;
+    background-color: #262626;
     /*padding: 20px;*/
     border-radius: 10px;
     cursor: pointer;
@@ -31,20 +31,20 @@ button, .ant-btn {
     width: 200px;
 }
 
-button.add {
+button1.add {
     background-color: #fbc403;
     color: black;
 }
-button.add:hover {
+button1.add:hover {
     background-color: black;
     -webkit-text-fill-color: #fbc403;
-    border: solid 2px #fbc403;
+    border-color:  white;
 }
 
-button.remove {
+button1.remove {
     border-style: dashed;
 }
-button.remove:hover {
+button1.remove:hover {
     background-color: #262626;
     -webkit-text-fill-color: #fbc403;
     border-color: #fbc403;
@@ -57,7 +57,7 @@ button.remove:hover {
 .enter-button-add:hover, .enter-button-remove:hover {
     background-color: #fbc403;
     -webkit-text-fill-color: black;
-    border: solid 2px #fbc403;
+    border-color:  white;
 }
 
 .modal {
@@ -66,11 +66,11 @@ button.remove:hover {
     justify-content: center;
 }
 
-.form {
+.form1 {
     margin-top: 25px;
     padding: 0px;
     display: flex;
-    background-color: white;
+    background-color: #262626;
     border: 0px;
     border-radius: 20px;
 }
@@ -85,12 +85,12 @@ button.remove:hover {
     margin: auto;
 }
 
-label {
+label1 {
     font-weight: bold;
     -webkit-text-fill-color: black;
 }
 
-.input {
+.input1 {
     float: right;
     width: 45px;
 }

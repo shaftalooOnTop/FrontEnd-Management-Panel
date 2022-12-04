@@ -5,6 +5,9 @@
   color: white;
   font-family: Gilroy;
   border-bottom: 1px solid white;
+  /* margin-top: 0.5rem; */
+  
+  
   aspect-ratio: 4.5/1;
 }
 
@@ -34,9 +37,9 @@
   display: flex;
   align-items: center;
   place-content: flex-start;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: bold;
   color: white;
   transition: color 0.3s ease-in-out;
 }
@@ -99,7 +102,7 @@
   height: 100vh;
   width: 0;
   overflow: hidden;
-  max-width: 15%;
+  max-width: 20%;
   z-index: 9;
   /* opacity: 0.93; */
 }
@@ -129,6 +132,7 @@
 .SignButton {
   margin-top: 50px;
   width: 100%;
+  
 }
 
 .SignInButton {
@@ -138,6 +142,7 @@
   aspect-ratio: 3/1;
   text-align: center;
   font-weight: bold;
+
   border: none;
   border-radius: 10px;
   font-size: large;
@@ -154,16 +159,18 @@
 }
 
 .SignOutButton {
-  width: 60%;
+  width: 50%;
+  font-size: 16px;
   margin-right: 20%;
   margin-left: 20%;
   aspect-ratio: 3/1;
   text-align: center;
   font-weight: bold;
+
   border: none;
   border-radius: 10px;
-  font-size: large;
-  background-color: #f32112;
+  /* font-size: large; */
+  background-color: #820600;
   color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -174,9 +181,36 @@
   transition-duration: 0.4s;
   background-color: #eeba2c;
 }
-
+.sign-out-hide{
+  display: none;
+}
 @media screen and (max-width: 500px) {
   .menuNav {
-    max-width: 80px;
+    max-width: 15%;
+  }
+  .sidebar__menu__item__text{
+    display: none;
+  }
+  .sidebar__menu__item{
+    padding: 1rem;
+    
+  }
+  .sidebar__menu__indicator {
+    width: 5rem;
+    
+  }
+  .sidebar__logo{
+    display:none;
+  }
+  .SignOutButton{
+    background:none;
+    color: #eeba2c;
+  }
+  .sign-out-p{
+    display: none;
+  }
+  .sign-out-hide{
+    display: block;
+    font-size: 25px;
   }
 }

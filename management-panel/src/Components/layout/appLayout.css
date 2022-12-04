@@ -1,0 +1,8 @@
+.appLay{
+    padding: 0% 0% 0% 20%;
+}
+@media screen and (max-width: 500px) {
+    .appLay {
+        padding: 0% 0% 0% 10%;
+    }
+  }

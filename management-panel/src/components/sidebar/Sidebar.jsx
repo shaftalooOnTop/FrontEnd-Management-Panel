@@ -160,11 +160,20 @@ const Sidebar = () => {
               >
                 <div className="sidebar__menu__item__icon">{item.icon}</div>
                 <div className="sidebar__menu__item__text">{item.display}</div>
+                
               </div>
             </Link>
           ))}
           <div className="SignButton">
-          {login ? <button className="SignOutButton" onClick={() => {localStorage.clear(); setLogin(false); navigate('/login')}}>Sign out</button> : <button className="SignInButton" onClick={()=> navigate('/login')}>LOGIN</button>}
+          
+          <button className="SignOutButton" onClick={() => {localStorage.clear(); navigate('/login')}}>
+          <div>
+          <i class='bx bx-log-out-circle bx-tada sign-out-hide' ></i>
+          <p className="sign-out-p">Sign out</p>
+
+          </div>
+          
+          </button>
         </div>
         </div>
       </nav>

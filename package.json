@@ -33,6 +33,9 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "sass": "^1.56.1",
+    "antd-img-crop": "^4.5.1",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -59,4 +62,7 @@
       "last 1 safari version"
     ]
   }
+
 }
+
+

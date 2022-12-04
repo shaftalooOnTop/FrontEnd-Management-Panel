@@ -12,6 +12,11 @@ import "./restaurant/restaurant_page.css";
 import { Toaster } from "react-hot-toast";
 
 import { AddRestaurant } from "./Components/Add-restaurant/AddRestaurant";
+// import { Login } from "./Components/Auth/Login/Login";
+import { Register } from "./Components/Auth/SignUp/Register";
+import { Card } from "./Components/HomePage-customer/card";
+import { ListCardRes } from "./Components/HomePage-customer/ListCards"
+import {Table_managment} from "./Components/table-managment/Table_managment";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -29,7 +34,7 @@ function App() {
           <Route path="/create-restaurant" element={<AddRestaurant/>} />
           <Route path="/order" element={<Blank />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />
-          <Route path="/accounting" element={<Blank />} />
+          <Route path="/accounting" element={<Table_managment/>} />
         </Route>
       </Routes>
       <Toaster

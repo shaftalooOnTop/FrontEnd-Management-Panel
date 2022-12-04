@@ -15,7 +15,7 @@
     text-align: center;
 }
 
-button {
+button, .ant-btn {
     margin: 2px;
     border: solid 2px #fbc403;
     background-color: black;

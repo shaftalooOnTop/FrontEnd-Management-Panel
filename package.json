@@ -19,7 +19,7 @@
     "react-md": "^5.1.4",
     "react-router-dom": "^6.4.3",
 
-  
+
     "base-64": "^1.0.0",
     "bootstrap": "^5.2.2",
     "framer-motion": "^7.6.12",
@@ -28,6 +28,15 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-redux": "^8.0.5",
+    "name": "login-register-form",
+    "version": "0.1.0",
+    "private": true,
+
+
+    "antd-img-crop": "^4.5.1",
+    
+    
+    "react-infinite-scroll-component": "^6.1.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "sass": "^1.56.1",

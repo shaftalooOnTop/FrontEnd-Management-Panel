@@ -11,14 +11,22 @@ import { Restaurant_page } from "./restaurant/restaurant_page";
 import "./restaurant/restaurant_page.css";
 import { Toaster } from "react-hot-toast";
 
+import { AddRestaurant } from "./Components/Add-restaurant/AddRestaurant";
+
 function App() {
+  const [currentForm, setCurrentForm] = useState('login');
+
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Blank />} />
-          <Route path="/user" element={<Blank />} />
+          <Route path="/user" element={<AddRestaurant/>} />
           <Route path="/order" element={<Blank />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />
           <Route path="/accounting" element={<Blank />} />

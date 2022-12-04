@@ -1,11 +1,12 @@
 import { url } from "./consts";
 import axios from "axios";
 
+// export function getRestaurantCards (tag, number){
+//     return axios.get(url+"api/Restaurant?tag="+tag+"&size=10&number="+number)
+// }
 
-
-
-export function getRestaurantCards (tag, number){
-    return axios.get(url+"api/Restaurant?tag="+tag+"&size=10&number="+number)
+export function getRestaurantCards (){
+    return axios.get(url+"api/Restaurant?tag=all&size=10&number=0")
 }
 
 export function getUser (){
@@ -14,9 +15,6 @@ export function getUser (){
     };
     return axios.get(url+"api/User/GetUserData",config)
 }
-
-
-
 
 export function postUser(data) {
     return axios.post(url+"api/User/postUser",data)
@@ -57,3 +55,8 @@ export function putFood(data) {
 }
 
 
+
+
+export function postRestaurant (data) {
+    return axios.post(url+'api/Restaurant',data)
+}

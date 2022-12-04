@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "./Components/layout/AppLayout";
 import Blank from "./pages/Blank";
 import { getBearerToken } from "./Services/axios";
-import { useEffect } from "react";
+import {  useState } from "react";
 import { Restaurant_page } from "./restaurant/restaurant_page";
 import "./restaurant/restaurant_page.css";
 import { Toaster } from "react-hot-toast";
@@ -26,7 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Blank />} />
-          <Route path="/user" element={<AddRestaurant/>} />
+          <Route path="/create-restaurant" element={<AddRestaurant/>} />
           <Route path="/order" element={<Blank />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />
           <Route path="/accounting" element={<Blank />} />

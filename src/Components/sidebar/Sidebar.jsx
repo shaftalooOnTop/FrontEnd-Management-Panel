@@ -11,10 +11,10 @@ const sidebarNavItems = [
     section: "",
   },
   {
-    display: "User",
-    icon: <i className="bx bx-user"></i>,
-    to: "/user",
-    section: "user",
+    display: "Create Restaurant",
+    icon: <i class='bx bx-restaurant'></i>,
+    to: "/create-restaurant",
+    section: "create-restaurant",
   },
   {
     display: "Orders",
@@ -118,7 +118,7 @@ const Sidebar = () => {
         <div className="sidebar__logo">
           <div className="sideLogo">
             <img
-              className="logo"
+              className="logoU"
               src={user.img}
               alt=""
             ></img>

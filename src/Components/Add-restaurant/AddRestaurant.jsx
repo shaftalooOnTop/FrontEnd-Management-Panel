@@ -18,7 +18,7 @@ import {
   Modal
 } from 'antd';
 
-import { postRestaurant } from '../../services/axios';
+import { postRestaurant } from '../../Services/axios';
 
 import 'antd/dist/reset.css';
 import './add-restaurant.css';
@@ -168,7 +168,7 @@ export const AddRestaurant = () => {
         scrollToFirstError
         >
         <div className='top-info'>
-          <h1>create restaurant</h1>
+          <h1>Create Restaurant</h1>
         </div>
 
         <div className='info'>

@@ -1,4 +1,6 @@
 import './App.css';
+import { Login } from './components/Login/Login';
+
 import 'boxicons/css/boxicons.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppLayout from './Components/layout/AppLayout';
@@ -18,7 +20,7 @@ function App() {
                 <Route path='/' element={<AppLayout />}>
                     <Route index element={<Blank />} />
                     <Route path='/user' element={<Blank />} />
-                    <Route path='/order' element={<Blank />} />
+                    <Route path='/order' element={<Login/>} />
                     <Route path='/menu-managment' element={<Restaurant_page />} />
                     <Route path='/accounting' element={<Blank />} />
                 </Route>

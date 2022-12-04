@@ -3,7 +3,7 @@ import React from 'react';
 
 import { notification } from 'antd';
 import { getbearer, S } from '../../Services/axios';
-
+import {useNavigate} from "react-router-dom";
 import 'antd/dist/reset.css';
 import './Login.css';
 
@@ -18,6 +18,7 @@ export const Login = () => {
       }).then((response)=>{
         console.log(response)
         S("token",response.data.token)
+        navigate('/');
       })
       .catch(function (error) {
         notification.open({
@@ -43,7 +44,7 @@ export const Login = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-
+    const navigate = useNavigate();
 
     return (
         <div className='login-div'>

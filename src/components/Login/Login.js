@@ -1,9 +1,8 @@
 import { Form, Input } from 'antd';
 import React from 'react';
-import qs from "qs";
-import axios from 'axios'
+
 import { notification } from 'antd';
-import { getbearer, S } from '../../services/axios';
+import { getbearer, S } from '../../Services/axios';
 
 import 'antd/dist/reset.css';
 import './Login.css';

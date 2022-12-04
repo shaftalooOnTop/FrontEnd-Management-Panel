@@ -1,5 +1,5 @@
 import './App.css';
-import { Login } from './components/Login/Login';
+import { Login } from './Components/Login/Login';
 
 import 'boxicons/css/boxicons.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

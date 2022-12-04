@@ -1,6 +1,13 @@
 import { url } from "./consts";
 import axios from "axios";
 
+
+
+
+export function getRestaurantCards (tag, number){
+    return axios.get(url+"api/Restaurant?tag="+tag+"&size=10&number="+number)
+}
+
 export function getUser (){
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
@@ -48,3 +55,5 @@ export function postFood(data) {
 export function putFood(data) {
     return axios.put(url+"api/Food",data)
 }
+
+

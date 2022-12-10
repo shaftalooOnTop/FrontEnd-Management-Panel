@@ -1,0 +1,22 @@
+input::file-selector-button {
+    color: #eeba2c;
+    /* padding: 0.5em; */
+    border: thin solid grey;
+    border-radius: 3px;
+    background-color: #161616;
+    padding: 0.3em;
+    
+}
+
+.Label{
+    background-color:#262626;
+    width: 30%;
+    border: none;
+    border-radius: 3px;
+    border-color: black;
+    color: white;
+    font-size: 1rem;
+    /* margin: 0.5rem; */
+    padding: 0.5rem;
+    overflow: hidden;
+}

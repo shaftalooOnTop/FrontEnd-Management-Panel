@@ -1,0 +1,9 @@
+.appLay{
+    padding: 0% 0% 0% 15%;
+    overflow-y: hidden;
+}
+@media screen and (max-width: 500px) {
+    .appLay {
+        padding: 0% 0% 0% 10%;
+    }
+  }

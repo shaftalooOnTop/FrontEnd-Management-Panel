@@ -1,0 +1,499 @@
+
+.HeadImage {
+    width: 100%;
+    height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    object-fit: cover;
+    object-position: 100% 50%;
+    float: none;
+}
+
+.restLogo {
+    width: 10%;
+    aspect-ratio: 1/1;
+    margin-top: -5rem;
+    /*margin-left: 50px;*/
+    margin-left: 45%;
+    margin-right: 45%;
+    border-radius: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid 5px;
+    border-color: #161616;
+    object-fit: cover;
+    /*float:left;*/
+
+}
+
+.All {
+    font-family: gilroy;
+    background-color:  #161616;
+    box-sizing: border-box;
+    height: 200vh;
+    margin:-8px;
+    
+}   
+
+
+.details {
+    justify-content: center;
+    margin: auto;
+    /*margin-top: -4rem;*/
+    width: 80%;
+    margin-top: 2rem;
+    
+}
+
+.info {
+    color: white;
+    text-align: left;
+    background-color: #262626;
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.name { 
+    font-weight: bolder;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.Rate {
+    padding-top: 100px;
+}
+
+.main{
+    width: 80%; 
+    margin-left: 10%;
+    margin-right: 10%;
+    display: table;
+    /*background-color: aliceblue;*/
+}
+
+.RestTags {
+    overflow: auto;
+}
+
+.RestTags::-webkit-scrollbar {
+    height: 5px;
+  }
+
+.RestTags::-webkit-scrollbar-thumb {
+    background-color:#eeba2c;
+    border-radius: 10px;
+}
+
+.Tab {
+    display: flex;
+    flex-wrap: nowrap;
+    color: white;
+    width: 80%;
+    height: 60px;
+    background-color:#262626;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 30px;
+    border-radius: 15px;
+    overflow: auto;
+    border: 4px solid #262626;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10px;
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.TabButton {
+    
+    height:100%;
+    background-color: #161616;
+    color: white;
+    font-size: larger;
+    font-family: gilroy;
+    font-weight: bold;
+    border: none;
+    flex-grow: 1;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+
+.TabButton:hover {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.active {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.TabButton1 {
+    height:100%;
+    width: 15%;
+    background-color: #161616;
+    color: white;
+    font-size: larger;
+    font-family: gilroy;
+    font-weight: bold;
+    border: none;
+    float: left;
+    margin-right: 2px;;
+}
+
+
+.TabButton1:hover {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    
+}
+
+
+
+.RightTabButton {
+    height:100%;
+    width: 10%;
+    background-color: #161616;
+    color: white;
+    font-size: larger;
+    font-family: gilroy;
+    font-weight: bold;
+    border: none;
+    float: right    ;
+}
+
+.RightTabButton:hover {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    
+}
+
+.menu{
+    width: 100%; /*menu width*/
+    background-color: #262626;
+    margin-top: 30px;
+    padding: 2.5%;
+    border-radius: 20px;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.categories {
+    width: 100%;
+    max-height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #161616;
+    border-radius: 1rem;
+    overflow: auto;
+    /*overflow-x: auto;
+    overflow-y: hidden;*/
+    
+    
+}
+
+.categories::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+.categories::-webkit-scrollbar-thumb {
+    background-color:#eeba2c;
+    border-radius: 10px;
+}
+
+.catButton{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 35px;
+    font-size: large;
+    font-family: gilroy;
+    color: white;
+    background-color: #262626;
+    border: none;
+    border-radius: 0.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.catButton:hover {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.catButton:focus {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.addButton{
+    color: black;
+    background-color: #eeba2c;
+}
+
+.foods {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background-color: #262626;
+}
+
+/*
+.MenuCard {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+}
+
+.CardDetails {
+    color: white;
+}
+
+.Card {
+    background-color: #161616;
+}
+*/
+
+.newCard {
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    background-color: #161616;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+
+.cardTitle {
+    overflow: auto;
+}
+
+.cardTitle::-webkit-scrollbar {
+    height: 5px;
+  }
+
+.cardTitle::-webkit-scrollbar-thumb {
+    background-color:#eeba2c;
+    border-radius: 10px;
+}
+
+.imageCard {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+}
+
+.cardTitle {
+    color: white;
+    padding-left: 10px;
+}
+
+.foodDetails {
+    height: 38px;
+}
+
+.cardDetails{
+    margin-top: -10px;
+    color: white;
+    padding-left: 10px;
+}
+
+.price{
+    color: white;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.ButtonGroup {
+    margin-bottom: 5px;
+}
+
+.cardButton {
+    margin: 10px;
+    margin-right: 0px;
+    font-size: large;
+    font-family: gilroy;
+    background-color:#161616;
+    color: #eeba2c;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cardButton:hover {
+    background-color: #eeba2c;
+    color: black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.receipt {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+    float: right ;
+    width: 17.5%;
+    
+}
+
+.cart {
+    margin-top: 30px;
+    background-color: #eeba2c ;
+    padding: 30px;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+
+.orderHeader {
+    text-align: center; 
+    margin-top: -5px;
+    color: #161616;
+}
+
+
+
+.List {
+    margin-bottom: 5px;
+    color: #161616;
+    font-weight: bold;
+}
+
+/*.List::-webkit-scrollbar {
+    width: 10px;
+  }
+
+.List::-webkit-scrollbar-thumb {
+    background-color:black;
+    border-radius: 10px;
+}*/
+
+.totalPriceButton {
+    font-size: large;
+    font-family: gilroy;
+    color:#eeba2c;
+    background-color:#161616;
+    border-radius: 0.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pay {
+    font-size: large;
+    font-family: gilroy;
+    color:#ffffff;
+    background-color: #01579b;
+    border-radius: 0.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: none;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.pay:hover {
+    color: white ;
+    background-color: #161616;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.distance {
+    height: 70px;
+}
+
+.addCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 24%;
+    background-color: #161616;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-style: dashed;
+    border-color: #eeba2c;
+    color: white;
+    font-size: 100px;
+}
+.addCard:hover{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .menu, .receipt {   
+      width: 100%;
+    }
+    .logo {
+        width: 20%;
+        margin-left: 40%;
+        margin-right: 40%;
+    }
+    .HeadImage {
+        height: 200px;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .newCard {   
+        width: 31%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    
+  }
+
+  @media screen and (max-width: 500px) {
+    .newCard {   
+        width: 48%;
+    }
+    .HeadImage {
+        height: 100px;
+    }
+
+    .logo {
+        margin-top: -4rem;
+    }
+  }

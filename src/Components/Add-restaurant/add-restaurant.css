@@ -1,0 +1,199 @@
+* {
+    font-family: gilroy;
+}
+
+.add-restaurant {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #161616;
+}
+
+.form {
+    border: solid 1px #262626;
+    background-color: #262626;
+    border-radius: 20px;
+    padding: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+}
+
+.top-info {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.left-info {
+    width: 50%;
+    margin-right: 100px;
+}
+
+.right-info {
+    width: 50%;
+}
+
+.end-info {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width:fit-content;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.upload {
+    background-color: #eeba2c;
+}
+
+img.logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: solid #eeba2c;
+}
+
+.button-add {
+    border: solid 1px #262626;
+    background-color: #eeba2c;
+    /*padding: 20px;*/
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    margin-top: 0px;
+    width: 100%;
+  }
+  
+.button-add:hover {
+    -webkit-text-fill-color: white;
+    background-color: #161616;
+    border: solid 1px #161616;
+}
+
+.name-code {
+    display: flex;
+}
+
+.name {
+    margin-right: 5px;
+    width: 80%;
+}
+
+.tag-input {
+    margin-top: 2px;
+    width: 25%;
+}
+
+.edit-tag {
+    background-color: white;
+    margin-bottom: 2px;
+}
+
+.site-tag-plus {
+    background-color: #eeba2c;
+    border: 0px;
+}
+
+.ant-upload {
+    background-color: #585858;
+    border-radius: 7px;
+    color: white;
+}
+
+label {
+    font-weight: bold;
+    -webkit-text-fill-color: white;
+}
+
+label::before {
+    -webkit-text-fill-color: red;
+}
+
+.ant-input {
+    padding: 12px;
+    background-color: #161616;
+    border: solid 1px #161616;
+    color: white;
+    transition-duration: 0.4s;
+}
+
+.ant-input::placeholder {
+    color: rgb(99, 99, 99);
+    font-weight: bold;
+}
+
+.ant-input:hover, .ant-input:focus {
+    border: solid 1px white;
+}
+
+a {
+    color: #eeba2c;
+}
+
+a:hover {
+    color: rgb(151, 151, 151);
+}
+
+.txt-area::after {
+    color: white;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 45px;
+    font-weight: bold;
+    color: #eeba2c;
+}
+
+.ant-btn {
+    background-color: #585858;
+    color: white;
+    border: 0;
+}
+
+.ant-btn:hover {
+    -webkit-text-fill-color: white;
+}
+
+.select-city {
+    background-color: #161616;
+}
+
+@media screen and (max-width: 900px) {
+    .form {
+        padding: 50px;
+    }
+
+    .info {
+        display: inline;
+    }
+
+    .left-info {
+        display: inline;
+    }
+
+    .right-info {
+        display: inline;
+    }
+
+    .button-add {
+        background-color: #eeba2c;
+        color: #161616;
+    }
+}
+  

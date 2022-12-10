@@ -34,6 +34,12 @@ const sidebarNavItems = [
     to: "/table-managment",
     section: "table-managment",
   },
+  {
+    display: "Sale Report",
+    icon: <i class='bx bxs-report'></i>,
+    to: "/sale-report",
+    section: "sale-report",
+  },
 ];
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);

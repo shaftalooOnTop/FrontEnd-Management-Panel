@@ -17,6 +17,8 @@ import { Register } from "./Components/Auth/SignUp/Register";
 import { Card } from "./Components/HomePage-customer/card";
 import { ListCardRes } from "./Components/HomePage-customer/ListCards"
 import {Table_managment} from "./Components/table-managment/Table_managment";
+import { Sale_report } from "./Components/Sale-report/Sale-report"
+
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -35,6 +37,7 @@ function App() {
           <Route path="/order" element={<Blank />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />
           <Route path="/table-managment" element={<Table_managment/>} />
+          <Route path="/sale-report" element={<Sale_report/>} />
         </Route>
       </Routes>
       <Toaster

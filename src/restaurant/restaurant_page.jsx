@@ -1,14 +1,8 @@
-import React,{useState , useEffect , useRef } from "react";
-import Rating from '@mui/material/Rating';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import React,{useState , useEffect } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Button} from '@mui/material';
-import {getRestaurant , getMenu} from "../Services/axios"
+import { getRestaurant } from "../Services/axios"
 import { RstMenu } from "./menu";
-import { Contact_us } from "./contact_us";
-import { OrderPage } from "./order"
 import { CartContext , TableContext } from "./cart";
-import { Tables } from "./table";
 import './restaurant_page.css'
 
 export const Restaurant_page = () => {

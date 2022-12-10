@@ -34,7 +34,7 @@ function App() {
           <Route path="/create-restaurant" element={<AddRestaurant/>} />
           <Route path="/order" element={<Blank />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />
-          <Route path="/accounting" element={<Table_managment/>} />
+          <Route path="/table-managment" element={<Table_managment/>} />
         </Route>
       </Routes>
       <Toaster

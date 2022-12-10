@@ -29,10 +29,10 @@ const sidebarNavItems = [
     section: "menu-managment",
   },
   {
-    display: "Accounting",
+    display: "Table Managment",
     icon: <i class="bx bxs-bank"></i>,
-    to: "/accounting",
-    section: "accounting",
+    to: "/table-managment",
+    section: "table-managment",
   },
 ];
 const Sidebar = () => {

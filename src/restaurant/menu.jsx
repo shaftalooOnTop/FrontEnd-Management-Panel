@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { CartContext } from "./cart";
-import { OrderPage } from "./order";
-import { getMenu, getRestaurant, putFood } from "../Services/axios";
+import { getRestaurant, putFood } from "../Services/axios";
 import TodoModal from "../Components/TodoModal";
 import AddFood from "../Components/AddFood";
 

@@ -1,0 +1,12 @@
+.sale-report-All{
+    background-color: #161616;
+    /* box-sizing: border-box; */
+    height: 200vh;
+    margin-top: -10px;
+    padding-top:4%;
+    padding-left: 4%;
+    /* margin: -8px; */
+}
+.sale-report-cards{
+    display: flex;
+}

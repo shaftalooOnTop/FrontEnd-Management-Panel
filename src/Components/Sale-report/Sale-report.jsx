@@ -56,6 +56,25 @@ export const Sale_report = () => {
                     </div>
                     
                 </div>
+                <div
+                        className="card text-black bg-warning mb-3"
+                        style={{ maxWidth: "37rem", minWidth: "37rem" }}
+                    >
+                        <div className="card-header">Restaurant Busiest Times</div>
+                        <div className="card-body">
+                            <button type="button" class="btn btn-primary">Daily</button>
+                            <button type="button" class="btn btn-success">Monthly</button>
+                            <button type="button" class="btn btn-danger">Yearly</button>
+                                
+                
+                            <p className="card-text">
+                                time
+                            </p>
+                        </div>
+                    </div>
+                <div>
+
+                </div>
             </div>
         </>
     );

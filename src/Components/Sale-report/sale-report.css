@@ -10,3 +10,13 @@
 .sale-report-cards{
     display: flex;
 }
+.card-header{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.card-body .btn{
+    margin-left: 5px;
+    color: black;
+    font-weight: bold;
+}

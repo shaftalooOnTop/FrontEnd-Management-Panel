@@ -14,9 +14,30 @@
     font-weight: bold;
     font-size: 20px;
 }
-
+.res-busiest-card{
+    display: flex;
+    justify-content: center;
+}
 .card-body .btn{
+    
     margin-left: 5px;
-    color: black;
+    color: white;
     font-weight: bold;
+    padding: 0.15rem;
+}
+
+.clock-bar{
+	display: flex;
+	align-items: flex-end;
+	
+}
+
+.busiest-date{
+	padding-bottom: 3rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-left: 5rem;
+	
+
+
 }

@@ -75,3 +75,7 @@ export function deleteTable (id) {
 export function getProfit (data){
     return axios.get(url+"api/Managment/GetDailyProfit/"+data)
 }
+
+export function getBusiestTime (data){
+    return axios.get(url+"api/Managment/GetDailyProfit/"+data)
+}

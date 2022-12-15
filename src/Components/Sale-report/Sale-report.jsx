@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import { getProfit } from "../../Services/axios";
+import { getProfit, getBusiestTime } from "../../Services/axios";
 
 export const Sale_report = () => {
   const current = new Date();
@@ -97,52 +97,63 @@ export const Sale_report = () => {
           <div className="card-header res-busiest-card">
             Restaurant Busiest Times
           </div>
-          <div className="card-body">
-            <div className="res-busiest-card">
-              <button type="button" class="btn btn-primary">
-                Daily
-              </button>
-              <button type="button" class="btn btn-success">
-                Monthly
-              </button>
-              <button type="button" class="btn btn-danger">
-                Yearly
-              </button>
+          <div className="card-body clock-body">
+            
+
+            <div className="clock-bar" style={{ width: 500, height: 200, }}>
+              <div className="clock-item">
+                  <CircularProgressbar
+                    
+                    value={25}
+                    text="15:30"
+                    styles={buildStyles({
+                      rotation: 0,
+                      strokeLinecap: "butt",
+                      textSize: "16px",
+                      pathTransitionDuration: 0.5,
+                      pathColor: "#161616",
+                      textColor: "#161616",
+                      //   trailColor: 'white',
+                    })}
+                  />
+                  <p className="clock-item-title">Daily</p>
+                </div>
+                <div className="clock-item">
+                  <CircularProgressbar
+                    
+                    value={25}
+                    text="15:30"
+                    styles={buildStyles({
+                      rotation: 0,
+                      strokeLinecap: "butt",
+                      textSize: "16px",
+                      pathTransitionDuration: 0.5,
+                      pathColor: "#161616",
+                      textColor: "#161616",
+                      //   trailColor: 'white',
+                    })}
+                  />
+                  <p className="clock-item-title">Weekly</p>
+                </div>
+                <div className="clock-item">
+                  <CircularProgressbar
+                    
+                    value={25}
+                    text="15:30"
+                    styles={buildStyles({
+                      rotation: 0,
+                      strokeLinecap: "butt",
+                      textSize: "16px",
+                      pathTransitionDuration: 0.5,
+                      pathColor: "#161616",
+                      textColor: "#161616",
+                      //   trailColor: 'white',
+                    })}
+                  />
+                  <p className="clock-item-title">Monthly</p>
+                </div>
             </div>
 
-            <div className="clock-bar">
-              <div style={{ width: 200, height: 200 }}>
-                <CircularProgressbar
-                  value={25}
-                  text="15:30"
-                  styles={buildStyles({
-                    // Rotation of path and trail, in number of turns (0-1)
-                    rotation: 0,
-
-                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                    strokeLinecap: "butt",
-
-                    // Text size
-                    textSize: "16px",
-
-                    // How long animation takes to go from one percentage to another, in seconds
-                    pathTransitionDuration: 0.5,
-
-                    // Can specify path transition in more detail, or remove it entirely
-                    // pathTransition: 'none',
-
-                    // Colors
-                    pathColor: "#161616",
-                    textColor: "#161616",
-                    //   trailColor: 'white',
-                  })}
-                />
-              </div>
-              <div className="busiest-date">
-                <p>Thursday</p>
-                <p>December 15</p>
-              </div>
-            </div>
           </div>
         </div>
         <div className="card text-white bg-danger mb-3" style={{ maxWidth: "18rem", minWidth: "18rem" }} >

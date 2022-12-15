@@ -43,6 +43,8 @@ export const Sale_report = () => {
   const current_month = monthNames[current.getMonth()];
   const current_year = current.getFullYear();
 
+  const [dailyProfit, setDailyProfit] = useState(); 
+
   const percentage = 66;
 
   return (
@@ -92,7 +94,7 @@ export const Sale_report = () => {
                 Daily
               </button>
               <button type="button" class="btn btn-success">
-                Monthly\order
+                Monthly
               </button>
               <button type="button" class="btn btn-danger">
                 Yearly

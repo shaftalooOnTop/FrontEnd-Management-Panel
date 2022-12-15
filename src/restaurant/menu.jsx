@@ -3,6 +3,7 @@ import { CartContext } from "./cart";
 import { getRestaurant, putFood } from "../Services/axios";
 import TodoModal from "../Components/TodoModal";
 import AddFood from "../Components/AddFood";
+import { url } from "../Services/consts";
 
 export function RstMenu({ id }) {
   const { cart, setCart } = useContext(CartContext);
@@ -19,7 +20,7 @@ export function RstMenu({ id }) {
   useEffect(() => {
     getRestaurant(id)
       .then((m) => {
-        //console.log(m.data[0].categories[0])
+        // console.log(m.data[0].categories[0])
         setMenu(m.data.menu);
       })
       .catch();
@@ -75,7 +76,6 @@ export function RstMenu({ id }) {
         <div>
           <div className="categories">
             {restMenu?.map((tag) => (
-              //JSON.stringify(tag.categories)
               <button
                 onClick={() => {
                   loadMenu(tag);
@@ -103,12 +103,13 @@ export function RstMenu({ id }) {
           <div className="foods">
             {foods?.map((x) => (
               <div className="newCard">
-                <img src={x.image} className="imageCard" />
+                <img
+                  src={url + "api/www/ImgGet/" + x.photo.id}
+                  className="imageCard"
+                />
                 <h2 className="cardTitle">{x.name}</h2>
                 <div className="foodDetails">
-                  <p className="cardDetails">
-                    {x.foodDescription}
-                  </p>
+                  <p className="cardDetails">{x.foodDescription}</p>
                 </div>
                 <p className="price">{x.price}$</p>
                 <div className="ButtonGroup">

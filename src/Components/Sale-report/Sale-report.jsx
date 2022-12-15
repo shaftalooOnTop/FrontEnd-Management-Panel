@@ -5,11 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-// Wijmo imports
-import "wijmo/styles/wijmo.css";
-import { FlexGrid, FlexGridColumn } from "wijmo/wijmo.react.grid";
-import { FlexChart, FlexPie, FlexChartSeries } from "wijmo/wijmo.react.chart";
-import { RadialGauge } from "wijmo/wijmo.react.gauge";
+import { getProfit } from "../../Services/axios";
 
 export const Sale_report = () => {
   const current = new Date();
@@ -43,9 +39,22 @@ export const Sale_report = () => {
   const current_month = monthNames[current.getMonth()];
   const current_year = current.getFullYear();
 
-  const [dailyProfit, setDailyProfit] = useState(); 
-
+  const [restId,setRestId] = useState (7);
+  const [dailyProfit, setDailyProfit] = useState (0); 
+  const [monthlyProfit, setMonthlyProfit] = useState (0); 
+  const [yearlyProfit, setYearlyProfit] = useState (0); 
+  
   const percentage = 66;
+
+  useEffect(() => {
+    getProfit(restId).then (e => {
+      setDailyProfit(e.dailyProfit);
+      setMonthlyProfit(e.monthlyProfit);
+      setYearlyProfit(e.yearlyProfit);
+      
+    }).catch()
+    
+  },[]);
 
   return (
     <>
@@ -58,7 +67,7 @@ export const Sale_report = () => {
             <div className="card-header">Daily Profit</div>
             <div className="card-body">
               <h5 className="card-title">{current_day}</h5>
-              <p className="card-text">530,900 Toman</p>
+              <p className="card-text">{dailyProfit} Toman</p>
             </div>
           </div>
 
@@ -69,7 +78,7 @@ export const Sale_report = () => {
             <div className="card-header">Monthly Profit</div>
             <div className="card-body">
               <h5 className="card-title">{current_month}</h5>
-              <p className="card-text">530,900 Toman</p>
+              <p className="card-text">{monthlyProfit} Toman</p>
             </div>
           </div>
           <div
@@ -79,7 +88,7 @@ export const Sale_report = () => {
             <div className="card-header">Yearly Profit</div>
             <div className="card-body">
               <h5 className="card-title">{current_year}</h5>
-              <p className="card-text">530,900 Toman</p>
+              <p className="card-text">{yearlyProfit} Toman</p>
             </div>
           </div>
         </div>

@@ -55,9 +55,6 @@ export function putFood(data) {
     return axios.put(url+"api/Food",data)
 }
 
-
-
-
 export function postRestaurant (data) {
     return axios.post(url+'api/Restaurant',data)
 }
@@ -73,4 +70,8 @@ export function addTable (data) {
 
 export function deleteTable (id) {
     return axios.delete(url+'api/Table/:'+id)
+}
+
+export function getProfit (data){
+    return axios.get(url+"api/Managment/GetDailyProfit/"+data)
 }

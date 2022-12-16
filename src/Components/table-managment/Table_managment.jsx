@@ -52,7 +52,7 @@ return (
               message: 'Please input table number!'
             },
           ]}
-        >
+          >
           <InputNumber className="input1" min={1} max={20} defaultValue={0} onChange={onChange} />
         </Form.Item>
 

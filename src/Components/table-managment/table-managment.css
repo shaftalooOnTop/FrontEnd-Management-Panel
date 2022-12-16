@@ -15,7 +15,7 @@
     text-align: center;
 }
 
-button1, .ant-btn {
+.ant-btn {
     margin: 2px;
     border: solid 2px #fbc403;
     background-color: #262626;
@@ -31,20 +31,42 @@ button1, .ant-btn {
     width: 200px;
 }
 
-button1.add {
+.add {
+    margin: 2px;
+    border: solid 2px #fbc403;
     background-color: #fbc403;
     color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    margin-top: 0px;
+    width: 200px;
 }
-button1.add:hover {
+.add:hover {
     background-color: black;
     -webkit-text-fill-color: #fbc403;
     border-color:  white;
 }
 
-button1.remove {
-    border-style: dashed;
+.remove {
+    margin: 2px;
+    border: dashed 2px #fbc403;
+    background-color: #262626;
+    /*padding: 20px;*/
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fbc403;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    margin-top: 0px;
+    width: 200px;
 }
-button1.remove:hover {
+.remove:hover {
     background-color: #262626;
     -webkit-text-fill-color: #fbc403;
     border-color: #fbc403;
@@ -70,7 +92,6 @@ button1.remove:hover {
     margin-top: 25px;
     padding: 0px;
     display: flex;
-    background-color: #262626;
     border: 0px;
     border-radius: 20px;
 }
@@ -85,9 +106,12 @@ button1.remove:hover {
     margin: auto;
 }
 
-label1 {
-    font-weight: bold;
-    -webkit-text-fill-color: black;
+.ant-modal .ant-modal-content {
+    background-color: #262626;
+}
+
+.ant-modal-title {
+    background-color: #262626;
 }
 
 .input1 {

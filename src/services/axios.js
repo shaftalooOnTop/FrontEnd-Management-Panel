@@ -86,9 +86,9 @@ export function getBusiestTime (data){
     return axios.get(url+"api/Managment/GetBusyHours?restaurantId="+data,config)
 }
 
-export function getRestaurantFood(data){
+export function getFoodSell(data){
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
     };
-    return axios.get(url+"api/Managment/RestaurantFoodListByOrder?RestaurantId="+data+"from=1944-07-30T07:17:10.934Z&to=2030-07-30T07:17:10.934Z",config)
+    return axios.get(url+"api/Managment/GetFoodSellByFoods?restaurantId="+data+"&from=1944-07-30T07:17:10.934Z&to=2030-07-30T07:17:10.934Z",config)
 }

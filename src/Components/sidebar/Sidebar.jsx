@@ -66,7 +66,7 @@ const Sidebar = () => {
     } else {
       getUser().then((e) => {
         // console.log(e.data.username);
-        console.log(e.data);
+        // console.log(e.data);
         setUser({
           name: e.data.fullName,
           img: e.data.picture,

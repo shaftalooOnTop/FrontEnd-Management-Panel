@@ -5,7 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import { getProfit, getBusiestTime, getRestaurantFood } from "../../Services/axios";
+import { getProfit, getBusiestTime, getFoodSell } from "../../Services/axios";
+import { url } from "../../Services/consts";
 
 export const Sale_report = () => {
   const current = new Date();
@@ -39,7 +40,7 @@ export const Sale_report = () => {
   const current_month = monthNames[current.getMonth()];
   const current_year = current.getFullYear();
 
-  const [restId, setRestId] = useState(8);
+  const [restId, setRestId] = useState(7);
   const [dailyProfit, setDailyProfit] = useState(0);
   const [monthlyProfit, setMonthlyProfit] = useState(0);
   const [yearlyProfit, setYearlyProfit] = useState(0);
@@ -47,12 +48,12 @@ export const Sale_report = () => {
   const [dailyBusiestTime, setDailyBusiestTime] = useState(12);
   const [weeklyBusiestTime, setWeeklyBusiestTime] = useState(12);
   const [monthlyBusiestTime, setMonthlyBusiestTime] = useState(12);
-  const percentage = 66;
+
+  const [foods, setFoods] = useState();
 
   useEffect(() => {
     getProfit(restId)
       .then((e) => {
-        console.log(e.data.monthlyProfit);
         setDailyProfit(e.data.dailyProfit);
         setMonthlyProfit(e.data.monthlyProfit);
         setYearlyProfit(e.data.yearlyProfit);
@@ -66,6 +67,14 @@ export const Sale_report = () => {
         setMonthlyBusiestTime(
           e.data.monthHour.length > 0 ? e.data.monthHour : 0
         );
+      })
+      .catch();
+
+    getFoodSell(restId)
+      .then((e) => {
+        // console.log("Hello");
+        // console.log(e.key);
+        setFoods(e.data);
       })
       .catch();
   }, []);
@@ -119,9 +128,11 @@ export const Sale_report = () => {
                 <div className="clock-item">
                   <CircularProgressbar
                     value={
-                      (dailyBusiestTime > 12
+                      ((dailyBusiestTime > 12
                         ? dailyBusiestTime - 12
-                        : dailyBusiestTime > 12) / 12 * 100
+                        : dailyBusiestTime) /
+                        12) *
+                      100
                     }
                     text={dailyBusiestTime}
                     styles={buildStyles({
@@ -139,9 +150,11 @@ export const Sale_report = () => {
                 <div className="clock-item">
                   <CircularProgressbar
                     value={
-                      (weeklyBusiestTime > 12
+                      ((weeklyBusiestTime > 12
                         ? weeklyBusiestTime - 12
-                        : weeklyBusiestTime > 12) / 12 * 100
+                        : weeklyBusiestTime) /
+                        12) *
+                      100
                     }
                     text={weeklyBusiestTime}
                     styles={buildStyles({
@@ -159,9 +172,11 @@ export const Sale_report = () => {
                 <div className="clock-item">
                   <CircularProgressbar
                     value={
-                      (monthlyBusiestTime > 12
+                      ((monthlyBusiestTime > 12
                         ? monthlyBusiestTime - 12
-                        : monthlyBusiestTime > 12) / 12 * 100
+                        : monthlyBusiestTime) /
+                        12) *
+                      100
                     }
                     text={monthlyBusiestTime}
                     styles={buildStyles({
@@ -185,13 +200,19 @@ export const Sale_report = () => {
           >
             <div className="card-header">Best Selling Foods</div>
             <div className="card-body">
-              <div className="best-selling-all">
-                <img className="best-selling-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5okG0tz2dWr36k2p9gxbFmqoM4AeW1e3pPQ&usqp=CAU" alt=""></img>  
-                <div className="best-selling-details">
-                  <h6 className="card-text">Chicken</h6>
-                  <p>Details: Delicious</p>
+              {foods?.slice(0, 3).map((x) => (
+                <div className="best-selling-all">
+                  <img
+                    className="best-selling-img"
+                    src={url + "api/www/ImgGet/" + x.key.photo.id}
+                    alt=""
+                  ></img>
+                  <div className="best-selling-details">
+                    <h6 className="card-text">{x.key.name}</h6>
+                    <p>Sales amount: {x.value}</p>
+                  </div>
                 </div>
-              </div> 
+              ))}
             </div>
           </div>
         </div>

@@ -171,8 +171,7 @@ export const Table_managment = () => {
       const data = ({
         'restaurantId' : id,
         'number' : values.number,
-        'capacity' : values.capacity,
-        "reserveTables" : []
+        'capacity' : values.capacity
       })
 
       addTable(data)
@@ -206,12 +205,13 @@ export const Table_managment = () => {
         console.log(error.config);
       })
 
-      
+      setIsAddModalOpen(false)
     };
 
 
     const [id_table, setIdTable]= useState(-1)
     const [flag, setFlag] = useState(false)
+
     const onRemoveTable = (values) => {
       console.log('Received values of form: ', values);
       const tmp=[]

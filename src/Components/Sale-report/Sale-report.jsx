@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import { getProfit, getBusiestTime } from "../../Services/axios";
+import { getProfit, getBusiestTime, getRestaurantFood } from "../../Services/axios";
 
 export const Sale_report = () => {
   const current = new Date();
@@ -39,22 +39,36 @@ export const Sale_report = () => {
   const current_month = monthNames[current.getMonth()];
   const current_year = current.getFullYear();
 
-  const [restId,setRestId] = useState (7);
-  const [dailyProfit, setDailyProfit] = useState (0); 
-  const [monthlyProfit, setMonthlyProfit] = useState (0); 
-  const [yearlyProfit, setYearlyProfit] = useState (0); 
-  
+  const [restId, setRestId] = useState(8);
+  const [dailyProfit, setDailyProfit] = useState(0);
+  const [monthlyProfit, setMonthlyProfit] = useState(0);
+  const [yearlyProfit, setYearlyProfit] = useState(0);
+
+  const [dailyBusiestTime, setDailyBusiestTime] = useState(12);
+  const [weeklyBusiestTime, setWeeklyBusiestTime] = useState(12);
+  const [monthlyBusiestTime, setMonthlyBusiestTime] = useState(12);
   const percentage = 66;
 
   useEffect(() => {
-    getProfit(restId).then (e => {
-      setDailyProfit(e.dailyProfit);
-      setMonthlyProfit(e.monthlyProfit);
-      setYearlyProfit(e.yearlyProfit);
-      
-    }).catch()
-    
-  },[]);
+    getProfit(restId)
+      .then((e) => {
+        console.log(e.data.monthlyProfit);
+        setDailyProfit(e.data.dailyProfit);
+        setMonthlyProfit(e.data.monthlyProfit);
+        setYearlyProfit(e.data.yearlyProfit);
+      })
+      .catch();
+
+    getBusiestTime(restId)
+      .then((e) => {
+        setDailyBusiestTime(e.data.dayHour.length > 0 ? e.data.dayHour : 0);
+        setWeeklyBusiestTime(e.data.weekHour.length > 0 ? e.data.weekHour : 0);
+        setMonthlyBusiestTime(
+          e.data.monthHour.length > 0 ? e.data.monthHour : 0
+        );
+      })
+      .catch();
+  }, []);
 
   return (
     <>
@@ -92,20 +106,24 @@ export const Sale_report = () => {
             </div>
           </div>
         </div>
-        <div style={{ display: 'flex',}}>
-        <div className="card text-black bg-warning mb-3" style={{ maxWidth: "37rem", minWidth: "37rem" }} >
-          <div className="card-header res-busiest-card">
-            Restaurant Busiest Times
-          </div>
-          <div className="card-body clock-body">
-            
-
-            <div className="clock-bar" style={{ width: 500, height: 200, }}>
-              <div className="clock-item">
+        <div style={{ display: "flex" }}>
+          <div
+            className="card text-black bg-warning mb-3"
+            style={{ maxWidth: "37rem", minWidth: "37rem" }}
+          >
+            <div className="card-header res-busiest-card">
+              Restaurant Busiest Times
+            </div>
+            <div className="card-body clock-body">
+              <div className="clock-bar" style={{ width: 500, height: 200 }}>
+                <div className="clock-item">
                   <CircularProgressbar
-                    
-                    value={25}
-                    text="15:30"
+                    value={
+                      (dailyBusiestTime > 12
+                        ? dailyBusiestTime - 12
+                        : dailyBusiestTime > 12) / 12 * 100
+                    }
+                    text={dailyBusiestTime}
                     styles={buildStyles({
                       rotation: 0,
                       strokeLinecap: "butt",
@@ -120,9 +138,12 @@ export const Sale_report = () => {
                 </div>
                 <div className="clock-item">
                   <CircularProgressbar
-                    
-                    value={25}
-                    text="15:30"
+                    value={
+                      (weeklyBusiestTime > 12
+                        ? weeklyBusiestTime - 12
+                        : weeklyBusiestTime > 12) / 12 * 100
+                    }
+                    text={weeklyBusiestTime}
                     styles={buildStyles({
                       rotation: 0,
                       strokeLinecap: "butt",
@@ -137,9 +158,12 @@ export const Sale_report = () => {
                 </div>
                 <div className="clock-item">
                   <CircularProgressbar
-                    
-                    value={25}
-                    text="15:30"
+                    value={
+                      (monthlyBusiestTime > 12
+                        ? monthlyBusiestTime - 12
+                        : monthlyBusiestTime > 12) / 12 * 100
+                    }
+                    text={monthlyBusiestTime}
                     styles={buildStyles({
                       rotation: 0,
                       strokeLinecap: "butt",
@@ -152,15 +176,22 @@ export const Sale_report = () => {
                   />
                   <p className="clock-item-title">Monthly</p>
                 </div>
+              </div>
             </div>
-
           </div>
-        </div>
-        <div className="card text-white bg-danger mb-3" style={{ maxWidth: "18rem", minWidth: "18rem" }} >
+          <div
+            className="card text-white bg-danger mb-3"
+            style={{ maxWidth: "18rem", minWidth: "18rem" }}
+          >
             <div className="card-header">Best Selling Foods</div>
             <div className="card-body">
-              <h5 className="card-title">{current_year}</h5>
-              <p className="card-text">530,900 Toman</p>
+              <div className="best-selling-all">
+                <img className="best-selling-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5okG0tz2dWr36k2p9gxbFmqoM4AeW1e3pPQ&usqp=CAU" alt=""></img>  
+                <div className="best-selling-details">
+                  <h6 className="card-text">Chicken</h6>
+                  <p>Details: Delicious</p>
+                </div>
+              </div> 
             </div>
           </div>
         </div>

@@ -51,3 +51,27 @@
     color: #161616;
 
 }
+
+.best-selling-img{
+    aspect-ratio: 1/1;
+    width: 25%;
+    border-radius: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    object-fit: cover;
+}
+
+.best-selling-all{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid center #161616;
+    
+}
+
+.best-selling-details{
+    padding-left: 1rem;
+    
+}
+
+.best-selling-details .card-text{
+    font-weight: bold;
+}

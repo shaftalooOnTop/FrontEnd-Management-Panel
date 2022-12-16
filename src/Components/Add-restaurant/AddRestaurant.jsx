@@ -23,59 +23,14 @@ import { postRestaurant } from '../../Services/axios';
 import 'antd/dist/reset.css';
 import './add-restaurant.css';
 
-const { Option } = Select;
-
-const getBase64 = (img, callback) => {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-};
-
-const beforeUpload = (file) => {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
-  }
-  return isJpgOrPng && isLt2M;
-};
-
 export const AddRestaurant = () => {
 
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState('');
-  const [previewTitle, setPreviewTitle] = useState('');
-  const [imglogo, setImglogo] = useState('')
-  const [fileList, setFileList] = useState([])
-  const handleCancel = () => setPreviewOpen(false);
-  const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = getBase64(file.originFileObj);
-    }
-    setPreviewImage(file.url || file.preview);
-    setPreviewOpen(true);
-    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
-  };
-  const handleChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList)
-  };
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </div>
-  )
-
+  const [imageHeader, setImageHeader] = useState()
+  const [imglogo, setImglogo] = useState()
   const [tags, setTags] = useState([]);
+  
+  /**tags */
+  // const [tags, setTags] = useState([]);
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [editInputIndex, setEditInputIndex] = useState(-1);
@@ -119,6 +74,26 @@ export const AddRestaurant = () => {
     setInputValue('');
   };
 
+
+  const logobase64 = (e) => {
+    let filereader = new FileReader()
+    filereader.readAsDataURL(e.target.files[0])
+    filereader.onload = () => {
+      console.log(filereader.result)
+      setImglogo(filereader.result)
+    }
+  }
+
+  const headerbase64 = (e) => {
+    let filereader = new FileReader()
+    filereader.readAsDataURL(e.target.files[0])
+    filereader.onload = () => {
+      console.log(filereader.result)
+      setImageHeader(filereader.result)
+    }
+  }
+
+  /**form */
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
@@ -128,8 +103,8 @@ export const AddRestaurant = () => {
       "address" : values.address,
       "description" : values.description + " phone : " + values.phone_code + values.phone_number,
       "tags" : tags,
-      "logoImg" : "",
-      "backgroundImg" : ""
+      "logoImg" : imglogo,
+      "backgroundImg" : imageHeader
     }
 
     postRestaurant(data)
@@ -155,7 +130,7 @@ export const AddRestaurant = () => {
   };
 
 
-
+/******render */
 
   return (
     <div className='add-restaurant'>
@@ -175,7 +150,7 @@ export const AddRestaurant = () => {
           <div className='left-info'>
             <Form.Item
               name="logo"
-              label="restaurant logo"
+              label="RESTAURANT LOGO"
               rules={[
                 {
                   required: false,
@@ -183,32 +158,12 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-              <>
-                <Upload
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  listType="picture-card"
-                  fileList={fileList}
-                  onPreview={handlePreview}
-                  beforeUpload={beforeUpload}
-                  onChange={handleChange}
-                  >
-                    {fileList.length >= 1 ? null : uploadButton}
-                </Upload>
-                <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                  <img
-                    alt="example"
-                    style={{
-                      width: '100%',
-                    }}
-                    src={previewImage}
-                  />
-                </Modal>
-              </>
+                <input type='file' id="logoUpload" accept=".png, .jpg, .jpeg" onChange={logobase64} />
             </Form.Item>
 
             <Form.Item className='name'
               name="name"
-              label="restaurant name"
+              label="RESTAURANT NAME"
               rules={[
                 {
                   required: true,
@@ -221,7 +176,7 @@ export const AddRestaurant = () => {
 
             <Form.Item
               name="tags"
-              label="restaurant tags"
+              label="TAGS"
               rules={[
                 {
                   required: false,
@@ -298,7 +253,7 @@ export const AddRestaurant = () => {
 
             <Form.Item
               name="header"
-              label="restaurant header"
+              label="RESTAURANT HEADER"
               rules={[
                 {
                   required: false,
@@ -306,20 +261,14 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-              <Upload
-                action=""
-                listType="picture"
-                className="upload-list-inline"
-              >
-                <Button className='btn-upload' icon={<UploadOutlined />}>Upload</Button>
-              </Upload>
+                <input type='file' id="headerUpload" accept=".png, .jpg, .jpeg" onChange={headerbase64} />
             </Form.Item>
           </div>
 
           <div className='right-info'>
             <Form.Item
               name="city"
-              label="City"
+              label="CITY"
               rules={[
                 {
                   required: true,
@@ -332,7 +281,7 @@ export const AddRestaurant = () => {
 
             <Form.Item
               name="address"
-              label="restauran address"
+              label="ADDRESS"
               rules={[
                 {
                   required: true,
@@ -346,7 +295,7 @@ export const AddRestaurant = () => {
               <div className='name-code'>
             <Form.Item
               name="phone_code"
-              label="Phone code"
+              label="code"
               rules={[
                 {
                   required: true,
@@ -359,7 +308,7 @@ export const AddRestaurant = () => {
 
             <Form.Item
               name="phone_number"
-              label="Phone Number"
+              label="PHONE"
               rules={[
                 {
                   required: true,
@@ -373,7 +322,7 @@ export const AddRestaurant = () => {
               
             <Form.Item
               name="description"
-              label="description"
+              label="DESCRIPTION"
               rules={[
                 {
                   required: false,

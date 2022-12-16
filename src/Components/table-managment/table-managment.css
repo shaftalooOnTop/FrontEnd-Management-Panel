@@ -7,12 +7,64 @@
     min-height: 100vh;
 }
 
-.table-list {
+.table-page-container {
+    border: solid 1px #262626;
+    padding: 45px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.add-remove-table {
     background-color: #262626;
     padding: 50px;
-    border-radius: 15px;
+    border-radius: 8px;
     border-color:  white;
     text-align: center;
+    width: 60%;
+    margin: auto;
+}
+
+.res_tables {
+    margin-top: 15px;
+    background-color: #262626;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.inner-res-tables {
+    border: solid 2px #161616;
+    padding: 8px;
+    display: flex;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.table {
+    min-width: 200px;
+    width: 33.33%;
+}
+
+.tmp {
+    margin: 8px;
+    border: solid 2px #fbc403;
+    background-color: #fbc403;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.table-items {
+    display: flex;
+    align-items: center;
+}
+
+h2.table-item {
+    float: right;
+    margin: 4px;
+    padding: 0;
+}
+
+label.table-item {
+    -webkit-text-fill-color: #161616;
 }
 
 .ant-btn {
@@ -39,7 +91,7 @@
     font-weight: bold;
     transition-duration: 0.4s;
     margin-top: 0px;
-    width: 200px;
+    width: 80%;
 }
 .add:hover {
     background-color: black;
@@ -60,7 +112,7 @@
     font-weight: bold;
     transition-duration: 0.4s;
     margin-top: 0px;
-    width: 200px;
+    width: 80%;
 }
 .remove:hover {
     background-color: #262626;
@@ -117,3 +169,13 @@
     float: right;
     width: 45px;
 }
+
+@media screen and (max-width: 700px) {
+    .table {
+        width: 100%;
+    }
+
+    .add-remove-table {
+        width: 100%;
+    }
+  }

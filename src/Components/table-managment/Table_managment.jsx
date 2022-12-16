@@ -13,6 +13,8 @@ import {
 import './table-managment.css'
 import 'antd/dist/reset.css';
 
+
+/*************************************form add table */
 const TableFormAdd = ({ open, onCreate, onCancel}) => {
   //console.log(open)
   const onChange = (value) => {
@@ -45,7 +47,7 @@ return (
         <div className="div-form-items-add">
         <Form.Item 
           name="number"
-          label="table number"
+          label="number"
           rules={[
             {
               required: true,
@@ -75,6 +77,7 @@ return (
 );
 }
 
+/*************************************form remove table */
 const TableFormRemove = ({ open, onCreate, onCancel}) => {
   //console.log(open)
   const onChange = (value) => {
@@ -106,7 +109,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
 
           <Form.Item className="form-item"
             name="number"
-            label="table number"
+            label="number"
             rules={[
               {
                 required: true,
@@ -123,6 +126,8 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
   );
 }
 
+
+/************************************App */
 export const Table_managment = () => {
   const id = 1;
 
@@ -272,9 +277,13 @@ export const Table_managment = () => {
 
     return (
         <div className="table-managment">
-            <div className="table-list">
-                <button className="add" onClick={showModal_add}>add</button>
-                <button className="remove" onClick={showModal_rem}>remove</button>
+          <div className="table-page-container">
+            <div>
+              <h1>management restaurant tables</h1>
+            </div>
+            <div className="add-remove-table">
+                <button className="add" onClick={showModal_add}>Add table</button>
+                <button className="remove" onClick={showModal_rem}>Remove table</button>
                 <TableFormAdd
                   open={isAddModalOpen}
                   onCreate={onCreateTable}
@@ -286,6 +295,25 @@ export const Table_managment = () => {
                   onCancel={handleCancel}
                   />
             </div>
+            <div className="res_tables">
+                <div className="inner-res-tables">
+
+                  <div className="table">
+                    <div className="tmp">
+                      <div className="table-items">
+                        <label className="table-item">NUM : </label>
+                        <h2 className="table-item">3</h2>
+                      </div>
+                      <div className="table-items">
+                        <label className="table-item">CAPACITY : </label>
+                        <h2 className="table-item">15</h2>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+            </div>
+          </div>
         </div>
     )
 }

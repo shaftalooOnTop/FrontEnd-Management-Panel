@@ -279,7 +279,7 @@ export const Table_managment = () => {
         <div className="table-managment">
           <div className="table-page-container">
             <div>
-              <h1>management restaurant tables</h1>
+              <h1>RESTAURANT TABLES</h1>
             </div>
             <div className="add-remove-table">
                 <button className="add" onClick={showModal_add}>Add table</button>
@@ -310,7 +310,7 @@ export const Table_managment = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                 </div>
             </div>
           </div>

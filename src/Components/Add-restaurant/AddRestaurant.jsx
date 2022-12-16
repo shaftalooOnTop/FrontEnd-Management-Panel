@@ -1,5 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { PlusOutlined, UploadOutlined, LoadingOutlined  } from '@ant-design/icons';
+import React, { useEffect, useRef, useState } from "react";
+import {
+  PlusOutlined,
+  UploadOutlined,
+  LoadingOutlined,
+} from "@ant-design/icons";
 import {
   AutoComplete,
   Tag,
@@ -15,52 +19,54 @@ import {
   Row,
   Select,
   Upload,
-  Modal
-} from 'antd';
+  Modal,
+} from "antd";
 
-import { postRestaurant } from '../../Services/axios';
+import { postRestaurant } from "../../Services/axios";
 
-import 'antd/dist/reset.css';
-import './add-restaurant.css';
+import "antd/dist/reset.css";
+import "./add-restaurant.css";
 
 const { Option } = Select;
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
+  reader.addEventListener("load", () => callback(reader.result));
   reader.readAsDataURL(img);
 };
 
 const beforeUpload = (file) => {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
   if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
+    message.error("You can only upload JPG/PNG file!");
   }
   const isLt2M = file.size / 1024 / 1024 < 2;
   if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
+    message.error("Image must smaller than 2MB!");
   }
   return isJpgOrPng && isLt2M;
 };
 
 export const AddRestaurant = () => {
-
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState('');
-  const [previewTitle, setPreviewTitle] = useState('');
-  const [imglogo, setImglogo] = useState('')
-  const [fileList, setFileList] = useState([])
+  const [previewImage, setPreviewImage] = useState("");
+  const [previewTitle, setPreviewTitle] = useState("");
+  const [imglogo, setImglogo] = useState("");
+  const [fileList, setFileList] = useState([]);
   const handleCancel = () => setPreviewOpen(false);
   const handlePreview = async (file) => {
+    console.log(file);
     if (!file.url && !file.preview) {
       file.preview = getBase64(file.originFileObj);
     }
-    setPreviewImage(file.url || file.preview);
+    setPreviewImage(file.preview);
     setPreviewOpen(true);
-    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
+    setPreviewTitle(
+      file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
+    );
   };
-  const handleChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList)
+  const handleChange = (x) => {
+    console.log(x);
   };
   const uploadButton = (
     <div>
@@ -73,13 +79,13 @@ export const AddRestaurant = () => {
         Upload
       </div>
     </div>
-  )
+  );
 
   const [tags, setTags] = useState([]);
   const [inputVisible, setInputVisible] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [editInputIndex, setEditInputIndex] = useState(-1);
-  const [editInputValue, setEditInputValue] = useState('');
+  const [editInputValue, setEditInputValue] = useState("");
   const inputRef = useRef(null);
   const editInputRef = useRef(null);
   useEffect(() => {
@@ -106,7 +112,7 @@ export const AddRestaurant = () => {
       setTags([...tags, inputValue]);
     }
     setInputVisible(false);
-    setInputValue('');
+    setInputValue("");
   };
   const handleEditInputChange = (e) => {
     setEditInputValue(e.target.value);
@@ -116,73 +122,74 @@ export const AddRestaurant = () => {
     newTags[editInputIndex] = editInputValue;
     setTags(newTags);
     setEditInputIndex(-1);
-    setInputValue('');
+    setInputValue("");
   };
 
   const [form] = Form.useForm();
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-
+    console.log("Received values of form: ", values);
     const data = {
-      "name" : values.name,
-      "address" : values.address,
-      "description" : values.description + " phone : " + values.phone_code + values.phone_number,
-      "tags" : tags,
-      "logoImg" : "",
-      "backgroundImg" : ""
-    }
+      name: values.name,
+      address: values.address,
+      description:
+        values.description +
+        " phone : " +
+        values.phone_code +
+        values.phone_number,
+      tags: tags.map((x) => {
+        return { value: x };
+      }),
+      logoImg: "",
+      backgroundImg: "",
+    };
 
     postRestaurant(data)
       .then((response) => {
-        console.log(response)
-      }
-    )
-    .catch(function (error) {
-      if (error.response) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-         console.log(error.request);
-        
-      } else {
-         console.log('Error', error.message);
-      }
-      console.log(error.config);
-    })
+        console.log(response);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
 
-    console.log(data)
+    console.log(data);
   };
 
-
-
-
   return (
-    <div className='add-restaurant'>
-      <Form className='form'
-        layout='vertical'
-        size='large'
+    <div className="add-restaurant">
+      <Form
+        className="form"
+        layout="vertical"
+        size="large"
         form={form}
         name="register"
         onFinish={onFinish}
         scrollToFirstError
-        >
-        <div className='top-info'>
+      >
+        <div className="top-info">
           <h1>Create Restaurant</h1>
         </div>
 
-        <div className='info'>
-          <div className='left-info'>
+        <div className="info">
+          <div className="left-info">
             <Form.Item
               name="logo"
               label="restaurant logo"
               rules={[
                 {
                   required: false,
-                  message: 'Please input your restaurant name!',
+                  message: "Please input your restaurant name!",
                 },
               ]}
-              >
+            >
               <>
                 <Upload
                   action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -191,14 +198,19 @@ export const AddRestaurant = () => {
                   onPreview={handlePreview}
                   beforeUpload={beforeUpload}
                   onChange={handleChange}
-                  >
-                    {fileList.length >= 1 ? null : uploadButton}
+                >
+                  {fileList.length > 0 ? null : uploadButton}
                 </Upload>
-                <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                <Modal
+                  open={previewOpen}
+                  title={previewTitle}
+                  footer={null}
+                  onCancel={handleCancel}
+                >
                   <img
                     alt="example"
                     style={{
-                      width: '100%',
+                      width: "100%",
                     }}
                     src={previewImage}
                   />
@@ -206,17 +218,18 @@ export const AddRestaurant = () => {
               </>
             </Form.Item>
 
-            <Form.Item className='name'
+            <Form.Item
+              className="name"
               name="name"
               label="restaurant name"
               rules={[
                 {
                   required: true,
-                  message: 'Please input your restaurant name!',
+                  message: "Please input your restaurant name!",
                 },
               ]}
-              >
-              <Input placeholder='restaurant' />
+            >
+              <Input placeholder="restaurant" />
             </Form.Item>
 
             <Form.Item
@@ -225,10 +238,10 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: false,
-                  message: 'Please input your restaurant tags!',
+                  message: "Please input your restaurant tags!",
                 },
               ]}
-              >
+            >
               <>
                 {tags.map((tag, index) => {
                   if (editInputIndex === index) {
@@ -242,7 +255,7 @@ export const AddRestaurant = () => {
                         onChange={handleEditInputChange}
                         onBlur={handleEditInputConfirm}
                         onPressEnter={handleEditInputConfirm}
-                        />
+                      />
                     );
                   }
                   const isLongTag = tag.length > 12;
@@ -252,7 +265,7 @@ export const AddRestaurant = () => {
                       key={tag}
                       closable={true}
                       onClose={() => handleClose(tag)}
-                      >
+                    >
                       <span
                         onDoubleClick={(e) => {
                           if (index !== 0) {
@@ -261,20 +274,18 @@ export const AddRestaurant = () => {
                             e.preventDefault();
                           }
                         }}
-                        >
-                          {isLongTag ? `${tag.slice(0, 10)}...` : tag}
+                      >
+                        {isLongTag ? `${tag.slice(0, 10)}...` : tag}
                       </span>
                     </Tag>
                   );
-                  return isLongTag ? 
-                    (
-                      <Tooltip title={tag} key={tag}>
-                        {tagElem}
-                      </Tooltip>
-                    ) : 
-                    (
-                      tagElem
-                    );
+                  return isLongTag ? (
+                    <Tooltip title={tag} key={tag}>
+                      {tagElem}
+                    </Tooltip>
+                  ) : (
+                    tagElem
+                  );
                 })}
                 {inputVisible && (
                   <Input
@@ -286,13 +297,13 @@ export const AddRestaurant = () => {
                     onChange={handleInputChange}
                     onBlur={handleInputConfirm}
                     onPressEnter={handleInputConfirm}
-                    />
-                  )}
-                  {!inputVisible && (
-                    <Tag className="site-tag-plus" onClick={showInput}>
-                      <PlusOutlined /> New Tag
-                    </Tag>
-                  )}
+                  />
+                )}
+                {!inputVisible && (
+                  <Tag className="site-tag-plus" onClick={showInput}>
+                    <PlusOutlined /> New Tag
+                  </Tag>
+                )}
               </>
             </Form.Item>
 
@@ -302,32 +313,38 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: false,
-                  message: 'Please input your restaurant header!',
+                  message: "Please input your restaurant header!",
                 },
               ]}
-              >
+            >
               <Upload
                 action=""
                 listType="picture"
                 className="upload-list-inline"
               >
-                <Button className='btn-upload' icon={<UploadOutlined />}>Upload</Button>
+                <Button className="btn-upload" icon={<UploadOutlined />}>
+                  Upload
+                </Button>
               </Upload>
             </Form.Item>
           </div>
 
-          <div className='right-info'>
+          <div className="right-info">
             <Form.Item
               name="city"
               label="City"
               rules={[
                 {
                   required: true,
-                  message: 'Please input your restaurant code!',
+                  message: "Please input your restaurant code!",
                 },
               ]}
-              >
-              <Input maxLength={10} placeholder='city' style={{ width: '50%' }} />
+            >
+              <Input
+                maxLength={10}
+                placeholder="city"
+                style={{ width: "50%" }}
+              />
             </Form.Item>
 
             <Form.Item
@@ -336,90 +353,105 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your restaurant address!',
+                  message: "Please input your restaurant address!",
                 },
               ]}
-              >
-                <Input placeholder='address' />
+            >
+              <Input placeholder="address" />
             </Form.Item>
 
-              <div className='name-code'>
-            <Form.Item
-              name="phone_code"
-              label="Phone code"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your phone code!',
-                },
-              ]}
+            <div className="name-code">
+              <Form.Item
+                name="phone_code"
+                label="Phone code"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your phone code!",
+                  },
+                ]}
               >
-                <Input type='number' placeholder='021' minLength={3} maxLength={3} style={{ width: '50%', marginRight: "2px" }} defaultValue=''/>
-            </Form.Item>
+                <Input
+                  type="number"
+                  placeholder="021"
+                  minLength={3}
+                  maxLength={3}
+                  style={{ width: "50%", marginRight: "2px" }}
+                  defaultValue=""
+                />
+              </Form.Item>
 
-            <Form.Item
-              name="phone_number"
-              label="Phone Number"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your phone number!',
-                },
-              ]}
+              <Form.Item
+                name="phone_number"
+                label="Phone Number"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your phone number!",
+                  },
+                ]}
               >
-                  <Input type='number' placeholder='12345678' minLength={8} maxLength={8} style={{ }} defaultValue="" />
-            </Form.Item>
-              </div>
-              
+                <Input
+                  type="number"
+                  placeholder="12345678"
+                  minLength={8}
+                  maxLength={8}
+                  style={{}}
+                  defaultValue=""
+                />
+              </Form.Item>
+            </div>
+
             <Form.Item
               name="description"
               label="description"
               rules={[
                 {
                   required: false,
-                  message: 'Please input description',
+                  message: "Please input description",
                 },
               ]}
             >
-              <Input.TextArea className='txt-area' 
-                placeholder='Offers, High speed, ...'
-                showCount 
+              <Input.TextArea
+                className="txt-area"
+                placeholder="Offers, High speed, ..."
+                showCount
                 maxLength={100}
                 style={{
                   height: 120,
-                  resize: 'none',
-                }} 
-                />
+                  resize: "none",
+                }}
+              />
             </Form.Item>
           </div>
         </div>
 
-        <div className='end-info'>
+        <div className="end-info">
           <Form.Item
-            style={{margin:'0'}}
+            style={{ margin: "0" }}
             name="agreement"
             valuePropName="checked"
             rules={[
               {
                 validator: (_, value) =>
-                  value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+                  value
+                    ? Promise.resolve()
+                    : Promise.reject(new Error("Should accept agreement")),
               },
             ]}
-            >
-              <Checkbox >
-                I have read the <a href="">agreement</a>
-              </Checkbox>
-            </Form.Item>
+          >
+            <Checkbox>
+              I have read the <a href="">agreement</a>
+            </Checkbox>
+          </Form.Item>
 
-            <Form.Item>
-              <button className='button-add' htmlType="submit">
-                Submit
-              </button>
-            </Form.Item>
+          <Form.Item>
+            <button className="button-add" htmlType="submit">
+              Submit
+            </button>
+          </Form.Item>
         </div>
-      
       </Form>
-      
     </div>
   );
 };

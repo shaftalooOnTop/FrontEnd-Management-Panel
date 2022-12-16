@@ -133,7 +133,6 @@ const Sidebar = () => {
           <div className="profName">
             <div className="text_name">
               <p>{user.name}</p>
-              {/* <p>manager</p> */}
             </div>
           </div>
           <button className="btn-close" onClick={handleToggle}>

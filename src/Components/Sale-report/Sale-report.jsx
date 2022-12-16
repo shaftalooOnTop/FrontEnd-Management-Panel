@@ -81,11 +81,11 @@ export const Sale_report = () => {
 
   return (
     <>
-      <div className="sale-report-All">
+      <div className="sale-report-All" >
         <div className="sale-report-cards">
           <div
-            className="card text-white bg-primary mb-3"
-            style={{ maxWidth: "18rem", minWidth: "18rem" }}
+            className="card text-white  mb-3"
+            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#2A6877"}}
           >
             <div className="card-header">Daily Profit</div>
             <div className="card-body">
@@ -95,8 +95,8 @@ export const Sale_report = () => {
           </div>
 
           <div
-            className="card text-white bg-success mb-3"
-            style={{ maxWidth: "18rem", minWidth: "18rem" }}
+            className="card text-white  mb-3"
+            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#406B58"}}
           >
             <div className="card-header">Monthly Profit</div>
             <div className="card-body">
@@ -105,8 +105,8 @@ export const Sale_report = () => {
             </div>
           </div>
           <div
-            className="card text-white bg-danger mb-3"
-            style={{ maxWidth: "18rem", minWidth: "18rem" }}
+            className="card text-white mb-3"
+            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#B92B27" }}
           >
             <div className="card-header">Yearly Profit</div>
             <div className="card-body">
@@ -195,8 +195,8 @@ export const Sale_report = () => {
             </div>
           </div>
           <div
-            className="card text-white bg-danger mb-3"
-            style={{ maxWidth: "18rem", minWidth: "18rem" }}
+            className="card text-white mb-3"
+            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#F76704" }}
           >
             <div className="card-header">Best Selling Foods</div>
             <div className="card-body">

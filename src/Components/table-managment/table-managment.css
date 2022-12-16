@@ -17,18 +17,15 @@
 
 .ant-btn {
     margin: 2px;
-    border: solid 2px #fbc403;
+    margin-top: 25px;
     background-color: #262626;
     /*padding: 20px;*/
     border-radius: 10px;
     cursor: pointer;
     color: #fbc403;
-    height: 50px;
-    font-size: 18px;
     font-weight: bold;
     transition-duration: 0.4s;
-    margin-top: 0px;
-    width: 200px;
+    text-shadow: none;
 }
 
 .add {
@@ -112,6 +109,9 @@
 
 .ant-modal-title {
     background-color: #262626;
+    -webkit-text-fill-color: #fbc403;
+    font-weight: bold;
+    font-size: large;
 }
 
 .input1 {

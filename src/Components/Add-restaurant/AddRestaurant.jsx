@@ -21,6 +21,7 @@ import {
   Select,
   Upload,
   Modal,
+  notification
 } from "antd";
 
 import { postRestaurant } from "../../Services/axios";
@@ -122,6 +123,12 @@ export const AddRestaurant = () => {
         navigate('/menu-managment');
       })
       .catch(function (error) {
+        notification.open({
+          message: 'Unsuccessful!',
+          description: error.response.data,
+          type:'error',
+          style: {borderRadius: '5px', backgroundColor: '#fbc403'}
+        });
         if (error.response) {
           console.log(error.response.data);
           console.log(error.response.status);

@@ -14,6 +14,7 @@ export function getUser (){
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
     };
+    console.log(config);  
     return axios.get(url+"api/User/GetUserData",config)
 }
 

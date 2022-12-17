@@ -105,7 +105,9 @@ export const AddRestaurant = () => {
       "name" : values.name,
       "address" : values.address,
       "description" : values.description + " phone : " + values.phone_code + values.phone_number,
-      "tags" : JSON.stringify(tags),
+      "tags" : tags.map(x=>{
+        return {"value":x}
+      }),
       "logoImg" : imglogo,
       "backgroundImg" : imageHeader
     }

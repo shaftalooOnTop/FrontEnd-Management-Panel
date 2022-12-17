@@ -101,9 +101,11 @@ export const AddRestaurant = () => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    const city = {cityName: values.city}
     const data = {
       "name" : values.name,
       "address" : values.address,
+      "city" : city,
       "description" : values.description + " phone : " + values.phone_code + values.phone_number,
       "tags" : tags.map(x=>{
         return {"value":x}

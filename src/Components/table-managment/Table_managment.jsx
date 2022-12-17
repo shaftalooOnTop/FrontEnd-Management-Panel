@@ -55,7 +55,7 @@ return (
             },
           ]}
           >
-          <InputNumber className="input1" min={1} max={20} defaultValue={0} onChange={onChange} />
+          <InputNumber className="input1" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
         </Form.Item>
 
         <Form.Item 
@@ -68,7 +68,7 @@ return (
             },
           ]}
           >
-          <InputNumber className="input1" min={1} max={10} defaultValue={0} onChange={onChange} />
+          <InputNumber className="input1" min={1} max={10} /*defaultValue={0}*/ onChange={onChange} />
         </Form.Item>
         </div>
 
@@ -117,7 +117,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
               },
             ]}
           >
-            <InputNumber className="input1" min={1} max={20} defaultValue={0} onChange={onChange} />
+            <InputNumber className="input1" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
           </Form.Item>
         </Form>
         </div>

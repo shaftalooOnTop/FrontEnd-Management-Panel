@@ -14,7 +14,7 @@ export const Restaurant_page = () => {
   const foodTags = ["All", "Burger" ,"Fried", "Dessert" , "Pizza" , "Sandwitch"] 
   const [cart,setCart] = useState([]);
   const [nav,setNav] = useState()
-  const [id,setId] = useState (7)
+  const [id,setId] = useState (2)
   var imgURL= "data:image/png;base64,";
   
   const tabs = ["Menu 1" ,"Menu 2","Table","Cart"]

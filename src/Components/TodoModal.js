@@ -58,7 +58,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         
         postCategory({
           "categoryName": title,
-          "restaurantId": 7,
+          "restaurantId": 2,
         } ).then(() => {console.log("Added category")})
         
         // dispatch(

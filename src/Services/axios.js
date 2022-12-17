@@ -13,8 +13,7 @@ export function getRestaurantCards (){
 export function getUser (){
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
-    };
-    console.log(config);  
+    }; 
     return axios.get(url+"api/User/GetUserData",config)
 }
 
@@ -57,7 +56,11 @@ export function putFood(data) {
 }
 
 export function postRestaurant (data) {
-    return axios.post(url+'api/Restaurant',data)
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.post(url+'api/Restaurant',data,config)
+
 }
 
 

@@ -66,7 +66,7 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
         fileReader.onload = (event) => {
           console.log(categoryId);
           postFood({
-            "restaurantId": 1,
+            "restaurantId": 2,
             "name": foodName,
             "price": foodPrice,
             "image": event.target.result,

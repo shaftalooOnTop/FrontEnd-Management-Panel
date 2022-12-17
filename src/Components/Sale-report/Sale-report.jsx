@@ -40,7 +40,7 @@ export const Sale_report = () => {
   const current_month = monthNames[current.getMonth()];
   const current_year = current.getFullYear();
 
-  const [restId, setRestId] = useState(7);
+  const [restId, setRestId] = useState(2);
   const [dailyProfit, setDailyProfit] = useState(0);
   const [monthlyProfit, setMonthlyProfit] = useState(0);
   const [yearlyProfit, setYearlyProfit] = useState(0);

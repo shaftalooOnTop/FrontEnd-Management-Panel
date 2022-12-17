@@ -68,9 +68,15 @@ export function getTableRestaurant (id) {
 }
 
 export function addTable (data) {
-    return axios.put(url+'api/Table', data)
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.put(url+'api/Table', data, config)
 }
 
 export function deleteTable (id) {
-    return axios.delete(url+'api/Table/:'+id)
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.delete(url+'api/Table/:'+id, config)
 }

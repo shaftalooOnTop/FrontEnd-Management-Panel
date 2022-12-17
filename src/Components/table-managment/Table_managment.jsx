@@ -129,18 +129,18 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
 
 /************************************App */
 export const Table_managment = () => {
-  const id = 1;
+  const id = 3;
 
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [tables, setTables] = useState()
+  const [tables, setTables] = useState([])
 
   useEffect(() => {
     getTableRestaurant(id)
     .then((response)=>{
       console.log("all of tables : ", response.data)
       setTables(response.data)
-      console.log('tables list : ',tables)
+      console.log('tables list : ',JSON.stringify(tables))
     })
   .catch(function (error) {
       if (error.response) {
@@ -177,7 +177,6 @@ export const Table_managment = () => {
         'restaurantId' : id,
         'number' : values.number,
         'capacity' : values.capacity,
-        "reserveTables" : []
       })
 
       addTable(data)
@@ -275,6 +274,30 @@ export const Table_managment = () => {
       setIsRemoveModalOpen(false);
     };
 
+
+    const dataGen = () => {
+      const tmp=[]
+      tables.forEach(t=>{
+        console.log(t);
+        
+        tmp.push(
+          <div className="table">
+            <div className="tmp">
+              <div className="table-items">
+                <label className="table-item">NUM : </label>
+                <h2 className="table-item">{t.number}</h2>
+              </div>
+              <div className="table-items">
+                <label className="table-item">CAPACITY : </label>
+                <h2 className="table-item">{t.capacity}</h2>
+              </div>
+            </div>
+          </div>
+        )
+      })
+      return tmp;
+    }
+
     return (
         <div className="table-managment">
           <div className="table-page-container">
@@ -297,20 +320,7 @@ export const Table_managment = () => {
             </div>
             <div className="res_tables">
                 <div className="inner-res-tables">
-
-                  <div className="table">
-                    <div className="tmp">
-                      <div className="table-items">
-                        <label className="table-item">NUM : </label>
-                        <h2 className="table-item">3</h2>
-                      </div>
-                      <div className="table-items">
-                        <label className="table-item">CAPACITY : </label>
-                        <h2 className="table-item">15</h2>
-                      </div>
-                    </div>
-                  </div>
-
+                  {dataGen()}
                 </div>
             </div>
           </div>

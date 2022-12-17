@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import {useNavigate} from "react-router-dom";
 import {
   PlusOutlined,
   UploadOutlined,
@@ -35,6 +36,7 @@ export const AddRestaurant = () => {
   
   /**tags */
   // const [tags, setTags] = useState([]);
+  const navigate = useNavigate();
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [editInputIndex, setEditInputIndex] = useState(-1);
@@ -117,6 +119,7 @@ export const AddRestaurant = () => {
     postRestaurant(data)
       .then((response) => {
         console.log(response);
+        navigate('/menu-managment');
       })
       .catch(function (error) {
         if (error.response) {

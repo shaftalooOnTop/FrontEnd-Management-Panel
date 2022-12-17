@@ -115,16 +115,16 @@ export const Sale_report = () => {
             </div>
           </div>
         </div>
-        <div style={{ display: "flex" }}>
+        <div className="restBusi" style={{ display: "flex" }}>
           <div
-            className="card text-black bg-warning mb-3"
-            style={{ maxWidth: "37rem", minWidth: "37rem" }}
+            className="card text-black bg-warning mb-3 restBusi2"
+            
           >
             <div className="card-header res-busiest-card">
               Restaurant Busiest Times
             </div>
             <div className="card-body clock-body">
-              <div className="clock-bar" style={{ width: 500, height: 200 }}>
+              <div className="clock-bar">
                 <div className="clock-item">
                   <CircularProgressbar
                     value={

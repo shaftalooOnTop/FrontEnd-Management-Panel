@@ -158,7 +158,7 @@ const Sidebar = () => {
             }}
           ></div>
           {sidebarNavItems.map((item, index) => (
-            <Link to={item.to} key={index}>
+            <Link to={item.to} key={index} className="text-decoration-none">
               <div
                 className={`sidebar__menu__item ${
                   activeIndex === index ? "active_btn" : ""

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect , useState } from "react";
-import { getTableRestaurant } from "../../Services/axios";
+import { getTableRestaurant, getUser } from "../../Services/axios";
 import { addTable , deleteTable } from "../../Services/axios";
 
 import {
@@ -13,6 +13,8 @@ import {
 import './table-managment.css'
 import 'antd/dist/reset.css';
 
+
+/*************************************form add table */
 const TableFormAdd = ({ open, onCreate, onCancel}) => {
   //console.log(open)
   const onChange = (value) => {
@@ -45,14 +47,14 @@ return (
         <div className="div-form-items-add">
         <Form.Item 
           name="number"
-          label="table number"
+          label="number"
           rules={[
             {
               required: true,
               message: 'Please input table number!'
             },
           ]}
-        >
+          >
           <InputNumber className="input1" min={1} max={20} defaultValue={0} onChange={onChange} />
         </Form.Item>
 
@@ -75,6 +77,7 @@ return (
 );
 }
 
+/*************************************form remove table */
 const TableFormRemove = ({ open, onCreate, onCancel}) => {
   //console.log(open)
   const onChange = (value) => {
@@ -106,7 +109,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
 
           <Form.Item className="form-item"
             name="number"
-            label="table number"
+            label="number"
             rules={[
               {
                 required: true,
@@ -123,19 +126,29 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
   );
 }
 
+
+/************************************App */
 export const Table_managment = () => {
-  const id = 1;
+
+  const [id, setIdRestaurant] = useState(3)
+
+  useEffect(() => {
+    getUser()
+    .then((res) => {
+      console.log(res)
+    })
+  }, [])
 
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [tables, setTables] = useState()
+  const [tables, setTables] = useState([])
 
   useEffect(() => {
     getTableRestaurant(id)
     .then((response)=>{
       console.log("all of tables : ", response.data)
       setTables(response.data)
-      console.log('tables list : ',tables)
+      console.log('tables list : ',JSON.stringify(tables))
     })
   .catch(function (error) {
       if (error.response) {
@@ -172,7 +185,6 @@ export const Table_managment = () => {
         'restaurantId' : id,
         'number' : values.number,
         'capacity' : values.capacity,
-        "reserveTables" : []
       })
 
       addTable(data)
@@ -270,11 +282,39 @@ export const Table_managment = () => {
       setIsRemoveModalOpen(false);
     };
 
+
+    const dataGen = () => {
+      const tmp=[]
+      tables.forEach(t=>{
+        console.log(t);
+        
+        tmp.push(
+          <div className="table">
+            <div className="tmp">
+              <div className="table-items">
+                <label className="table-item">NUM : </label>
+                <h2 className="table-item">{t.number}</h2>
+              </div>
+              <div className="table-items">
+                <label className="table-item">CAPACITY : </label>
+                <h2 className="table-item">{t.capacity}</h2>
+              </div>
+            </div>
+          </div>
+        )
+      })
+      return tmp;
+    }
+
     return (
         <div className="table-managment">
-            <div className="table-list">
-                <button className="add" onClick={showModal_add}>add</button>
-                <button className="remove" onClick={showModal_rem}>remove</button>
+          <div className="table-page-container">
+            <div>
+              <h1>MANAGE TABLES</h1>
+            </div>
+            <div className="add-remove-table">
+                <button className="add" onClick={showModal_add}>Add table</button>
+                <button className="remove" onClick={showModal_rem}>Remove table</button>
                 <TableFormAdd
                   open={isAddModalOpen}
                   onCreate={onCreateTable}
@@ -286,6 +326,15 @@ export const Table_managment = () => {
                   onCancel={handleCancel}
                   />
             </div>
+            <div className="res_tables">
+                <div>
+                  <h2 className="title-tables">Tables</h2>
+                </div>
+                <div className="inner-res-tables">
+                  {dataGen()}
+                </div>
+            </div>
+          </div>
         </div>
     )
 }

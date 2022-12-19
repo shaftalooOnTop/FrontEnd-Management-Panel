@@ -130,7 +130,7 @@ export const AddRestaurant = () => {
       "name" : values.name,
       "address" : values.address,
       "city" : city,
-      "description" : values.description + " phone : " + values.phone_code + values.phone_number,
+      "description" : values.description + " phone : " + values.number,
       "tags" : tags.map(x=>{
         return {"value":x}
       }),
@@ -448,7 +448,7 @@ export const AddRestaurant = () => {
             ]}
           >
             <Checkbox>
-              I have read the <a href="">agreement</a>
+              I have read the <a className="agreement" href="">agreement</a>
             </Checkbox>
           </Form.Item>
 

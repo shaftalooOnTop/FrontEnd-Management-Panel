@@ -157,11 +157,12 @@ label::before {
     border: solid 1px white;
 }
 
-a {
+a.agreement {
     color: #eeba2c;
+    text-decoration: none !important;
 }
 
-a:hover {
+a.agreement:hover {
     color: rgb(151, 151, 151);
 }
 

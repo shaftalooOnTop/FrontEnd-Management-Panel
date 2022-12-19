@@ -363,9 +363,12 @@ export const AddRestaurant = () => {
               ]}
             >
               <Input
-                maxLength={10}
+                type="number"
                 placeholder="12345678"
-                style={{ width: "80%" }}
+                minLength={8}
+                maxLength={8}
+                style={{width: '80%'}}
+                defaultValue=""
               />
             </Form.Item>
 

@@ -9,6 +9,19 @@
     justify-content: center;
     min-height: 100vh;
     background-color: #161616;
+    background-image: url("./backimg.jpg");
+    background-size: cover;
+}
+
+.add-restaurant::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #161616;
+    opacity: 0.5;
 }
 
 .form {

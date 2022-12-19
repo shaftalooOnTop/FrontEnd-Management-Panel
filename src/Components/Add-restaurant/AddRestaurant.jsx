@@ -21,7 +21,8 @@ import {
   Select,
   Upload,
   Modal,
-  notification
+  notification,
+  Divider 
 } from "antd";
 
 import { postRestaurant } from "../../Services/axios";
@@ -99,6 +100,26 @@ export const AddRestaurant = () => {
       setImageHeader(filereader.result)
     }
   }
+
+  /**check box */
+  const CheckboxGroup = Checkbox.Group;
+  const plainOptions = ['birth', 'theme2', 'theme3'];
+  //const defaultCheckedList = ['Apple', 'Orange'];
+
+  const [checkedList, setCheckedList] = useState();
+  const [indeterminate, setIndeterminate] = useState(true);
+  const [checkAll, setCheckAll] = useState(false);
+  const onChange = (list) => {
+    setCheckedList(list);
+    setIndeterminate(!!list.length && list.length < plainOptions.length);
+    setCheckAll(list.length === plainOptions.length);
+    //console.log(checkedList)
+  };
+  const onCheckAllChange = (e) => {
+    setCheckedList(e.target.checked ? plainOptions : []);
+    setIndeterminate(false);
+    setCheckAll(e.target.checked);
+  };
 
   /**form */
   const [form] = Form.useForm();
@@ -263,6 +284,22 @@ export const AddRestaurant = () => {
                   </Tag>
                 )}
               </>
+            </Form.Item>
+
+            <Form.Item
+              name="theme"
+              label="THEME"
+              rules={[
+                {
+                  required: false,
+                  message: "restaurant header!",
+                },
+              ]}
+              >
+                <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
+                  Check all
+                </Checkbox>
+                <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
             </Form.Item>
             
             <Form.Item

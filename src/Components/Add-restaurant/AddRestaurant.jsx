@@ -195,7 +195,7 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-                <input style={{color: 'white'}} type='file' id="logoUpload" accept=".png, .jpg, .jpeg" onChange={logobase64} />
+                <input style={{color: 'white', width:'80%'}} type='file' id="logoUpload" accept=".png, .jpg, .jpeg" onChange={logobase64} />
             </Form.Item>
 
             <Form.Item
@@ -312,7 +312,7 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-                <input style={{color: 'white'}} type='file' id="headerUpload" accept=".png, .jpg, .jpeg" onChange={headerbase64} />
+                <input style={{color: 'white', width:'80%'}} type='file' id="headerUpload" accept=".png, .jpg, .jpeg" onChange={headerbase64} />
             </Form.Item>
           </div>
 

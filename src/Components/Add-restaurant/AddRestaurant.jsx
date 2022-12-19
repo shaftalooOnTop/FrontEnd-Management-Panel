@@ -190,7 +190,7 @@ export const AddRestaurant = () => {
               label="LOGO IMAGE"
               rules={[
                 {
-                  required: false,
+                  required: true,
                   message: "restaurant logo!",
                 },
               ]}
@@ -307,7 +307,7 @@ export const AddRestaurant = () => {
               label="HEADER IMAGE"
               rules={[
                 {
-                  required: false,
+                  required: true,
                   message: "restaurant header!",
                 },
               ]}

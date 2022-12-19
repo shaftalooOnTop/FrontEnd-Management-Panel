@@ -162,29 +162,28 @@ export const AddRestaurant = () => {
           <h1>Create Restaurant</h1>
         </div>
 
-        <div className="info">
+        <div className="info-add-res">
           <div className="left-info">
             <Form.Item
               name="logo"
-              label="RESTAURANT LOGO"
+              label="LOGO IMAGE"
               rules={[
                 {
                   required: false,
-                  message: "Please input your restaurant name!",
+                  message: "restaurant logo!",
                 },
               ]}
               >
-                <input type='file' id="logoUpload" accept=".png, .jpg, .jpeg" onChange={logobase64} />
+                <input style={{color: 'white'}} type='file' id="logoUpload" accept=".png, .jpg, .jpeg" onChange={logobase64} />
             </Form.Item>
 
             <Form.Item
-              className="name"
               name="name"
               label="RESTAURANT NAME"
               rules={[
                 {
                   required: true,
-                  message: "Please input your restaurant name!",
+                  message: "restaurant name!",
                 },
               ]}
             >
@@ -197,7 +196,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: false,
-                  message: "Please input your restaurant tags!",
+                  message: "restaurant tags!",
                 },
               ]}
             >
@@ -265,18 +264,18 @@ export const AddRestaurant = () => {
                 )}
               </>
             </Form.Item>
-
+            
             <Form.Item
               name="header"
-              label="RESTAURANT HEADER"
+              label="HEADER IMAGE"
               rules={[
                 {
                   required: false,
-                  message: "Please input your restaurant header!",
+                  message: "restaurant header!",
                 },
               ]}
               >
-                <input type='file' id="headerUpload" accept=".png, .jpg, .jpeg" onChange={headerbase64} />
+                <input style={{color: 'white'}} type='file' id="headerUpload" accept=".png, .jpg, .jpeg" onChange={headerbase64} />
             </Form.Item>
           </div>
 
@@ -287,7 +286,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your restaurant code!",
+                  message: "city!",
                 },
               ]}
             >
@@ -304,13 +303,13 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your restaurant address!",
+                  message: "restaurant address!",
                 },
               ]}
             >
               <Input placeholder="address" />
             </Form.Item>
-
+{/*
               <div className='name-code'>
             <Form.Item
               name="phone_code"
@@ -318,7 +317,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your phone code!',
+                  message: 'code!',
                 },
               ]}
               >
@@ -352,6 +351,23 @@ export const AddRestaurant = () => {
                 />
               </Form.Item>
             </div>
+*/}
+            <Form.Item
+              name="number"
+              label="PHONE NUMBER"
+              rules={[
+                {
+                  required: true,
+                  message: "phone number!",
+                },
+              ]}
+            >
+              <Input
+                maxLength={10}
+                placeholder="12345678"
+                style={{ width: "80%" }}
+              />
+            </Form.Item>
 
             <Form.Item
               name="description"
@@ -359,7 +375,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: false,
-                  message: "Please input description",
+                  message: "description!",
                 },
               ]}
             >

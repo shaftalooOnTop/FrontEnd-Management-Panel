@@ -69,17 +69,17 @@ export function getTableRestaurant (id) {
 }
 
 export function addTable (data) {
-    const config = {
+    /*const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
-    };
-    return axios.put(url+'api/Table', data, config)
+    };*/
+    return axios.post(url+'api/Table', data /*, config*/)
 }
 
 export function deleteTable (id) {
-    const config = {
+    /*const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
-    };
-    return axios.delete(url+'api/Table/:id?='+id, config)
+    };*/
+    return axios.delete(url+'api/Table/:id', id /*, config*/)
 }
 
 export function getProfit (data){

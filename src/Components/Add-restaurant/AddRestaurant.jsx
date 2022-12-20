@@ -171,7 +171,7 @@ export const AddRestaurant = () => {
   return (
     <div className="add-restaurant">
       <Form
-        className="form"
+        className="form-add-restaurant"
         layout="vertical"
         size="large"
         form={form}

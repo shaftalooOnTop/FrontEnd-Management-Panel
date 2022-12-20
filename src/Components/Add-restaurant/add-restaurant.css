@@ -24,7 +24,7 @@
     opacity: 0.1;
 }
 
-.form {
+.form-add-restaurant {
     border: solid 1px #262626;
     background-color: #262626;
     border-radius: 2rem;
@@ -193,7 +193,7 @@ h1 {
 }
 
 @media screen and (max-width: 900px) {
-    .form {
+    .form-add-restaurant {
         padding: 50px;
         min-width: 0;
         width: 100%;

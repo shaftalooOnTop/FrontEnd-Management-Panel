@@ -51,11 +51,11 @@ return (
           rules={[
             {
               required: true,
-              message: 'Please input table number!'
+              message: 'number!'
             },
           ]}
           >
-          <InputNumber className="input1" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
+          <InputNumber className="input1" placeholder="0" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
         </Form.Item>
 
         <Form.Item 
@@ -64,11 +64,11 @@ return (
           rules={[
             {
               required: true,
-              message: 'Please input table capacity!'
+              message: 'capacity!'
             },
           ]}
           >
-          <InputNumber className="input1" min={1} max={10} /*defaultValue={0}*/ onChange={onChange} />
+          <InputNumber className="input1" placeholder="0" min={1} max={10} /*defaultValue={0}*/ onChange={onChange} />
         </Form.Item>
         </div>
 
@@ -98,7 +98,6 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
       })
     }} 
         >
-        <div>
         <Form className='form1'
           layout='horizontal'
           size='large'
@@ -106,21 +105,21 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
           name="remove_table"
           scrollToFirstError
           >
-
+          <div className="div-form-items-remove">
           <Form.Item className="form-item"
             name="number"
             label="number"
             rules={[
               {
                 required: true,
-                message: 'Please input table number!',
+                message: 'number!',
               },
             ]}
           >
-            <InputNumber className="input1" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
+            <InputNumber className="input1" placeholder="0" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
           </Form.Item>
+          </div>
         </Form>
-        </div>
         
     </Modal>
   );
@@ -142,6 +141,7 @@ export const Table_managment = () => {
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [tables, setTables] = useState([])
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     getTableRestaurant(id)
@@ -163,7 +163,7 @@ export const Table_managment = () => {
       } 
       console.log(error.config);
     })
-  }, [])
+  }, [, count])
 
     const showModal_add = () => {
       setIsAddModalOpen(true);
@@ -190,6 +190,7 @@ export const Table_managment = () => {
       addTable(data)
       .then((response) => {
         console.log(response)
+        setCount(count+1)
         notification.open({
           message: 'successful',
           //description: error.response.data,
@@ -221,41 +222,33 @@ export const Table_managment = () => {
       
     };
 
-
-    const [id_table, setIdTable]= useState(-1)
-    const [flag, setFlag] = useState(false)
     const onRemoveTable = (values) => {
-      console.log('Received values of form: ', values);
-      const tmp=[]
+      console.log('Received values of form: ', values.number);
+      /*const tmp=[]
       tables.forEach(item=>{
         console.log(item);
         tmp.push({
           id : item.id,
           number : item.number
         })
-      })
+      })*/
+      let target_table = 0
       console.log(values.number)
-      tmp.forEach((num) => { 
-        console.log(num.id)
-        if (num.number === values.number){
-          setIdTable(num.id)
-          setFlag(true)
+      tables.map(t => {
+        if (t.number == values.number){
+          target_table = t.id
         }
       })
-      console.log(flag)
-      if (!flag){
-        notification.open({
-          message: 'error',
-          description: 'There is no table with this number!', 
-          type:'error',
-          style: {borderRadius: '5px', backgroundColor: '#fbc403'}
-        });
-        return; 
-      }
-      deleteTable(id_table)
+      deleteTable(target_table)
       .then((response) => {
         console.log(response)
-        
+        setCount(count-1)
+        notification.open({
+          message: 'successful',
+          //description: error.response.data,
+          type:'success',
+          style: {borderRadius: '5px', backgroundColor: '#fbc403'}
+        });
         setIsRemoveModalOpen(false);
       })
       .catch(function (error) {
@@ -289,7 +282,7 @@ export const Table_managment = () => {
         console.log(t);
         
         tmp.push(
-          <div className="table">
+          <div className="simple-table">
             <div className="tmp">
               <div className="table-items">
                 <label className="table-item">NUM : </label>
@@ -312,6 +305,7 @@ export const Table_managment = () => {
             <div>
               <h1>MANAGE TABLES</h1>
             </div>
+            <div className="flex-div-table-addbtn">
             <div className="add-remove-table">
                 <button className="add" onClick={showModal_add}>Add table</button>
                 <button className="remove" onClick={showModal_rem}>Remove table</button>
@@ -333,6 +327,7 @@ export const Table_managment = () => {
                 <div className="inner-res-tables">
                   {dataGen()}
                 </div>
+            </div>
             </div>
           </div>
         </div>

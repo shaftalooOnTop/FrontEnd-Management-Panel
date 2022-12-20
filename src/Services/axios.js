@@ -79,7 +79,7 @@ export function deleteTable (id) {
     /*const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
     };*/
-    return axios.delete(url+'api/Table/:id', id /*, config*/)
+    return axios.delete(url+'api/Table/'+ id /*, config*/)
 }
 
 export function getProfit (data){

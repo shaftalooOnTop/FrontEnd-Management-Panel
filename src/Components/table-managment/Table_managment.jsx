@@ -23,7 +23,7 @@ const TableFormAdd = ({ open, onCreate, onCancel}) => {
   const [form] = Form.useForm();
 
 return (
-  <Modal className="modal" title="Add table" open={open} onCancel={onCancel}
+  <Modal className="modal-table-manage" title="Add table" open={open} onCancel={onCancel}
     onOk={() => {
       form.validateFields()
       .then((values) => {
@@ -86,7 +86,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
   const [form] = Form.useForm();
 
   return (
-    <Modal className="modal" title="remove table" open={open} onCancel={onCancel}
+    <Modal className="modal-table-manage" title="remove table" open={open} onCancel={onCancel}
     onOk={() => {
       form.validateFields()
       .then((values) => {

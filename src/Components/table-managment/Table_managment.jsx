@@ -129,7 +129,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
 /************************************App */
 export const Table_managment = () => {
 
-  const [id, setIdRestaurant] = useState(3)
+  const [id, setIdRestaurant] = useState(2)
 
   useEffect(() => {
     getUser()

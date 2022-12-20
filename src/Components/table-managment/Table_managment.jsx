@@ -1,4 +1,5 @@
 import React from "react";
+import { currentResId } from "../../Services/consts";
 import { useEffect , useState } from "react";
 import { getTableRestaurant, getUser } from "../../Services/axios";
 import { addTable , deleteTable } from "../../Services/axios";
@@ -129,7 +130,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
 /************************************App */
 export const Table_managment = () => {
 
-  const [id, setIdRestaurant] = useState(2)
+  const [id, setIdRestaurant] = useState(currentResId)
 
   useEffect(() => {
     getUser()

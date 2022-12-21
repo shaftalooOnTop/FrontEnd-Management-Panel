@@ -181,7 +181,7 @@ export const AddRestaurant = () => {
         scrollToFirstError
       >
         <div className="top-info">
-          <h1>Create Restaurant</h1>
+          <h1><i class="bx bx-restaurant"></i>Create Restaurant</h1>
         </div>
 
         <div className="info-add-res">

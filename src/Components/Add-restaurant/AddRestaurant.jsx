@@ -170,8 +170,9 @@ export const AddRestaurant = () => {
 
   return (
     <div className="add-restaurant">
+    <div className="inner-add-restaurant">
       <Form
-        className="form-add-restaurant"
+        className="add-restaurant-container"
         layout="vertical"
         size="large"
         form={form}
@@ -459,6 +460,7 @@ export const AddRestaurant = () => {
           </Form.Item>
         </div>
       </Form>
+    </div>
     </div>
   );
 };

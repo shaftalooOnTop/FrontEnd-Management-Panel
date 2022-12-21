@@ -3,25 +3,28 @@
 }
 
 .add-restaurant {
-    position: relative;
-    display: flex;
+    background-color: #161616;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #161616;
-    background-image: url("./backimg.jpg");
-    background-size: cover;
 }
 
-.add-restaurant::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: #161616;
-    opacity: 0.1;
+.inner-add-restaurant {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: table;
+}
+
+.add-restaurant-container {
+    width: 100%;
+    background-color: #262626;
+    margin-top: 30px;
+    padding: 2.5%;
+    border-radius: 20px;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-height: 700px;
 }
 
 .form-add-restaurant {
@@ -193,11 +196,16 @@ h1 {
 }
 
 @media screen and (max-width: 900px) {
-    .form-add-restaurant {
+    .inner-add-restaurant {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .add-restaurant-container {
         padding: 50px;
         min-width: 0;
         width: 100%;
-        border-radius: 0;
     }
 
     .info-add-res {

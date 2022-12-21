@@ -6,8 +6,10 @@ export const Orders = ()=> {
     return (
         <>
             <div className="restaurant-orders">
-                <div className="orders-container">
-                    
+                <div className="inner-restaurant-orders">
+                    <div className="restaurant-orders-container">
+                        
+                    </div>
                 </div>
             </div>
         </>

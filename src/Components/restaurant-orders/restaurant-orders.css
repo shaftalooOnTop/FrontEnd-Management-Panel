@@ -1,0 +1,19 @@
+.restaurant-orders {
+    background-color: #161616;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.orders-container {
+    border: solid 1px #262626;
+    background-color: #262626;
+    border-radius: 2rem;
+    padding: 45px;
+    text-align: center;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-width: 950px;
+}

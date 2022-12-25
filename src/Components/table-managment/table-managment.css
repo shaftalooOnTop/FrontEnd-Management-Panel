@@ -49,8 +49,8 @@
     border: solid 2px #262626;
     padding: 8px;
     display: flex;
+    flex-flow: row wrap;
     border-radius: 8px;
-    flex-wrap: wrap;
 }
 
 .simple-table {

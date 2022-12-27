@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import { getRestaurantOrders } from "../../Services/axios";
 import { currentResId } from "../../Services/consts";
 import { theme, ConfigProvider, DatePicker, Radio } from 'antd';
+import { Order_card } from "./order-card";
 
 import './restaurant-orders.css'
 
 export const Orders = ()=> {
 
     const [headName, setHeadName] = useState('Inprogress')
+    const [dateOrders, setDateOrders] = useState()
 
 
     useEffect(() => {
 
-    }, [headName])
+    }, [headName, dateOrders])
 
     useEffect(() => {
         getRestaurantOrders(currentResId)
@@ -25,7 +27,8 @@ export const Orders = ()=> {
     }, [])
 
     const onChangeDate = (date, dateString) => {
-        console.log(date, dateString);
+        console.log(dateString);
+        setDateOrders(dateString)
     }
 
     const onChangeTab = ({ target: { value } }) => {
@@ -60,7 +63,20 @@ export const Orders = ()=> {
                         </div>
                     </div>
                     <div className="restaurant-orders-container">
-                        <h1>{headName}</h1>
+                        <div className="header-name">
+                            <h1>{dateOrders} / {headName}</h1>
+                        </div>
+                        <div className="restaurant-orders-list">
+                            
+                                <Order_card/>
+                                {/*<div className="left-order-info">
+                                    <h1>test</h1>
+                                </div>
+                                <div className="right-order-info">
+                                    <h1>test</h1>
+        </div>*/}
+                            
+                        </div>
                     </div>
                 </div>
             </div>

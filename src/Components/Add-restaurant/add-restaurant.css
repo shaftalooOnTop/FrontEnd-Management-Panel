@@ -188,10 +188,6 @@ h1 {
     border: 0;
 }
 
-.ant-btn:hover {
-    -webkit-text-fill-color: white;
-}
-
 .select-city {
     background-color: #161616;
 }

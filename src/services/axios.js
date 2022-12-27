@@ -102,3 +102,7 @@ export function getFoodSell(data){
     };
     return axios.get(url+"api/Managment/GetFoodSellByFoods?restaurantId="+data+"&from=1944-07-30T07:17:10.934Z&to=2030-07-30T07:17:10.934Z",config)
 }
+
+export function getRestaurantOrders(id){
+    return axios.get('Order/RestaurantOrders?RestaurantId='+id)
+}

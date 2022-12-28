@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { getRestaurantOrders } from "../../Services/axios";
 import { currentResId } from "../../Services/consts";
 import { theme, ConfigProvider, DatePicker, Radio } from 'antd';
+import dayjs from 'dayjs';
 import { Order_card } from "./order-card";
 
 import './restaurant-orders.css'
 
 export const Orders = ()=> {
 
+    const dateFormat = 'YYYY-MM-DD';
     const [headName, setHeadName] = useState('Inprogress')
     const [dateOrders, setDateOrders] = useState()
 
@@ -17,6 +19,7 @@ export const Orders = ()=> {
     }, [headName, dateOrders])
 
     useEffect(() => {
+        setDateOrders(new Date().toJSON().slice(0, 10))
         getRestaurantOrders(currentResId)
         .then((response) => {
             console.log(response.data)
@@ -36,6 +39,7 @@ export const Orders = ()=> {
         setHeadName(value)
     }
 
+
     return (
         <>
         <ConfigProvider
@@ -52,10 +56,10 @@ export const Orders = ()=> {
                     <div className="selectors">
                         <div className="orders-date">
                             <label className="label-date" htmlFor="">date :</label>
-                            <DatePicker className="date-picker-orders" onChange={onChangeDate} />
+                            <DatePicker size={'large'} defaultValue={dayjs(new Date().toJSON().slice(0, 10), dateFormat)} format={dateFormat} className="date-picker-orders" onChange={onChangeDate} />
                         </div>
                         <div className="orders-filter">
-                            <Radio.Group onChange={onChangeTab} defaultValue="Inprogress" buttonStyle="solid">
+                            <Radio.Group size={'large'} onChange={onChangeTab} defaultValue="Inprogress" buttonStyle="solid">
                                 <Radio.Button className="radio-select" value="All">All</Radio.Button>
                                 <Radio.Button className="radio-select" value="Inprogress">Inprogress</Radio.Button>
                                 <Radio.Button className="radio-select" value="History">History</Radio.Button>
@@ -63,8 +67,13 @@ export const Orders = ()=> {
                         </div>
                     </div>
                     <div className="restaurant-orders-container">
-                        <div className="header-name">
-                            <h1>{dateOrders} / {headName}</h1>
+                        <div className="title-res-orders-container">
+                            <div className="nameee">
+                                <h1 className="titlesss">{headName}</h1>
+                            </div>
+                            <div className="dateee">
+                                <h1 className="titlesss">{dateOrders}</h1>
+                            </div>
                         </div>
                         <div className="restaurant-orders-list">
                             

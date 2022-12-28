@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from 'antd';
+import { Modal, Select  } from 'antd';
 
 import './restaurant-orders.css'
 import { getRestaurant } from "../../Services/axios";
@@ -8,7 +8,7 @@ import { getRestaurant } from "../../Services/axios";
 
 export const Order_card = (/*{order}*/) => {
 
-    const res_logo = "https://wpcdn.us-east-1.vip.tn-cloud.net/www.klkntv.com/content/uploads/2020/08/KFC-LOGO-1024x881.jpg";
+    const res_logo = "https://www.jardi-creation.be/wp-content/uploads/2020/01/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg";
 /*
     const [res_name, setResName] = useState()
     const [res_logo, setResLogo] = useState()
@@ -44,6 +44,10 @@ export const Order_card = (/*{order}*/) => {
       setVisible(false)
     };*/
 
+    const handleChangeStatus = (value)=> {
+        console.log(`selected ${value}`);
+    }
+
     return (
         <>
             <div className="order-card">
@@ -53,7 +57,7 @@ export const Order_card = (/*{order}*/) => {
                         <div className="order-res-name-and-time">
                             <h2 className="order">{/*res_name*/}Name</h2>
                             <div className="order-time">
-                                <h3 className="order">{/* Date(order_time) */} order Time</h3>
+                                <h3 className="order">{/* Date(order_time) */}sent : 2022-12-28 19:22</h3>
                             </div>
                         </div>
                     </div>
@@ -63,7 +67,25 @@ export const Order_card = (/*{order}*/) => {
                         <h2 className="order">Order cost : {order_cost}</h2>
                     </div> */}
                     <div className="order-factor-and-status">
-                        <button className="status-button">{/*orderStatus[status]*/}status</button>
+                        {/*<button className="status-button">{/*orderStatus[status]}status</button>*/}
+                        <Select defaultValue="jack"
+                            style={{
+                                width: '30%',
+                                textAlign: 'left'
+                            }}
+                            size={'large'}
+                            onChange={handleChangeStatus}
+                            options={[
+                                {
+                                    value: 'jack',
+                                    label: 'Jack',
+                                },
+                                {
+                                    value: 'lucy',
+                                    label: 'Lucy',
+                                },
+                            ]}
+                        />
                         <button className="factor-button"  /*onClick={showModal}*/>Factor</button>
                         {/** factor modal
                         <Modal

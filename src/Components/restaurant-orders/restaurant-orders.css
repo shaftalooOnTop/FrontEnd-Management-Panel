@@ -42,12 +42,27 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.header-name {
-    background-color: #161616;
+.title-res-orders-container {
+    display: flex;
+    background-color: #eeba2c;
     padding: 2.5%;
     border-radius: 20px;
     text-align: center;
     width: 100%;
+}
+
+.nameee {
+    text-align: left;
+    width: 50%;
+}
+
+.dateee {
+    text-align: right;
+    width: 50%;
+}
+
+h1.titlesss {
+    color: #161616;
 }
 
 .restaurant-orders-list {

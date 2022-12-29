@@ -81,7 +81,8 @@ export const Sale_report = () => {
 
   return (
     <>
-      <div className="sale-report-All" >
+    <div className="report-all">
+    <div>
         <div className="sale-report-cards">
           <div
             className="card text-white  mb-3"
@@ -194,10 +195,7 @@ export const Sale_report = () => {
               </div>
             </div>
           </div>
-          <div
-            className="card text-white mb-3"
-            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#F76704" }}
-          >
+          <div className="card text-white mb-3" style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#F76704" }}>
             <div className="card-header">Best Selling Foods</div>
             <div className="card-body">
               {foods?.slice(0, 3).map((x) => (
@@ -217,6 +215,17 @@ export const Sale_report = () => {
           </div>
         </div>
       </div>
+      <div
+            className="card text-white  mb-5"
+            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#37505E"}}
+          >
+            <div className="card-header">Rank Tables</div>
+            <div className="card-body">
+              <h5 className="card-title">First Tables</h5>
+              <p className="card-text">Test</p>
+            </div>
+    </div>
+    </div>
     </>
   );
 };

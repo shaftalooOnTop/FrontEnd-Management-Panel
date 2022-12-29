@@ -1,12 +1,13 @@
-.sale-report-All{
+.report-all{
+    display: flex;
+    flex-direction: row;
     background-color: #161616;
-    /* box-sizing: border-box; */
     height: 200vh;
     margin-top: -10px;
     padding-top:10%;
     padding-left: 10%;
-    /* margin: -8px; */
 }
+
 .sale-report-cards{
     display: flex;
 }
@@ -80,6 +81,9 @@
 }
 .restBusi2{
     width: 37rem;
+}
+.mb-5{
+    max-height: 445px;
 }
 @media screen and (max-width: 500px) {
     .sale-report-cards{

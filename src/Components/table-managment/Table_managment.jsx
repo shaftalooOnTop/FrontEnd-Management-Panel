@@ -307,28 +307,28 @@ export const Table_managment = () => {
               <h1>MANAGE TABLES</h1>
             </div>
             <div className="flex-div-table-addbtn">
-            <div className="add-remove-table">
-                <button className="add" onClick={showModal_add}>Add table</button>
-                <button className="remove" onClick={showModal_rem}>Remove table</button>
-                <TableFormAdd
-                  open={isAddModalOpen}
-                  onCreate={onCreateTable}
-                  onCancel={handleCancel}
-                  />
-                <TableFormRemove
-                  open={isRemoveModalOpen}
-                  onCreate={onRemoveTable}
-                  onCancel={handleCancel}
-                  />
-            </div>
-            <div className="res_tables">
-                <div>
-                  <h2 className="title-tables">Tables</h2>
-                </div>
-                <div className="inner-res-tables">
-                  {dataGen()}
-                </div>
-            </div>
+              <div className="add-remove-table">
+                  <button className="add" onClick={showModal_add}>Add table</button>
+                  <button className="remove" onClick={showModal_rem}>Remove table</button>
+                  <TableFormAdd
+                    open={isAddModalOpen}
+                    onCreate={onCreateTable}
+                    onCancel={handleCancel}
+                    />
+                  <TableFormRemove
+                    open={isRemoveModalOpen}
+                    onCreate={onRemoveTable}
+                    onCancel={handleCancel}
+                    />
+              </div>
+              <div className="res_tables">
+                  <div>
+                    <h2 className="title-tables">Tables</h2>
+                  </div>
+                  <div className="inner-res-tables">
+                    {dataGen()}
+                  </div>
+              </div>
             </div>
           </div>
         </div>

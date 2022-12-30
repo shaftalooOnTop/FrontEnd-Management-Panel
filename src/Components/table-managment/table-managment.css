@@ -13,7 +13,7 @@
     border: solid 1px #262626;
     background-color: #262626;
     border-radius: 2rem;
-    padding: 45px;
+    padding: 20px;
     text-align: center;
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -21,26 +21,26 @@
 }
 
 .flex-div-table-addbtn {
+    margin-top: 15px;
     display: flex;
-    align-items: center;
 }
 
 .add-remove-table {
     background-color: #161616;
     padding: 50px;
-    border-radius: 8px;
+    border-radius: 2rem;
     border-color:  white;
     text-align: center;
     width: 20%;
     margin: auto;
-    margin: 8px;
+    margin-top: 0;
+    margin-right: 8px;
     min-width: fit-content;
 }
 
 .res_tables {
-    margin-top: 15px;
     background-color: #161616;
-    border-radius: 8px;
+    border-radius: 2rem;
     padding: 8px;
     width: 80%;
 }
@@ -50,7 +50,7 @@
     padding: 8px;
     display: flex;
     flex-flow: row wrap;
-    border-radius: 8px;
+    border-radius: 2rem;
 }
 
 .simple-table {
@@ -78,8 +78,8 @@ h2.table-item {
 }
 
 h2.title-tables {
-    margin-top: 0;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-weight: bold;
     color: #eeba2c;
 }

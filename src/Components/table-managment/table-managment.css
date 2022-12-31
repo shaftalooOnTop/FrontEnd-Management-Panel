@@ -46,7 +46,6 @@
 }
 
 .inner-res-tables {
-    border: solid 2px #262626;
     padding: 8px;
     display: flex;
     flex-flow: row wrap;

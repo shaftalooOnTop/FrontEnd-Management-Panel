@@ -17,8 +17,8 @@ import { Register } from "./Components/Auth/SignUp/Register";
 import { Card } from "./Components/HomePage-customer/card";
 import { ListCardRes } from "./Components/HomePage-customer/ListCards"
 import {Table_managment} from "./Components/table-managment/Table_managment";
-import { Sale_report } from "./Components/Sale-report/Sale-report"
-
+import { Sale_report } from "./Components/Sale-report/Sale-report";
+import { Personal_profile } from "./Components/Personal-profile/Personal-profile";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -33,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Blank />} />
+          <Route path="/profile" element={<Personal_profile />} />
           <Route path="/create-restaurant" element={<AddRestaurant/>} />
           <Route path="/order" element={<Blank />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />

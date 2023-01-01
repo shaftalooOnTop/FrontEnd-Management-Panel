@@ -11,6 +11,12 @@ const sidebarNavItems = [
     section: "",
   },
   {
+    display: "Profile",
+    icon: <i class="bx bx-restaurant"></i>,
+    to: "/profile",
+    section: "profile",
+  },
+  {
     display: "Create Restaurant",
     icon: <i class="bx bx-restaurant"></i>,
     to: "/create-restaurant",

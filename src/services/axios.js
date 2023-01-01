@@ -55,6 +55,13 @@ export function putFood(data) {
     return axios.put(url+"api/Food",data)
 }
 
+export function putUser(data) {
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.put(url+"api/User",data,config)
+}
+
 export function postRestaurant (data) {
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }

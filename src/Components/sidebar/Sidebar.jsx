@@ -12,7 +12,7 @@ const sidebarNavItems = [
   },
   {
     display: "Profile",
-    icon: <i class="bx bx-restaurant"></i>,
+    icon: <i class='bx bxs-user-rectangle'></i>,
     to: "/profile",
     section: "profile",
   },

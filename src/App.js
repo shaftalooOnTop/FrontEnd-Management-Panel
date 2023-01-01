@@ -18,6 +18,7 @@ import { Card } from "./Components/HomePage-customer/card";
 import { ListCardRes } from "./Components/HomePage-customer/ListCards"
 import {Table_managment} from "./Components/table-managment/Table_managment";
 import { Sale_report } from "./Components/Sale-report/Sale-report";
+import { Sale_chart } from "./Components/Sale-chart/Sale-chart";
 import { Personal_profile } from "./Components/Personal-profile/Personal-profile";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/menu-managment" element={<Restaurant_page />} />
           <Route path="/table-managment" element={<Table_managment/>} />
           <Route path="/sale-report" element={<Sale_report/>} />
+          <Route path="/sale-chart" element={<Sale_chart/>} />
         </Route>
       </Routes>
       <Toaster

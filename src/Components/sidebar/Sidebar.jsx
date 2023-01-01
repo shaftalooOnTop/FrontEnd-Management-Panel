@@ -46,6 +46,12 @@ const sidebarNavItems = [
     to: "/sale-report",
     section: "sale-report",
   },
+  {
+    display: "Sale Chart",
+    icon: <i class='bx bxs-pie-chart-alt-2'></i>,
+    to: "/sale-chart",
+    section: "sale-chart",
+  },
 ];
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);

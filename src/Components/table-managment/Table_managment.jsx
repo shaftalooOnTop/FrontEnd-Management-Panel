@@ -322,9 +322,9 @@ export const Table_managment = () => {
                     />
               </div>
               <div className="res_tables">
-                  <div>
+                  {/*<div>
                     <h2 className="title-tables">Tables</h2>
-                  </div>
+                  </div>*/}
                   <div className="inner-res-tables">
                     {dataGen()}
                   </div>

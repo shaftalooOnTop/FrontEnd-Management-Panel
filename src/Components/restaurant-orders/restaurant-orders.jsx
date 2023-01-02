@@ -29,10 +29,15 @@ export const Orders = ()=> {
         })
     }, [])
 
-    const onChangeDate = (date, dateString) => {
-        console.log(dateString);
-        setDateOrders(dateString)
-    }
+    const { RangePicker } = DatePicker;
+    const onChange = (value, dateString) => {
+        console.log('Selected Time: ', value);
+        console.log('Formatted Selected Time: ', dateString);
+    };
+    const onOk = (value) => {
+        console.log('onOk: ', value);
+    };
+
 
     const onChangeTab = ({ target: { value } }) => {
         console.log(value)
@@ -55,37 +60,27 @@ export const Orders = ()=> {
                 <div className="inner-restaurant-orders">
                     <div className="selectors">
                         <div className="orders-date">
-                            <label className="label-date" htmlFor="">date :</label>
-                            <DatePicker size={'large'} defaultValue={dayjs(new Date().toJSON().slice(0, 10), dateFormat)} format={dateFormat} className="date-picker-orders" onChange={onChangeDate} />
+                            <label className="label-date" htmlFor=""><i class='bx bxs-calendar-event'></i>date :</label>
+                            <RangePicker
+                                size={'large'}
+                                showTime={{
+                                    format: 'HH:mm',
+                                }}
+                                format="YYYY-MM-DD HH:mm"
+                                onChange={onChange}
+                                onOk={onOk}
+                            />
                         </div>
                         <div className="orders-filter">
-                            <Radio.Group size={'large'} onChange={onChangeTab} defaultValue="Inprogress" buttonStyle="solid">
-                                <Radio.Button className="radio-select" value="All">All</Radio.Button>
+                            <Radio.Group size={'large'} onChange={onChangeTab} defaultValue="Paid" buttonStyle="solid">
+                                <Radio.Button className="radio-select" value="Paid">Paid</Radio.Button>
                                 <Radio.Button className="radio-select" value="Inprogress">Inprogress</Radio.Button>
-                                <Radio.Button className="radio-select" value="History">History</Radio.Button>
+                                <Radio.Button className="radio-select" value="History">Finished</Radio.Button>
                             </Radio.Group>
                         </div>
                     </div>
                     <div className="restaurant-orders-container">
-                        <div className="title-res-orders-container">
-                            <div className="nameee">
-                                <h1 className="titlesss">{headName}</h1>
-                            </div>
-                            <div className="dateee">
-                                <h1 className="titlesss">{dateOrders}</h1>
-                            </div>
-                        </div>
-                        <div className="restaurant-orders-list">
-                            
-                                <Order_card/>
-                                {/*<div className="left-order-info">
-                                    <h1>test</h1>
-                                </div>
-                                <div className="right-order-info">
-                                    <h1>test</h1>
-        </div>*/}
-                            
-                        </div>
+                        <Order_card/>
                     </div>
                 </div>
             </div>

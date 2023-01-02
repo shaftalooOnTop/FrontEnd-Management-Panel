@@ -26,10 +26,10 @@
 }
 
 .add-remove-table {
-    background-color: #161616;
-    padding: 50px;
+    /*background-color: #161616;*/
+    padding: 25px;
     border-radius: 2rem;
-    border-color:  white;
+    border: solid 1.5px #161616;
     text-align: center;
     width: 20%;
     margin: auto;

@@ -16,8 +16,9 @@ export const Order_card = (/*{order}*/) => {
     const [order_cost, setOrderCost] = useState()
     const [factor, setFactor] = useState(order.foods)
     const [status, setStatus] = useState(order.stat)
-    const orderStatus = ["Finished" , "inProcess" , "Accepted" , "Paid"]
-    
+*/
+    const orderStatus = [{label : "Finished", value : '0'} , {label : "inProcess", value : '1'} , {label : "Accepted", value: '2'} , {label: "Paid", value : '3'}]
+ /*   
     getRestaurant(order.restaurantId)
     .then((res) => {
         setResLogo(res.data.logoImg)
@@ -51,53 +52,28 @@ export const Order_card = (/*{order}*/) => {
     return (
         <>
             <div className="order-card">
-                <div className="order-card-left">
-                    <div className="order-res-info">
-                        <img className="order-res-logo" src={res_logo} alt="" />
-                        <div className="order-res-name-and-time">
-                            <h2 className="order">{/*res_name*/}Name</h2>
-                            <div className="order-time">
-                                <h3 className="order">{/* Date(order_time) */}sent : 2022-12-28 19:22</h3>
-                            </div>
-                        </div>
+                <div className="order-card-top">
+                    <img className="order-res-logo" src={res_logo} alt="" />
+                    <h2 className="order-name-user">{/*res_name*/}name</h2>
+                </div>
+                <div className="order-time-info">
+                    <div className="inner-time-info">
+                        <h4 className="order-date"><i class='bx bxs-calendar'></i> {/*order_day*/}date</h4>
+                        <h4 className="order-time"><i class='bx bxs-time'></i> {/*order_hour*/}time</h4>
                     </div>
                 </div>
-                <div className="order-card-right">
-                    {/* <div className="order-cost">
-                        <h2 className="order">Order cost : {order_cost}</h2>
-                    </div> */}
+                <div className="order-card-bottom">
                     <div className="order-factor-and-status">
-                        {/*<button className="status-button">{/*orderStatus[status]}status</button>*/}
-                        <Select defaultValue="jack"
+                        <Select 
+                            defaultValue="set State"
                             style={{
-                                width: '30%',
                                 textAlign: 'left'
                             }}
                             size={'large'}
                             onChange={handleChangeStatus}
-                            options={[
-                                {
-                                    value: 'jack',
-                                    label: 'Jack',
-                                },
-                                {
-                                    value: 'lucy',
-                                    label: 'Lucy',
-                                },
-                            ]}
+                            options={orderStatus}
                         />
                         <button className="factor-button"  /*onClick={showModal}*/>Factor</button>
-                        {/** factor modal
-                        <Modal
-                          title="Basic Modal"
-                          open={visible}
-                          onOk={handleOk}
-                          onCancel={handleCancel}
-                        >
-                          <p>Some contents...</p>
-                          <p>Some contents...</p>
-                          <p>Some contents...</p>
-                        </Modal>*/}
                     </div>
                 </div>
             </div>

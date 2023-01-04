@@ -42,12 +42,12 @@ export const Personal_profile = () => {
         let fileReader = new FileReader();
         fileReader.readAsDataURL(imgFile);
         fileReader.onload = (event) => {
-          console.log("H")
           putUser({
             fullName: user.fullName,
             email: user.email,
             phoneNumber: user.phoneNumber,
             picture: event.target.result,
+            password: "Amir1380",
           }).then(() => {
           });
         };

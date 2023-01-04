@@ -19,12 +19,14 @@ export const Order_card = ({order}) => {
                          {label : "Accepted", disabled : dis2, value : '2', colorrr : 'black'} , 
                          {label : "Paid", disabled : dis3, value : '3', colorrr : 'red'}]
     const [user_name, setResName] = useState('name')
+    const [id, setID] = useState(order.id)
  /* const [user_logo, setResLogo] = useState() */
     const [order_day, setOrderDay] = useState(order.dateCreated)
     const [order_hour, setOrderHour] = useState()
     const [order_cost, setOrderCost] = useState()
     const [factor, setFactor] = useState(order.foods)
     const [status, setStatus] = useState(order.stat)
+    const [delivary, setDelivery] = useState(order.delivary === null ? 'null' : order.delivary)
 
     useEffect(() => {
         console.log('here')
@@ -94,10 +96,10 @@ export const Order_card = ({order}) => {
                 </div>
                 <div className="order-time-info">
                     <div className="inner-time-info">
-                        <h6 className="order-date"><i class='bx bxs-credit-card'></i> {order.id}</h6>
+                        <h6 className="order-date"><i class='bx bxs-credit-card'></i> {id}</h6>
                         <h6 className="order-date"><i class='bx bxs-calendar'></i> {order_day}</h6>
                         <h6 className="order-time"><i class='bx bxs-time'></i> {order_hour}</h6>
-                        <h6 className="order-time"><i class='bx bxs-hourglass-bottom' ></i> {order.delivary}</h6>
+                        <h6 className="order-time"><i class='bx bxs-hourglass-bottom' ></i> {delivary}</h6>
                     </div>
                 </div>
                 <div className="order-card-bottom">

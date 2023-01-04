@@ -62,7 +62,7 @@ export const Poll = ()=> {
           offset: '-30%',
           content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
           style: {
-            fontSize: 25,
+            fontSize: 20,
             textAlign: 'center',
           },
         },

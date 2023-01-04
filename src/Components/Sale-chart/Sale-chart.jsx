@@ -6,13 +6,13 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
 export const Sale_chart = () => {	
-        
+
 		const options = {
 			animationEnabled: true,
 			exportEnabled: true,
 			theme: "dark2", // "light1", "dark1", "dark2"
 			title:{
-				text: "Trip Expenses"
+				text: "Daily Sale Chart"
 			},
 			data: [{
 				type: "pie",
@@ -32,6 +32,12 @@ export const Sale_chart = () => {
 		return (
 		<div>
 			<CanvasJSChart options = {options} 
+				/* onRef={ref => this.chart = ref} */
+			/>
+            <CanvasJSChart options = {options} 
+				/* onRef={ref => this.chart = ref} */
+			/>
+            <CanvasJSChart options = {options} 
 				/* onRef={ref => this.chart = ref} */
 			/>
 			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}

@@ -5,7 +5,7 @@
     height: 200vh;
     margin-top: -10px;
     padding-top:10%;
-    padding-left: 10%;
+    padding-left: 3%;
 }
 
 .sale-report-cards{
@@ -80,7 +80,7 @@
     font-weight: bold;
 }
 .restBusi2{
-    width: 37rem;
+    width: 62%;
 }
 .mb-5{
     max-height: 445px;

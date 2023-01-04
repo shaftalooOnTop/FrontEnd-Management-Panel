@@ -97,7 +97,7 @@ export const Sale_report = () => {
 
           <div
             className="card text-white  mb-3"
-            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#406B58"}}
+            style={{ maxWidth: "20%", minWidth: "30%", backgroundColor:"#406B58"}}
           >
             <div className="card-header">Monthly Profit</div>
             <div className="card-body">
@@ -107,7 +107,7 @@ export const Sale_report = () => {
           </div>
           <div
             className="card text-white mb-3"
-            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#B92B27" }}
+            style={{ maxWidth: "30%", minWidth: "30%", backgroundColor:"#B92B27" }}
           >
             <div className="card-header">Yearly Profit</div>
             <div className="card-body">
@@ -195,7 +195,7 @@ export const Sale_report = () => {
               </div>
             </div>
           </div>
-          <div className="card text-white mb-3" style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#F76704" }}>
+          <div className="card text-white mb-3" style={{ maxWidth: "30%", minWidth: "30%", backgroundColor:"#F76704" }}>
             <div className="card-header">Best Selling Foods</div>
             <div className="card-body">
               {foods?.slice(0, 3).map((x) => (
@@ -217,7 +217,7 @@ export const Sale_report = () => {
       </div>
       <div
             className="card text-white  mb-5"
-            style={{ maxWidth: "18rem", minWidth: "18rem", backgroundColor:"#37505E"}}
+            style={{ maxWidth: "20%", minWidth: "20%", backgroundColor:"#37505E"}}
           >
             <div className="card-header">Rank Tables</div>
             <div className="card-body">

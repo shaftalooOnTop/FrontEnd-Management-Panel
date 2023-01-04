@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Select  } from 'antd';
+import { Modal, Select, TimePicker } from 'antd';
 
 import './restaurant-orders.css'
-import { getRestaurant } from "../../Services/axios";
+import { getRestaurant, setDelivaryTime, setStetusOrder, setToFinishOrder } from "../../Services/axios";
 
 
 
 export const Order_card = ({order}) => {
 
+    const format = 'HH:mm';
     const user_logo = "https://www.jardi-creation.be/wp-content/uploads/2020/01/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg";
-    const orderStatus = [{label : "Finished", value : '0'} , {label : "inProcess", value : '1'} , {label : "Accepted", value: '2'} , {label: "Paid", value : '3'}]
+    const [dis0, setDis0] = useState(false)
+    const [dis1, setDis1] = useState(false)
+    const [dis2, setDis2] = useState(false)
+    const [dis3, setDis3] = useState(false)
+    const orderStatus = [{label : "Finished", disabled : dis0, value : '0', colorrr : 'green'} ,
+                         {label : "inProcess", disabled : dis1, value : '1', colorrr : 'black'} ,
+                         {label : "Accepted", disabled : dis2, value : '2', colorrr : 'black'} , 
+                         {label : "Paid", disabled : dis3, value : '3', colorrr : 'red'}]
     const [user_name, setResName] = useState('name')
-    /*const [user_logo, setResLogo] = useState()*/
+ /* const [user_logo, setResLogo] = useState() */
     const [order_day, setOrderDay] = useState(order.dateCreated)
     const [order_hour, setOrderHour] = useState()
     const [order_cost, setOrderCost] = useState()
     const [factor, setFactor] = useState(order.foods)
-    const [status, setStatus] = useState(orderStatus[order.stat])
+    const [status, setStatus] = useState(order.stat)
 
     useEffect(() => {
         console.log('here')
@@ -26,37 +34,55 @@ export const Order_card = ({order}) => {
         let hour = date.split('T')[1].slice(0,5)
         setOrderDay(day)
         setOrderHour(hour)
+
+/*        if (order.stat === 0){
+            setDis1(true)
+            setDis2(true)
+            setDis3(true)
+        }
+        if (order.stat === 1){
+            setDis2(true)
+            setDis3(true)
+        }
+        if (order.stat === 2){
+            setDis3(true)
+        }
+*/
     }, [])
- /*   
-    getRestaurant(order.restaurantId)
-    .then((res) => {
-        setResLogo(res.data.logoImg)
-        setResName(res.data.name)
-    })
-    .catch((e) => {
-        console.log(e)
-    })
-    /*** factor modal ***
-    const [visible, setVisible] = useState(false)
 
-    const showModal = () => {
-        console.log('dadfasdfasdfasdfasdfasdf')
-      setVisible(true)
-    };
+    useEffect(() => {
 
-    const handleOk = e => {
-      console.log(e);
-      setVisible(false)
-    };
+    }, [status])
 
-    const handleCancel = e => {
-      console.log(e);
-      setVisible(false)
-    };*/
+    const daliveryChange = (time, dateString) => {
+        console.log(time, dateString)
+        
+    }
 
     const handleChangeStatus = (value)=> {
         console.log(`selected ${value}`);
-        setStatus(orderStatus[value])
+        console.log(order.id + ' ' + value)
+        
+        if(value == 0){
+            setToFinishOrder(order.id)
+            .then((respons) => {
+                console.log(respons.data)
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+        }
+        else {
+            setStetusOrder(value, order.id)
+            .then((respons) => {
+                console.log(respons.date)
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+        }
+        
+        setStatus(orderStatus[value].value)
     }
 
     return (
@@ -68,8 +94,10 @@ export const Order_card = ({order}) => {
                 </div>
                 <div className="order-time-info">
                     <div className="inner-time-info">
+                        <h6 className="order-date"><i class='bx bxs-credit-card'></i> {order.id}</h6>
                         <h6 className="order-date"><i class='bx bxs-calendar'></i> {order_day}</h6>
                         <h6 className="order-time"><i class='bx bxs-time'></i> {order_hour}</h6>
+                        <h6 className="order-time"><i class='bx bxs-hourglass-bottom' ></i> {order.delivary}</h6>
                     </div>
                 </div>
                 <div className="order-card-bottom">
@@ -78,14 +106,16 @@ export const Order_card = ({order}) => {
                             defaultValue="set State"
                             style={{
                                 textAlign: 'left',  
-                                width: '200px'                        
+                                width: '100px'                        
                             }}
                             size={'large'}
                             onChange={handleChangeStatus}
                             options={orderStatus}
-                            value={status}
+                            value={orderStatus[status].label}
                         />
-                        <button className="factor-button"  /*onClick={showModal}*/>Factor</button>
+                        <TimePicker onChange={daliveryChange} /*defaultValue={dayjs('12:08', format)}*/ format={format} />
+                        <button style={{backgroundColor: orderStatus[status].colorrr}} className="status-button"><i class='bx bx-task' ></i> {orderStatus[status].label}</button>
+                        <button className="factor-button"  /*onClick={showModal}*/><i class='bx bxs-receipt' ></i> order</button>
                     </div>
                 </div>
             </div>

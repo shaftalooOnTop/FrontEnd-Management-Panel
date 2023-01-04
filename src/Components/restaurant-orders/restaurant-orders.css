@@ -115,17 +115,19 @@ h1.titlesss {
 }
 
 img.order-res-logo {
-    border: solid 4px #eeba2c;
-    width: 50px;
-    height: 50px;
+    border: solid 2px #eeba2c;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 50%;
+    margin-left: 16px;
 }
 
 h2.order-name-user {
     color: #eeba2c;
     margin-left: 8px;
     align-items: center;
+    margin-left: 8px;
 }
 
 .order-time-info {
@@ -141,6 +143,7 @@ h2.order-name-user {
 
 h6.order-date {
     margin: 0;
+    margin-left: 8px;
     align-items: center;
 }
 
@@ -160,6 +163,20 @@ h6.order-time {
     margin-top: 10px;
     margin: auto;
     display: flex;
+}
+
+.status-button {
+    border: solid 1px #161616;
+    background-color: #eeba2c;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    min-width: fit-content;
 }
 
 .factor-button {

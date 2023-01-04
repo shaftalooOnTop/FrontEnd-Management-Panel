@@ -19,6 +19,7 @@ import { ListCardRes } from "./Components/HomePage-customer/ListCards"
 import {Table_managment} from "./Components/table-managment/Table_managment";
 import { Sale_report } from "./Components/Sale-report/Sale-report"
 import { Orders } from "./Components/restaurant-orders/restaurant-orders";
+import { Poll } from "./Components/poll/poll";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route index element={<Blank />} />
           <Route path="/create-restaurant" element={<AddRestaurant/>} />
           <Route path="/order" element={<Orders />} />
+          <Route path="/poll" element={<Poll />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />
           <Route path="/table-managment" element={<Table_managment/>} />
           <Route path="/sale-report" element={<Sale_report/>} />

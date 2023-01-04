@@ -109,3 +109,22 @@ export function getRestaurantOrders(from, to, stat){
     };
     return axios.get(url+'api/Managment/getOrdersByStatus?From='+from+'&To='+to+'&stat='+stat, config)
 }
+
+export function setStetusOrder(stat, id) {
+    return axios.put(url+'api/Order/changeByStatus?status='+stat+'&orderid='+id)
+}
+
+export function setToFinishOrder(id) {
+    return axios.put(url+'api/Order/ChangeOrdertoFinishedByOrderId?orderid='+id)
+}
+
+export function setDelivaryTime(id, time){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.put(url+'api/Order/SetDelivaryTime?id='+id+'&delivary='+time, config)
+}
+
+export function getPollResult(id){
+    return axios.get(url+'api/Poll/result?restaurantid='+id)
+}

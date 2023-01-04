@@ -12,8 +12,13 @@ export const Orders = ()=> {
     const dateFormat = 'YYYY-MM-DD';
     const [from, setFrom] = useState()
     const [to, setTo] = useState()
-    const [stat, setStat] = useState()
+    const [filterOrders, setFilterOrders] = useState()
     const [orders, setOrders] = useState([])
+    const [gen, setGen] = useState(false)
+
+    useEffect(() => {
+
+    }, [, filterOrders])
 
     const { RangePicker } = DatePicker;
     const onChange = (value, dateString) => {
@@ -30,13 +35,13 @@ export const Orders = ()=> {
 
     const onChangeTab = ({ target: { value } }) => {
         console.log(value)
-        setStat(value)
+        setFilterOrders(value)
     }
 
     const onclickFilter = () => {
-        console.log(from + ' ' + to + ' ' + stat)
-
-        getRestaurantOrders(from, to, stat)
+        console.log(from + ' ' + to + ' ' + filterOrders)
+     /* setOrders() */
+        getRestaurantOrders(from, to, filterOrders)
         .then((response) => {
             console.log(response.data)
             setOrders(response.data)
@@ -70,7 +75,7 @@ export const Orders = ()=> {
     //         </div>
     //     )
     //   }
-                
+
       return tmp;
     }
 
@@ -104,6 +109,7 @@ export const Orders = ()=> {
                         <div className="orders-filter">
                             <Radio.Group size={'large'} onChange={onChangeTab} defaultValue="Paid" buttonStyle="solid">
                                 <Radio.Button className="radio-select" value="3">Paid</Radio.Button>
+                                <Radio.Button className="radio-select" value="2">Accepted</Radio.Button>
                                 <Radio.Button className="radio-select" value="1">Inprogress</Radio.Button>
                                 <Radio.Button className="radio-select" value="0">Finished</Radio.Button>
                             </Radio.Group>

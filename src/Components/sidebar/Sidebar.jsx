@@ -35,6 +35,12 @@ const sidebarNavItems = [
     section: "table-managment",
   },
   {
+    display: "Poll Result",
+    icon: <i class='bx bx-poll' ></i>,
+    to: "/poll",
+    section: "poll",
+  },
+  {
     display: "Sale Report",
     icon: <i class="bx bxs-report"></i>,
     to: "/sale-report",

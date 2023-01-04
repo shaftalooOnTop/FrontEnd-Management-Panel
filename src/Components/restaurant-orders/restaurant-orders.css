@@ -37,9 +37,11 @@
     background-color: #262626;
     margin-top: 30px;
     padding: 2.5%;
-    border-radius: 20px;
+    border-radius: 2rem;
     float: left;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .title-res-orders-container {
@@ -92,16 +94,17 @@ h1.titlesss {
 
 /*** order card ***/
 .order-card {
-    border: solid 1px #161616;
-    padding: 25px;
-    margin-bottom: 3px;
+    width: 50%;
+}
+
+.order-card-inner{
+    margin: 3px;
+    background-color: #161616;
+    border-radius: 2rem;
+    padding: 16px;
     color: white;
     display: block;
     align-items: center;
-    min-height: 125px;
-    border-radius: 2rem;
-    background-color: #161616;
-    width: 25%;
     text-align: center;
 }
 
@@ -136,12 +139,12 @@ h2.order-name-user {
     display: flex;
 }
 
-h4.order-date {
+h6.order-date {
     margin: 0;
     align-items: center;
 }
 
-h4.order-time {
+h6.order-time {
     margin: 0;
     margin-left: 8px;
     align-items: center;
@@ -156,26 +159,13 @@ h4.order-time {
 .order-factor-and-status {
     margin-top: 10px;
     margin: auto;
-}
-
-.status-button {
-    border: solid 1px #161616;
-    background-color: #161616;
-    /*padding: 20px;*/
-    border-radius: 10px;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    height: 50px;
-    width: 30%;
-    text-align: center;
-    min-width: fit-content;
+    display: flex;
 }
 
 .factor-button {
     border: solid 1px #262626;
     background-color: #eeba2c;
-    padding: 8px;
+    padding: 6px;
     border-radius: 10px;
     cursor: pointer;
     color: black;

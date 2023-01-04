@@ -10,29 +10,18 @@ import './restaurant-orders.css'
 export const Orders = ()=> {
 
     const dateFormat = 'YYYY-MM-DD';
-    const [headName, setHeadName] = useState('Inprogress')
-    const [dateOrders, setDateOrders] = useState()
-
-
-    useEffect(() => {
-
-    }, [headName, dateOrders])
-
-    useEffect(() => {
-        setDateOrders(new Date().toJSON().slice(0, 10))
-        getRestaurantOrders(currentResId)
-        .then((response) => {
-            console.log(response.data)
-        })
-        .catch((error) => {
-
-        })
-    }, [])
+    const [from, setFrom] = useState()
+    const [to, setTo] = useState()
+    const [stat, setStat] = useState()
+    const [orders, setOrders] = useState([])
 
     const { RangePicker } = DatePicker;
     const onChange = (value, dateString) => {
         console.log('Selected Time: ', value);
         console.log('Formatted Selected Time: ', dateString);
+        setFrom(dateString[0])
+        setTo(dateString[1])
+        console.log(from, to)
     };
     const onOk = (value) => {
         console.log('onOk: ', value);
@@ -41,7 +30,48 @@ export const Orders = ()=> {
 
     const onChangeTab = ({ target: { value } }) => {
         console.log(value)
-        setHeadName(value)
+        setStat(value)
+    }
+
+    const onclickFilter = () => {
+        console.log(from + ' ' + to + ' ' + stat)
+
+        getRestaurantOrders(from, to, stat)
+        .then((response) => {
+            console.log(response.data)
+            setOrders(response.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
+    const orders_gen = () => {
+        const tmp=[]
+        orders.forEach(o => {
+            console.log(o);
+            
+            tmp.push(
+                <div className="order-card">
+                    <Order_card order={o}/>
+                </div>
+            )
+      })
+    //   if (tmp.length == 0) {
+    //     return (
+    //         <div className="nothing">
+    //             <label className="label-btnnn">You have not registered an order yet, Go order :</label>
+    //             <button 
+    //                 className="btn-go-to-res-page"
+    //                 /*onClick={() => handlClick()}*/
+    //                 >
+    //                     restaurants
+    //             </button>
+    //         </div>
+    //     )
+    //   }
+                
+      return tmp;
     }
 
 
@@ -73,14 +103,15 @@ export const Orders = ()=> {
                         </div>
                         <div className="orders-filter">
                             <Radio.Group size={'large'} onChange={onChangeTab} defaultValue="Paid" buttonStyle="solid">
-                                <Radio.Button className="radio-select" value="Paid">Paid</Radio.Button>
-                                <Radio.Button className="radio-select" value="Inprogress">Inprogress</Radio.Button>
-                                <Radio.Button className="radio-select" value="History">Finished</Radio.Button>
+                                <Radio.Button className="radio-select" value="3">Paid</Radio.Button>
+                                <Radio.Button className="radio-select" value="1">Inprogress</Radio.Button>
+                                <Radio.Button className="radio-select" value="0">Finished</Radio.Button>
                             </Radio.Group>
                         </div>
+                        <button className="factor-button"  onClick={onclickFilter}>Filter</button>
                     </div>
                     <div className="restaurant-orders-container">
-                        <Order_card/>
+                        {orders_gen()}
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ import { getPollResult } from "../../Services/axios";
 import { currentResId } from "../../Services/consts";
 
 export const Poll = ()=> {
-    const [result, setResult] = useState()
+    const [result, setResult] = useState([])
 
     useEffect(() => {
         getPollResult(currentResId)
@@ -52,7 +52,7 @@ export const Poll = ()=> {
           },
       ];
       const config = {
-        appendPadding: 10,
+        appendPadding: 5,
         data,
         angleField: 'value',
         colorField: 'type',
@@ -62,7 +62,7 @@ export const Poll = ()=> {
           offset: '-30%',
           content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
           style: {
-            fontSize: 14,
+            fontSize: 25,
             textAlign: 'center',
           },
         },
@@ -73,25 +73,24 @@ export const Poll = ()=> {
         ],
       };
 
+    const gen = () => {
+        if (result.length == 0){
+            return <h4>no data</h4>
+        }
+        else {
+            return <Pie {...config} />
+        }
+    }
+
     return (
         <>
-        <ConfigProvider
-            theme={{
-                algorithm: theme.darkAlgorithm,
-                token: {
-                    colorPrimary: '#eeba2c',
-                    colorBorder: '#262626',
-                },
-            }}
-            >
             <div className="restaurant-poll-result">
                 <div className="inner-restaurant-poll">
                     <div className="restaurant-poll-container">
-                        <Pie {...config} />
+                        {gen()}
                     </div>
                 </div>
             </div>
-            </ConfigProvider>
         </>
     )
 }

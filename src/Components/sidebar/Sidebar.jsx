@@ -46,6 +46,12 @@ const sidebarNavItems = [
     to: "/sale-report",
     section: "sale-report",
   },
+  {
+    display: "Inventory",
+    icon: <i class='bx bx-archive-in' ></i>,
+    to: "/inventory",
+    section: "inventory",
+  },
 ];
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);

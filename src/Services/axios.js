@@ -128,3 +128,7 @@ export function setDelivaryTime(id, time){
 export function getPollResult(id){
     return axios.get(url+'api/Poll/result?restaurantid='+id)
 }
+
+export function getInventory(data){
+    return axios.get(url+'api/Inventory/Get/'+data)
+}

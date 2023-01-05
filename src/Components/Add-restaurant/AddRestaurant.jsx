@@ -22,7 +22,9 @@ import {
   Upload,
   Modal,
   notification,
-  Divider 
+  Divider,
+  theme, 
+  ConfigProvider,
 } from "antd";
 
 import { postRestaurant } from "../../Services/axios";
@@ -35,6 +37,7 @@ export const AddRestaurant = () => {
   const [imageHeader, setImageHeader] = useState()
   const [imglogo, setImglogo] = useState()
   const [tags, setTags] = useState([]);
+  const [them, setThem] = useState([])
   
   /**tags */
   // const [tags, setTags] = useState([]);
@@ -134,6 +137,9 @@ export const AddRestaurant = () => {
       "tags" : tags.map(x=>{
         return {"value":x}
       }),
+      "themeOfTable" : tags.map(x=>{
+        return {"theme":x}
+      }),
       "logoImg" : imglogo,
       "backgroundImg" : imageHeader
     }
@@ -165,10 +171,34 @@ export const AddRestaurant = () => {
     console.log(data);
   };
 
+  const options = [];
+/*for (let i = 10; i < 36; i++) {
+    options.push({
+      value: i.toString(36) + i,
+      label: i.toString(36) + i,
+    });
+  }
+*/
+
+const handleChangeSelectThem = (value) => {
+  console.log(`selected ${value}`);
+  setThem(value)
+  console.log(them)
+};
+
 
 /******render */
 
   return (
+    <ConfigProvider
+            theme={{
+                algorithm: theme.darkAlgorithm,
+                token: {
+                    colorPrimary: 'white',
+                    colorBorder: '#262626',
+                },
+            }}
+            >
     <div className="add-restaurant">
     <div className="inner-add-restaurant">
       <Form
@@ -297,10 +327,15 @@ export const AddRestaurant = () => {
                 },
               ]}
               >
-                <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
-                  Check all
-                </Checkbox>
-                <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
+                <Select
+                  mode="tags"
+                  style={{
+                    width: '100%',
+                  }}
+                  placeholder="input and enter"
+                  onChange={handleChangeSelectThem}
+                  options={options}
+                />
             </Form.Item>
             
             <Form.Item
@@ -462,5 +497,6 @@ export const AddRestaurant = () => {
       </Form>
     </div>
     </div>
+    </ConfigProvider>
   );
 };

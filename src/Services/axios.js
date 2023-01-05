@@ -109,3 +109,24 @@ export function getFoodSell(data){
     };
     return axios.get(url+"api/Managment/GetFoodSellByFoods?restaurantId="+data+"&from=1944-07-30T07:17:10.934Z&to=2030-07-30T07:17:10.934Z",config)
 }
+
+export function getDailySaleChart(data){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+"api/Managment/GetFoodSellChartDataDay/"+data,config)
+}
+
+export function getWeeklySaleChart(data){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+"api/Managment/GetFoodSellChartDataWeek/"+data,config)
+}
+
+export function getMonthlySaleChart(data){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+"api/Managment/GetFoodSellChartDataMonth/"+data,config)
+}

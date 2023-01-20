@@ -31,6 +31,7 @@ const dropin = {
 
 
 function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
+  const [restaurantId, setRestaurantId] = useState(2);
   const [foodName, setFoodName] = useState("");
   const [foodDescription, setFoodDescription] = useState("");
   const [foodPrice, setFoodPrice] = useState("");
@@ -66,7 +67,7 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
         fileReader.onload = (event) => {
           console.log(categoryId);
           postFood({
-            "restaurantId": 2,
+            "restaurantId": restaurantId,
             "name": foodName,
             "price": foodPrice,
             "image": event.target.result,

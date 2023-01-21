@@ -2,17 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./sidebar.css";
 import { S, G, getUser, getBearerToken } from "../../Services/axios";
-
 const sidebarNavItems = [
   {
-    display: "Home",
-    icon: <i className="bx bx-home"></i>,
-    to: "/",
-    section: "",
-  },
-  {
     display: "Profile",
-    icon: <i class='bx bxs-user-rectangle'></i>,
+    icon: <i class="bx bxs-user-rectangle"></i>,
     to: "/profile",
     section: "profile",
   },
@@ -42,7 +35,7 @@ const sidebarNavItems = [
   },
   {
     display: "Poll Result",
-    icon: <i class='bx bx-poll' ></i>,
+    icon: <i class="bx bx-poll"></i>,
     to: "/poll",
     section: "poll",
   },
@@ -54,11 +47,11 @@ const sidebarNavItems = [
   },
   {
     display: "Sale Chart",
-    icon: <i class='bx bxs-pie-chart-alt-2'></i>,
+    icon: <i class="bx bxs-pie-chart-alt-2"></i>,
     to: "/sale-chart",
     section: "sale-chart",
     display: "Inventory",
-    icon: <i class='bx bx-archive-in' ></i>,
+    icon: <i class="bx bx-archive-in"></i>,
     to: "/inventory",
     section: "inventory",
   },
@@ -91,9 +84,10 @@ const Sidebar = () => {
           name: e.data.fullName,
           img: e.data.picture,
         });
-        if(e.data.restaurantId === null){
+        if (e.data.restaurantId == null) {
           // console.log(e.data.restaurantId);
           setCreateRestaurantForm(true);
+          // window.location.reload(true);
         }
       });
     }
@@ -118,7 +112,7 @@ const Sidebar = () => {
     }, 50);
   }, []);
 
-  useEffect(() => {}, [login]);
+  // useEffect(() => {}, [login]);
 
   // change active index
   useEffect(() => {
@@ -132,7 +126,13 @@ const Sidebar = () => {
   const handleToggle = () => {
     setNavbarOpen(!navbarOpen);
   };
-
+  const filterNavBar = () => {
+    let t = [...sidebarNavItems];
+    if (!createRestaurantForm) {
+      t = t.filter((x) => x.display !== "Create Restaurant");
+    }
+    return t;
+  };
   return (
     <>
       <span
@@ -181,7 +181,7 @@ const Sidebar = () => {
               }px)`,
             }}
           ></div>
-          {sidebarNavItems.map((item, index) => (
+          {filterNavBar().map((item, index) => (
             <Link to={item.to} key={index} className="text-decoration-none">
               <div
                 className={`sidebar__menu__item ${
@@ -201,9 +201,9 @@ const Sidebar = () => {
                 navigate("/login");
               }}
             >
-              <div>
+              <div className="logout">
                 <i class="bx bx-log-out-circle bx-tada sign-out-hide"></i>
-                <p className="sign-out-p">Sign out</p>
+                <p className="sign-out-p">Log out</p>
               </div>
             </button>
           </div>

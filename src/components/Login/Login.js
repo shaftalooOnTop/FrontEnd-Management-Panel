@@ -18,7 +18,7 @@ export const Login = () => {
       }).then((response)=>{
         console.log(response)
         S("token",response.data.token)
-        navigate('/');
+        navigate('/profile');
       })
       .catch(function (error) {
         notification.open({
@@ -78,12 +78,12 @@ export const Login = () => {
             />
         </Form.Item>
 
-        <Form.Item className='a-links'>
+        {/* <Form.Item className='a-links'>
           <a className='register-link' href="">register now!</a>
           <a className='forgot-link' href="">
             Forgot password
           </a>
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item>
           <button className='button-add' htmlType="submit">

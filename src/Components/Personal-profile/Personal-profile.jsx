@@ -72,7 +72,7 @@ export const Personal_profile = () => {
   }, [userProfileFlag]);
 
   return (
-    <section className="vh-100" style={{ backgroundColor: "#161616" }}>
+    <section className="vh-100 personal-profile" style={{ backgroundColor: "#161616" }}>
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol lg="6" className="mb-4 mb-lg-0">
@@ -94,7 +94,7 @@ export const Personal_profile = () => {
                     fluid
                   />
                   <div className="admin-name">
-                    <h4>{userName}</h4>
+                    <p className="adminUserName">{userName}</p>
                     <p>Manager</p>
                   </div>
                 </MDBCol>

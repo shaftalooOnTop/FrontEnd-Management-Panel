@@ -20,7 +20,7 @@ export function RstMenu({ id }) {
   
 
   useEffect(() => {
-    getRestaurant(1005)
+    getRestaurant(id)
       .then((m) => {
         // console.log(m.data[0].categories[0])
         setMenu(m.data.menu);

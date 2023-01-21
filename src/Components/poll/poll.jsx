@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { theme, ConfigProvider } from 'antd';
 import ReactDOM from 'react-dom';
-import { Pie } from '@ant-design/plots';
+import { Column } from '@ant-design/plots';
 
 import './poll.css'
 import { getPollResult } from "../../Services/axios";
@@ -24,66 +24,81 @@ export const Poll = ()=> {
     const data = [
         {
             type: "service quality",
-            value: result[0],
+            sales: result[0],
           },
           {
             type: 'food quality',
-            value: result[1],
+            sales: result[1],
           },
           {
             type: 'Personnel Behavior',
-            value: result[2],
+            sales: result[2],
           },
           {
             type: 'order accuracy',
-            value: result[3],
+            sales: result[3],
           },
           {
             type: 'restaurant atmosphere',
-            value: result[4],
+            sales: result[4],
           },
           {
             type: 'find room in parking lot',
-            value: result[5],
+            sales: result[5],
           },
           {
             type: 'cleanliness of restaurant',
-            value: result[6],
+            sales: result[6],
           },
       ];
       const config = {
-        appendPadding: 5,
         data,
-        angleField: 'value',
-        colorField: 'type',
-        radius: 0.9,
+        xField: 'type',
+        yField: 'sales',
         label: {
-          type: 'inner',
-          offset: '-30%',
-          content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
+          position: 'middle',
+          // 'top', 'bottom', 'middle',
           style: {
-            fontSize: 20,
-            textAlign: 'center',
+            fill: '#FFFFFF',
+            opacity: 0.6,
           },
         },
-        interactions: [
-          {
-            type: 'element-active',
+        xAxis: {
+          label: {
+            autoHide: true,
+            autoRotate: false,
           },
-        ],
+        },
+        meta: {
+          type: {
+            alias: 'question',
+          },
+          sales: {
+            alias: 'resulte',
+          },
+        }
       };
 
     const gen = () => {
         if (result.length == 0){
-            return <h4>no data</h4>
+            return <h4>No data</h4>
         }
         else {
-            return <Pie {...config} />
+            return <Column {...config} />
         }
     }
 
     return (
         <>
+        <ConfigProvider
+            theme={{
+                algorithm: theme.darkAlgorithm,
+                token: {
+                    colorPrimary: '#eeba2c',
+                    colorBorder: '#262626',
+                },
+            }}
+            >
             <div className="restaurant-poll-result">
                 <div className="inner-restaurant-poll">
                     <div className="restaurant-poll-container">
@@ -91,6 +106,7 @@ export const Poll = ()=> {
                     </div>
                 </div>
             </div>
+          </ConfigProvider>
         </>
     )
 }

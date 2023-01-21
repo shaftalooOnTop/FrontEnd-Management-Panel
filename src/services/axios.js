@@ -132,3 +132,17 @@ export function getPollResult(id){
 export function getInventory(data){
     return axios.get(url+'api/Inventory/Get/'+data)
 }
+
+export function addToInventory(data){
+    // const config = {
+    //     headers: { Authorization: `Bearer ${G("token")}` }
+    // };
+    return axios.post(url+'api/Inventory',data /*config*/)
+}
+
+export function deleteFromInventory(id){
+    // const config = {
+    //     headers: { Authorization: `Bearer ${G("token")}` }
+    // };
+    return axios.delete(url+'api/Inventory/'+id /*config*/)
+}

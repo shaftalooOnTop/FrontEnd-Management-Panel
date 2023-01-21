@@ -22,3 +22,60 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: block;
 }
+
+.enter-button-add {
+    margin-top: -150px;
+}
+
+.enter-button-add:hover, .enter-button-remove:hover {
+    background-color: #fbc403;
+    -webkit-text-fill-color: black;
+    border-color:  white;
+}
+
+.modal-table-manage {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.form1 {
+    margin-top: 25px;
+    padding: 0px;
+    display: flex;
+    border: 0px;
+    border-radius: 20px;
+}
+
+.form-item {
+    margin: auto;
+}
+
+.div-form-items-add {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.div-form-items-remove{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ant-modal .ant-modal-content {
+    background-color: #262626;
+    width: 50%;
+}
+
+.ant-modal-title {
+    background-color: #262626;
+    -webkit-text-fill-color: #fbc403;
+    font-weight: bold;
+    font-size: large;
+}
+
+.input1 {
+    float: right;
+    width: 45px;
+}

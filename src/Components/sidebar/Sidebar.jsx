@@ -66,7 +66,7 @@ const Sidebar = () => {
   });
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
-
+  const [createRestaurantForm, setCreateRestaurantForm] = useState(true);
   useEffect(() => {
     if (typeof G("token") !== "string") {
       // getBearerToken("amirdldr@gmail.com", "Amir1379").then((x) => {
@@ -77,12 +77,14 @@ const Sidebar = () => {
       // });
     } else {
       getUser().then((e) => {
-        // console.log(e.data.username);
-        // console.log(e.data);
         setUser({
           name: e.data.fullName,
           img: e.data.picture,
         });
+        if(e.data.restaurantId === null){
+          // console.log(e.data.restaurantId);
+          setCreateRestaurantForm(true);
+        }
       });
     }
     getUser()

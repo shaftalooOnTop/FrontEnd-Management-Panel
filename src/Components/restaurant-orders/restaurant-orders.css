@@ -199,3 +199,34 @@ h6.order-time {
     background-color: #161616;
     border: solid 1px white;
 }
+
+@media screen and (max-width: 950px) {
+    .selectors{
+        display: block;
+    }
+
+    .orders-filter {
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .factor-button {
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .orders-date {
+        margin-top: 10px;
+    }
+
+    .restaurant-orders-container {
+        display: block;
+    }
+
+    .order-card {
+        width: 100%;
+    }
+}

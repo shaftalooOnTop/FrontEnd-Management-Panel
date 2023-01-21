@@ -1,0 +1,232 @@
+.restaurant-orders {
+    background-color: #161616;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.inner-restaurant-orders {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: table;
+}
+
+.selectors {
+    margin-top: 30px;
+    display: flex;
+    width: fit-content;
+    background-color: #262626;
+    padding: 1%;
+    border-radius: 20px;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.label-date {
+    margin-right: 10px;
+}
+
+.orders-date {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.restaurant-orders-container {
+    width: 100%;
+    background-color: #262626;
+    margin-top: 30px;
+    padding: 2.5%;
+    border-radius: 2rem;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title-res-orders-container {
+    display: flex;
+    background-color: #eeba2c;
+    padding: 2.5%;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.nameee {
+    text-align: left;
+    width: 50%;
+}
+
+.dateee {
+    text-align: right;
+    width: 50%;
+}
+
+h1.titlesss {
+    color: #161616;
+}
+
+.restaurant-orders-list {
+    background-color: #161616;
+    padding: 1.5%;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.simple-order {
+    display: block;
+    margin: 1%;
+    background-color: #262626;
+    padding: 2.5%;
+    border-radius: 20px;
+}
+
+.left-order-info{
+    width: 50%;
+}
+
+.right-order-info{
+    width: 50%;
+    text-align: right;
+}
+
+
+/*** order card ***/
+.order-card {
+    width: 50%;
+}
+
+.order-card-inner{
+    margin: 3px;
+    background-color: #161616;
+    border-radius: 2rem;
+    padding: 16px;
+    color: white;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+.order-card-top {
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+
+img.order-res-logo {
+    border: solid 2px #eeba2c;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 16px;
+}
+
+h2.order-name-user {
+    color: #eeba2c;
+    margin-left: 8px;
+    align-items: center;
+    margin-left: 8px;
+    font-weight: 100;
+}
+
+.order-time-info {
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+}
+
+.inner-time-info {
+    margin: auto;
+    display: flex;
+}
+
+h6.order-date {
+    margin: 0;
+    margin-left: 8px;
+    align-items: center;
+}
+
+h6.order-time {
+    margin: 0;
+    margin-left: 8px;
+    align-items: center;
+}
+
+.order-card-bottom {
+    text-align: right;
+    display: flex;
+    margin-top: 8px;
+}
+
+.order-factor-and-status {
+    margin-top: 10px;
+    margin: auto;
+    display: flex;
+}
+
+.status-button {
+    border: solid 1px #161616;
+    background-color: #eeba2c;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    min-width: fit-content;
+}
+
+.factor-button {
+    border: solid 1px #262626;
+    background-color: #eeba2c;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    min-width: fit-content;
+}
+
+.factor-button:hover {
+    -webkit-text-fill-color: white;
+    background-color: #161616;
+    border: solid 1px white;
+}
+
+@media screen and (max-width: 950px) {
+    .selectors{
+        display: block;
+    }
+
+    .orders-filter {
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .factor-button {
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .orders-date {
+        margin-top: 10px;
+    }
+
+    .restaurant-orders-container {
+        display: block;
+    }
+
+    .order-card {
+        width: 100%;
+    }
+}

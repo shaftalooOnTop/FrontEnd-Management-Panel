@@ -5,43 +5,56 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background-image: url("./backimg.jpg");
+    background-size: cover;
 }
 
 .table-page-container {
     border: solid 1px #262626;
-    padding: 45px;
-    border-radius: 8px;
+    background-color: #262626;
+    border-radius: 2rem;
+    padding: 20px;
     text-align: center;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-width: 950px;
+}
+
+.flex-div-table-addbtn {
+    margin-top: 15px;
+    display: flex;
 }
 
 .add-remove-table {
-    background-color: #262626;
-    padding: 50px;
-    border-radius: 8px;
-    border-color:  white;
+    /*background-color: #161616;*/
+    padding: 25px;
+    border-radius: 2rem;
+    border: solid 1.5px #161616;
     text-align: center;
-    width: 80%;
+    width: 20%;
     margin: auto;
+    margin-top: 0;
+    margin-right: 8px;
+    min-width: fit-content;
 }
 
 .res_tables {
-    margin-top: 15px;
-    background-color: #262626;
-    border-radius: 8px;
+    background-color: #161616;
+    border-radius: 2rem;
     padding: 8px;
+    width: 80%;
 }
 
 .inner-res-tables {
-    border: solid 2px #161616;
     padding: 8px;
     display: flex;
-    border-radius: 8px;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+    border-radius: 2rem;
 }
 
-.table {
-    min-width: 200px;
-    width: 33.33%;
+.simple-table {
+    width: 50%;
+    min-width: 180px;
 }
 
 .tmp {
@@ -64,8 +77,8 @@ h2.table-item {
 }
 
 h2.title-tables {
-    margin-top: 0;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-weight: bold;
     color: #eeba2c;
 }
@@ -76,8 +89,7 @@ label.table-item {
 
 .ant-btn {
     margin: 2px;
-    margin-top: 25px;
-    background-color: #262626;
+    background-color: #161616;
     /*padding: 20px;*/
     border-radius: 10px;
     cursor: pointer;
@@ -86,8 +98,18 @@ label.table-item {
     transition-duration: 0.4s;
 }
 
+.ant-btn:hover {
+    background-color: #eeba2c;
+    -webkit-text-fill-color: #262626;
+    box-shadow: 0;
+}
+
+.ant-modal-close-x {
+    color: white;
+}
+
 .add {
-    margin: 2px;
+    margin: 6px;
     border: solid 2px #fbc403;
     background-color: #fbc403;
     color: black;
@@ -99,6 +121,7 @@ label.table-item {
     transition-duration: 0.4s;
     margin-top: 0px;
     width: 80%;
+    min-width: fit-content;
 }
 .add:hover {
     background-color: black;
@@ -107,9 +130,9 @@ label.table-item {
 }
 
 .remove {
-    margin: 2px;
+    margin: 6px;
     border: dashed 2px #fbc403;
-    background-color: #262626;
+    background-color: #161616;
     /*padding: 20px;*/
     border-radius: 10px;
     cursor: pointer;
@@ -120,6 +143,7 @@ label.table-item {
     transition-duration: 0.4s;
     margin-top: 0px;
     width: 80%;
+    min-width: fit-content;
 }
 .remove:hover {
     background-color: #262626;
@@ -137,7 +161,7 @@ label.table-item {
     border-color:  white;
 }
 
-.modal {
+.modal-table-manage {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -158,11 +182,18 @@ label.table-item {
 .div-form-items-add {
     text-align: center;
     justify-content: center;
-    margin: auto;
+    width: 100%;
+}
+
+.div-form-items-remove{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .ant-modal .ant-modal-content {
     background-color: #262626;
+    width: 50%;
 }
 
 .ant-modal-title {
@@ -177,12 +208,41 @@ label.table-item {
     width: 45px;
 }
 
-@media screen and (max-width: 700px) {
-    .table {
+@media screen and (max-width: 950px) {
+
+    .table-page-container {
         width: 100%;
+        border-radius: 0;
+        top: 0;
+        bottom: 0;
+        min-width: fit-content;
+    }
+
+    .flex-div-table-addbtn {
+        display: block;
+        text-align: center;
     }
 
     .add-remove-table {
         width: 100%;
+        margin: 0;
+    }
+    
+    .res_tables {
+        width: 100%;
+        margin: 0;
+        margin-top: 8px;
+    }
+
+    .inner-res-tables {
+        display: block;
+    }
+
+    .simple-table {
+        width: 100%;
+    }
+
+    .ant-modal .ant-modal-content {
+        width: 70%;
     }
   }

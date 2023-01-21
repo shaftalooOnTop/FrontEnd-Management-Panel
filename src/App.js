@@ -20,6 +20,10 @@ import {Table_managment} from "./Components/table-managment/Table_managment";
 import { Sale_report } from "./Components/Sale-report/Sale-report";
 import { Sale_chart } from "./Components/Sale-chart/Sale-chart";
 import { Personal_profile } from "./Components/Personal-profile/Personal-profile";
+import { Orders } from "./Components/restaurant-orders/restaurant-orders";
+import { Poll } from "./Components/poll/poll";
+import { Inventory } from "./Components/Inventory/inventory";
+
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -36,7 +40,9 @@ function App() {
           <Route index element={<Blank />} />
           <Route path="/profile" element={<Personal_profile />} />
           <Route path="/create-restaurant" element={<AddRestaurant/>} />
-          <Route path="/order" element={<Blank />} />
+          <Route path="/order" element={<Orders />} />
+          <Route path="/poll" element={<Poll />} />
+          <Route path="/inventory" element={<Inventory />} />
           <Route path="/menu-managment" element={<Restaurant_page />} />
           <Route path="/table-managment" element={<Table_managment/>} />
           <Route path="/sale-report" element={<Sale_report/>} />

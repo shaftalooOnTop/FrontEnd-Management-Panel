@@ -76,17 +76,17 @@ export function getTableRestaurant (id) {
 }
 
 export function addTable (data) {
-    const config = {
+    /*const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
-    };
-    return axios.put(url+'api/Table', data, config)
+    };*/
+    return axios.post(url+'api/Table', data /*, config*/)
 }
 
 export function deleteTable (id) {
-    const config = {
+    /*const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
-    };
-    return axios.delete(url+'api/Table/:id?='+id, config)
+    };*/
+    return axios.delete(url+'api/Table/'+ id /*, config*/)
 }
 
 export function getProfit (data){
@@ -129,4 +129,47 @@ export function getMonthlySaleChart(data){
         headers: { Authorization: `Bearer ${G("token")}` }
     };
     return axios.get(url+"api/Managment/GetFoodSellChartDataMonth/"+data,config)
+}
+export function getRestaurantOrders(from, to, stat){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+'api/Managment/getOrdersByStatus?From='+from+'&To='+to+'&stat='+stat, config)
+}
+
+export function setStetusOrder(stat, id) {
+    return axios.put(url+'api/Order/changeByStatus?status='+stat+'&orderid='+id)
+}
+
+export function setToFinishOrder(id) {
+    return axios.put(url+'api/Order/ChangeOrdertoFinishedByOrderId?orderid='+id)
+}
+
+export function setDelivaryTime(id, time){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.put(url+'api/Order/SetDelivaryTime?id='+id+'&delivary='+time, config)
+}
+
+export function getPollResult(id){
+    return axios.get(url+'api/Poll/result?restaurantid='+id)
+}
+
+export function getInventory(data){
+    return axios.get(url+'api/Inventory/Get/'+data)
+}
+
+export function addToInventory(data){
+    // const config = {
+    //     headers: { Authorization: `Bearer ${G("token")}` }
+    // };
+    return axios.post(url+'api/Inventory',data /*config*/)
+}
+
+export function deleteFromInventory(id){
+    // const config = {
+    //     headers: { Authorization: `Bearer ${G("token")}` }
+    // };
+    return axios.delete(url+'api/Inventory/'+id /*config*/)
 }

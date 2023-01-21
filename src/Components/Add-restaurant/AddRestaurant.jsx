@@ -21,7 +21,10 @@ import {
   Select,
   Upload,
   Modal,
-  notification
+  notification,
+  Divider,
+  theme, 
+  ConfigProvider,
 } from "antd";
 
 import { postRestaurant } from "../../Services/axios";
@@ -34,6 +37,7 @@ export const AddRestaurant = () => {
   const [imageHeader, setImageHeader] = useState()
   const [imglogo, setImglogo] = useState()
   const [tags, setTags] = useState([]);
+  const [them, setThem] = useState([])
   
   /**tags */
   // const [tags, setTags] = useState([]);
@@ -100,6 +104,26 @@ export const AddRestaurant = () => {
     }
   }
 
+  /**check box */
+  const CheckboxGroup = Checkbox.Group;
+  const plainOptions = ['birth', 'theme2', 'theme3'];
+  //const defaultCheckedList = ['Apple', 'Orange'];
+
+  const [checkedList, setCheckedList] = useState();
+  const [indeterminate, setIndeterminate] = useState(true);
+  const [checkAll, setCheckAll] = useState(false);
+  const onChange = (list) => {
+    setCheckedList(list);
+    setIndeterminate(!!list.length && list.length < plainOptions.length);
+    setCheckAll(list.length === plainOptions.length);
+    //console.log(checkedList)
+  };
+  const onCheckAllChange = (e) => {
+    setCheckedList(e.target.checked ? plainOptions : []);
+    setIndeterminate(false);
+    setCheckAll(e.target.checked);
+  };
+
   /**form */
   const [form] = Form.useForm();
   const onFinish = (values) => {
@@ -109,9 +133,12 @@ export const AddRestaurant = () => {
       "name" : values.name,
       "address" : values.address,
       "city" : city,
-      "description" : values.description + " phone : " + values.phone_code + values.phone_number,
+      "description" : values.description + " phone : " + values.number,
       "tags" : tags.map(x=>{
         return {"value":x}
+      }),
+      "themeOfTable" : tags.map(x=>{
+        return {"theme":x}
       }),
       "logoImg" : imglogo,
       "backgroundImg" : imageHeader
@@ -144,13 +171,38 @@ export const AddRestaurant = () => {
     console.log(data);
   };
 
+  const options = [];
+/*for (let i = 10; i < 36; i++) {
+    options.push({
+      value: i.toString(36) + i,
+      label: i.toString(36) + i,
+    });
+  }
+*/
+
+const handleChangeSelectThem = (value) => {
+  console.log(`selected ${value}`);
+  setThem(value)
+  console.log(them)
+};
+
 
 /******render */
 
   return (
+    <ConfigProvider
+            theme={{
+                algorithm: theme.darkAlgorithm,
+                token: {
+                    colorPrimary: 'white',
+                    colorBorder: '#262626',
+                },
+            }}
+            >
     <div className="add-restaurant">
+    <div className="inner-add-restaurant">
       <Form
-        className="form"
+        className="add-restaurant-container"
         layout="vertical"
         size="large"
         form={form}
@@ -159,32 +211,31 @@ export const AddRestaurant = () => {
         scrollToFirstError
       >
         <div className="top-info">
-          <h1>Create Restaurant</h1>
+          <h1><i class="bx bx-restaurant"></i>Create Restaurant</h1>
         </div>
 
-        <div className="info">
+        <div className="info-add-res">
           <div className="left-info">
             <Form.Item
               name="logo"
-              label="RESTAURANT LOGO"
+              label="LOGO IMAGE"
               rules={[
                 {
-                  required: false,
-                  message: "Please input your restaurant name!",
+                  required: true,
+                  message: "restaurant logo!",
                 },
               ]}
               >
-                <input type='file' id="logoUpload" accept=".png, .jpg, .jpeg" onChange={logobase64} />
+                <input style={{color: 'white', width:'80%'}} type='file' id="logoUpload" accept=".png, .jpg, .jpeg" onChange={logobase64} />
             </Form.Item>
 
             <Form.Item
-              className="name"
               name="name"
               label="RESTAURANT NAME"
               rules={[
                 {
                   required: true,
-                  message: "Please input your restaurant name!",
+                  message: "restaurant name!",
                 },
               ]}
             >
@@ -197,7 +248,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: false,
-                  message: "Please input your restaurant tags!",
+                  message: "restaurant tags!",
                 },
               ]}
             >
@@ -267,16 +318,37 @@ export const AddRestaurant = () => {
             </Form.Item>
 
             <Form.Item
-              name="header"
-              label="RESTAURANT HEADER"
+              name="theme"
+              label="THEME"
               rules={[
                 {
                   required: false,
-                  message: "Please input your restaurant header!",
+                  message: "restaurant header!",
                 },
               ]}
               >
-                <input type='file' id="headerUpload" accept=".png, .jpg, .jpeg" onChange={headerbase64} />
+                <Select
+                  mode="tags"
+                  style={{
+                    width: '100%',
+                  }}
+                  placeholder="input and enter"
+                  onChange={handleChangeSelectThem}
+                  options={options}
+                />
+            </Form.Item>
+            
+            <Form.Item
+              name="header"
+              label="HEADER IMAGE"
+              rules={[
+                {
+                  required: true,
+                  message: "restaurant header!",
+                },
+              ]}
+              >
+                <input style={{color: 'white', width:'80%'}} type='file' id="headerUpload" accept=".png, .jpg, .jpeg" onChange={headerbase64} />
             </Form.Item>
           </div>
 
@@ -287,7 +359,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your restaurant code!",
+                  message: "city!",
                 },
               ]}
             >
@@ -304,13 +376,13 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your restaurant address!",
+                  message: "restaurant address!",
                 },
               ]}
             >
               <Input placeholder="address" />
             </Form.Item>
-
+{/*
               <div className='name-code'>
             <Form.Item
               name="phone_code"
@@ -318,7 +390,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your phone code!',
+                  message: 'code!',
                 },
               ]}
               >
@@ -352,6 +424,26 @@ export const AddRestaurant = () => {
                 />
               </Form.Item>
             </div>
+*/}
+            <Form.Item
+              name="number"
+              label="PHONE NUMBER"
+              rules={[
+                {
+                  required: true,
+                  message: "phone number!",
+                },
+              ]}
+            >
+              <Input
+                type="number"
+                placeholder="12345678"
+                minLength={8}
+                maxLength={8}
+                style={{width: '80%'}}
+                defaultValue=""
+              />
+            </Form.Item>
 
             <Form.Item
               name="description"
@@ -359,7 +451,7 @@ export const AddRestaurant = () => {
               rules={[
                 {
                   required: false,
-                  message: "Please input description",
+                  message: "description!",
                 },
               ]}
             >
@@ -392,7 +484,7 @@ export const AddRestaurant = () => {
             ]}
           >
             <Checkbox>
-              I have read the <a href="">agreement</a>
+              I have read the <a className="agreement" href="">agreement</a>
             </Checkbox>
           </Form.Item>
 
@@ -404,5 +496,7 @@ export const AddRestaurant = () => {
         </div>
       </Form>
     </div>
+    </div>
+    </ConfigProvider>
   );
 };

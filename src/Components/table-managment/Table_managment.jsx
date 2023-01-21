@@ -1,4 +1,5 @@
 import React from "react";
+import { currentResId } from "../../Services/consts";
 import { useEffect , useState } from "react";
 import { getTableRestaurant, getUser } from "../../Services/axios";
 import { addTable , deleteTable } from "../../Services/axios";
@@ -23,7 +24,7 @@ const TableFormAdd = ({ open, onCreate, onCancel}) => {
   const [form] = Form.useForm();
 
 return (
-  <Modal className="modal" title="Add table" open={open} onCancel={onCancel}
+  <Modal className="modal-table-manage" title="Add table" open={open} onCancel={onCancel}
     onOk={() => {
       form.validateFields()
       .then((values) => {
@@ -51,11 +52,11 @@ return (
           rules={[
             {
               required: true,
-              message: 'Please input table number!'
+              message: 'number!'
             },
           ]}
           >
-          <InputNumber className="input1" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
+          <InputNumber className="input1" placeholder="0" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
         </Form.Item>
 
         <Form.Item 
@@ -64,11 +65,11 @@ return (
           rules={[
             {
               required: true,
-              message: 'Please input table capacity!'
+              message: 'capacity!'
             },
           ]}
           >
-          <InputNumber className="input1" min={1} max={10} /*defaultValue={0}*/ onChange={onChange} />
+          <InputNumber className="input1" placeholder="0" min={1} max={10} /*defaultValue={0}*/ onChange={onChange} />
         </Form.Item>
         </div>
 
@@ -86,7 +87,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
   const [form] = Form.useForm();
 
   return (
-    <Modal className="modal" title="remove table" open={open} onCancel={onCancel}
+    <Modal className="modal-table-manage" title="remove table" open={open} onCancel={onCancel}
     onOk={() => {
       form.validateFields()
       .then((values) => {
@@ -98,7 +99,6 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
       })
     }} 
         >
-        <div>
         <Form className='form1'
           layout='horizontal'
           size='large'
@@ -106,21 +106,21 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
           name="remove_table"
           scrollToFirstError
           >
-
+          <div className="div-form-items-remove">
           <Form.Item className="form-item"
             name="number"
             label="number"
             rules={[
               {
                 required: true,
-                message: 'Please input table number!',
+                message: 'number!',
               },
             ]}
           >
-            <InputNumber className="input1" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
+            <InputNumber className="input1" placeholder="0" min={1} max={20} /*defaultValue={0}*/ onChange={onChange} />
           </Form.Item>
+          </div>
         </Form>
-        </div>
         
     </Modal>
   );
@@ -130,7 +130,7 @@ const TableFormRemove = ({ open, onCreate, onCancel}) => {
 /************************************App */
 export const Table_managment = () => {
 
-  const [id, setIdRestaurant] = useState(3)
+  const [id, setIdRestaurant] = useState(currentResId)
 
   useEffect(() => {
     getUser()
@@ -142,6 +142,7 @@ export const Table_managment = () => {
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [tables, setTables] = useState([])
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     getTableRestaurant(id)
@@ -163,7 +164,7 @@ export const Table_managment = () => {
       } 
       console.log(error.config);
     })
-  }, [])
+  }, [, count])
 
     const showModal_add = () => {
       setIsAddModalOpen(true);
@@ -190,6 +191,7 @@ export const Table_managment = () => {
       addTable(data)
       .then((response) => {
         console.log(response)
+        setCount(count+1)
         notification.open({
           message: 'successful',
           //description: error.response.data,
@@ -221,41 +223,33 @@ export const Table_managment = () => {
       
     };
 
-
-    const [id_table, setIdTable]= useState(-1)
-    const [flag, setFlag] = useState(false)
     const onRemoveTable = (values) => {
-      console.log('Received values of form: ', values);
-      const tmp=[]
+      console.log('Received values of form: ', values.number);
+      /*const tmp=[]
       tables.forEach(item=>{
         console.log(item);
         tmp.push({
           id : item.id,
           number : item.number
         })
-      })
+      })*/
+      let target_table = 0
       console.log(values.number)
-      tmp.forEach((num) => { 
-        console.log(num.id)
-        if (num.number === values.number){
-          setIdTable(num.id)
-          setFlag(true)
+      tables.map(t => {
+        if (t.number == values.number){
+          target_table = t.id
         }
       })
-      console.log(flag)
-      if (!flag){
-        notification.open({
-          message: 'error',
-          description: 'There is no table with this number!', 
-          type:'error',
-          style: {borderRadius: '5px', backgroundColor: '#fbc403'}
-        });
-        return; 
-      }
-      deleteTable(id_table)
+      deleteTable(target_table)
       .then((response) => {
         console.log(response)
-        
+        setCount(count-1)
+        notification.open({
+          message: 'successful',
+          //description: error.response.data,
+          type:'success',
+          style: {borderRadius: '5px', backgroundColor: '#fbc403'}
+        });
         setIsRemoveModalOpen(false);
       })
       .catch(function (error) {
@@ -289,7 +283,7 @@ export const Table_managment = () => {
         console.log(t);
         
         tmp.push(
-          <div className="table">
+          <div className="simple-table">
             <div className="tmp">
               <div className="table-items">
                 <label className="table-item">NUM : </label>
@@ -312,27 +306,29 @@ export const Table_managment = () => {
             <div>
               <h1>MANAGE TABLES</h1>
             </div>
-            <div className="add-remove-table">
-                <button className="add" onClick={showModal_add}>Add table</button>
-                <button className="remove" onClick={showModal_rem}>Remove table</button>
-                <TableFormAdd
-                  open={isAddModalOpen}
-                  onCreate={onCreateTable}
-                  onCancel={handleCancel}
-                  />
-                <TableFormRemove
-                  open={isRemoveModalOpen}
-                  onCreate={onRemoveTable}
-                  onCancel={handleCancel}
-                  />
-            </div>
-            <div className="res_tables">
-                <div>
-                  <h2 className="title-tables">Tables</h2>
-                </div>
-                <div className="inner-res-tables">
-                  {dataGen()}
-                </div>
+            <div className="flex-div-table-addbtn">
+              <div className="add-remove-table">
+                  <button className="add" onClick={showModal_add}>Add table</button>
+                  <button className="remove" onClick={showModal_rem}>Remove table</button>
+                  <TableFormAdd
+                    open={isAddModalOpen}
+                    onCreate={onCreateTable}
+                    onCancel={handleCancel}
+                    />
+                  <TableFormRemove
+                    open={isRemoveModalOpen}
+                    onCreate={onRemoveTable}
+                    onCancel={handleCancel}
+                    />
+              </div>
+              <div className="res_tables">
+                  {/*<div>
+                    <h2 className="title-tables">Tables</h2>
+                  </div>*/}
+                  <div className="inner-res-tables">
+                    {dataGen()}
+                  </div>
+              </div>
             </div>
           </div>
         </div>

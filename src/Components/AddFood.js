@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/modules/modal.module.css";
 import { MdOutlineClose } from "react-icons/md";
 import Button from "./Button";
-import { useDispatch } from "react-redux";
-import { addTodo, updateTodo } from "../slices/todoSlice";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
-import { postFood } from "../Services/axios";
+import { postFood, getUser } from "../Services/axios";
 import './addFood.css';
 const dropin = {
   hidden: {
@@ -31,7 +29,7 @@ const dropin = {
 
 
 function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
-  const [restaurantId, setRestaurantId] = useState(2);
+  const [restaurantId, setRestaurantId] = useState();
   const [foodName, setFoodName] = useState("");
   const [foodDescription, setFoodDescription] = useState("");
   const [foodPrice, setFoodPrice] = useState("");
@@ -39,6 +37,12 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
   const [foodInventory,setFoodInventory] = useState("");
   const [status, setStauts] = useState("incomplete");
   const dispatch = useState(""); //need more
+
+  useEffect(() => {
+    getUser().then((e) => {
+      setRestaurantId(e.data.restaurantId);
+    });
+  }, []);
 
   useEffect(() => {
     if (type === "update" && todo) {
@@ -66,6 +70,7 @@ function AddFood({ type, addFoodOpen, setAddFoodOpen, todo, categoryId }) {
         fileReader.readAsDataURL(imgFile);
         fileReader.onload = (event) => {
           console.log(categoryId);
+          
           postFood({
             "restaurantId": restaurantId,
             "name": foodName,

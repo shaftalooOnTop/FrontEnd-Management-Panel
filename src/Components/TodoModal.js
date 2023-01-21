@@ -7,7 +7,7 @@ import { addTodo, updateTodo } from "../slices/todoSlice";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
-import { postCategory } from "../Services/axios";
+import { postCategory, getUser } from "../Services/axios";
 
 const dropin = {
   hidden: {
@@ -35,6 +35,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const [status, setStauts] = useState("incomplete");
   const dispatch = useState(""); //need more
   const [categories, setCategories] = useState(["All", "Burger", "Fried", "Dessert", "Pizza", "Sandwitch"]);
+  const [restaurantId, setRestaurantId] = useState();
   useEffect(() => {
     if (type === "update" && todo) {
       setTitle(todo.title);
@@ -46,6 +47,11 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   }, [type.todo, modalOpen]);
 
   useEffect(() =>{}, [title]);
+  useEffect(() => {
+    getUser().then((e) => {
+      setRestaurantId(e.data.restaurantId);
+    });
+  }, []);
 
   const handleSumbit = (e) => {
     e.preventDefault();
@@ -58,7 +64,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         
         postCategory({
           "categoryName": title,
-          "restaurantId": 2,
+          "restaurantId": restaurantId,
         } ).then(() => {console.log("Added category")})
         
         // dispatch(

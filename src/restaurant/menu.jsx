@@ -17,8 +17,10 @@ export function RstMenu({ id }) {
   //var imgURL= "data:image/png;base64,";
   var forFlag = 0;
 
+  
+
   useEffect(() => {
-    getRestaurant(id)
+    getRestaurant(1005)
       .then((m) => {
         // console.log(m.data[0].categories[0])
         setMenu(m.data.menu);

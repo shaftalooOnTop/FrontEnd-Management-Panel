@@ -84,7 +84,7 @@ export const Sale_report = () => {
   return (
     <>
       <div className="report-all">
-        <div>
+        <div className="reportAll">
           <div className="sale-report-cards">
             <div
               className="card text-white  mb-3"

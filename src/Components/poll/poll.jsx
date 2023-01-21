@@ -74,7 +74,7 @@ export const Poll = ()=> {
             alias: 'question',
           },
           sales: {
-            alias: 'resulte',
+            alias: 'result',
           },
         }
       };

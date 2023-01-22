@@ -50,6 +50,8 @@ const sidebarNavItems = [
     icon: <i class="bx bxs-pie-chart-alt-2"></i>,
     to: "/sale-chart",
     section: "sale-chart",
+  },
+  {
     display: "Inventory",
     icon: <i class="bx bx-archive-in"></i>,
     to: "/inventory",

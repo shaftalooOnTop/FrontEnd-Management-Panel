@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import { getProfit, getBusiestTime, getFoodSell } from "../../Services/axios";
+import { getProfit, getBusiestTime, getFoodSell, getDailyOrders, getMonthlyOrders, getYearlyOrders } from "../../Services/axios";
 import { url } from "../../Services/consts";
 
 export const Sale_report = () => {
@@ -45,6 +45,10 @@ export const Sale_report = () => {
   const [monthlyProfit, setMonthlyProfit] = useState(0);
   const [yearlyProfit, setYearlyProfit] = useState(0);
 
+  const [dailyOrders, setDailyOrders] = useState(0);
+  const [monthlyOrders, setMonthlyOrders] = useState(0);
+  const [yearlyOrders, setYearlyOrders] = useState(0);
+
   const [dailyBusiestTime, setDailyBusiestTime] = useState(12);
   const [weeklyBusiestTime, setWeeklyBusiestTime] = useState(12);
   const [monthlyBusiestTime, setMonthlyBusiestTime] = useState(12);
@@ -59,6 +63,22 @@ export const Sale_report = () => {
         setYearlyProfit(e.data.yearlyProfit);
       })
       .catch();
+    getDailyOrders(restId)
+      .then((e) => {
+        setDailyOrders(e.data);
+      })
+      .catch();
+      getMonthlyOrders(restId)
+      .then((e) => {
+        setMonthlyOrders(e.data);
+      })
+      .catch();
+      getYearlyOrders(restId)
+      .then((e) => {
+        setYearlyOrders(e.data);
+      })
+      .catch();
+
 
     getBusiestTime(restId)
       .then((e) => {
@@ -94,11 +114,15 @@ export const Sale_report = () => {
                 backgroundColor: "#2A6877",
               }}
             >
-              <div className="card-header">Daily Profit</div>
+            <div className="card-header">Daily Profit</div>
               <div className="card-body">
-                <h5 className="card-title">{current_day}</h5>
-                <p className="card-text">{dailyProfit} Toman</p>
+                <div>
+                  <h5 className="card-title">{current_day}</h5>
+                  <p className="card-text">{dailyProfit} Toman {dailyOrders} Orders</p>
+                </div>
               </div>
+              
+              
             </div>
 
             <div
@@ -112,7 +136,7 @@ export const Sale_report = () => {
               <div className="card-header">Monthly Profit</div>
               <div className="card-body">
                 <h5 className="card-title">{current_month}</h5>
-                <p className="card-text">{monthlyProfit} Toman</p>
+                <p className="card-text">{monthlyProfit} Toman {monthlyOrders} Orders</p>
               </div>
             </div>
             <div
@@ -126,7 +150,7 @@ export const Sale_report = () => {
               <div className="card-header">Yearly Profit</div>
               <div className="card-body">
                 <h5 className="card-title">{current_year}</h5>
-                <p className="card-text">{yearlyProfit} Toman</p>
+                <p className="card-text">{yearlyProfit} Toman {yearlyOrders} Orders</p>
               </div>
             </div>
             

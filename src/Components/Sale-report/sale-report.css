@@ -89,6 +89,7 @@
     max-height: 500px;
     
 }
+
 @media screen and (max-width: 500px) {
     .sale-report-cards{
         display: block;

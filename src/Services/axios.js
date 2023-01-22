@@ -173,3 +173,24 @@ export function deleteFromInventory(id){
     // };
     return axios.delete(url+'api/Inventory/'+id /*config*/)
 }
+
+export function getDailyOrders (id){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+"api/Order/TotalNumberOfToday?restaurantid="+id,config)
+}
+
+export function getMonthlyOrders (id){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+"api/Order/TotalNumberOfmonth?restaurantid="+id,config)
+}
+
+export function getYearlyOrders (id){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+"api/Order/TotalNumberOfyear?restaurantid="+id,config)
+}

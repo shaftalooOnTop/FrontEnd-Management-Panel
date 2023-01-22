@@ -135,8 +135,10 @@ export const Table_managment = () => {
   useEffect(() => {
     getUser()
     .then((res) => {
-      console.log(res)
+      console.log(res.data.restaurantId);
+      setIdRestaurant(res.data.restaurantId);
     })
+
   }, [])
 
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
@@ -145,11 +147,13 @@ export const Table_managment = () => {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
-    getTableRestaurant(id)
+    getUser()
+    .then((res) => {
+    getTableRestaurant(res.data.restaurantId)
     .then((response)=>{
-      console.log("all of tables : ", response.data)
+      // console.log("all of tables : ", response.data)
       setTables(response.data)
-      console.log('tables list : ',JSON.stringify(tables))
+      // console.log('tables list : ',JSON.stringify(tables))
     })
   .catch(function (error) {
       if (error.response) {
@@ -165,6 +169,7 @@ export const Table_managment = () => {
       console.log(error.config);
     })
   }, [, count])
+})
 
     const showModal_add = () => {
       setIsAddModalOpen(true);

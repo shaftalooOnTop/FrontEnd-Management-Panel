@@ -1,8 +1,10 @@
+
 .restaurant-inventory {
     background-color: #161616;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    
 }
 
 .inner-restaurant-inventory {
@@ -10,6 +12,8 @@
     margin-left: 10%;
     margin-right: 10%;
     display: table;
+
+
 }
 
 .restaurant-inventory-container {

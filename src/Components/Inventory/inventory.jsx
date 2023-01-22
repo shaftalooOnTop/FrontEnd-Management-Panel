@@ -5,7 +5,7 @@ import { theme, ConfigProvider, Button, Form, Input, Popconfirm, Table, notifica
 import ReactDOM from 'react-dom';
 
 import './inventory.css'
-import { getInventory, addToInventory, deleteFromInventory } from "../../Services/axios";
+import { getInventory, addToInventory, deleteFromInventory, getUser } from "../../Services/axios";
 import { currentResId } from "../../Services/consts";
 
 const TableFormAdd = ({ open, onCreate, onCancel}) => {
@@ -78,7 +78,10 @@ export const Inventory = ()=> {
   const [count, setCount] = useState(0);
 
   useEffect(()=> {
-      getInventory(currentResId)
+    getUser()
+    .then((res) => {
+      setIdRestaurant(res.data.restaurantId)
+      getInventory(res.data.restaurantId)
       .then((response)=> {
           console.log(response.data)
           setDataSource(response.data)
@@ -86,6 +89,7 @@ export const Inventory = ()=> {
       .catch((e) => {
           console.log(e)
       })
+    })
   },[, count])
 
   const onAddTpInventory = (values) => {

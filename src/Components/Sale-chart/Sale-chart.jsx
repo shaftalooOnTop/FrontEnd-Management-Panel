@@ -4,6 +4,7 @@ import {
   getDailySaleChart,
   getWeeklySaleChart,
   getMonthlySaleChart,
+  getUser
 } from "../../Services/axios";
 import { useEffect, useRef, useState } from "react";
 var CanvasJS = CanvasJSReact.CanvasJS;
@@ -65,7 +66,9 @@ export const Sale_chart = () => {
     ],
   };
   useEffect(() => {
-    getDailySaleChart(restId)
+    getUser()
+    .then((res) => {
+    getDailySaleChart(res.data.restaurantId)
       .then((e) => {
         const t = e.data;
         const tmp = t.map((d) => {
@@ -78,7 +81,7 @@ export const Sale_chart = () => {
       })
     .catch();
 
-    getWeeklySaleChart(restId)
+    getWeeklySaleChart(res.data.restaurantId)
       .then((e) => {
         const t = e.data;
         const tmp = t.map((d) => {
@@ -91,7 +94,7 @@ export const Sale_chart = () => {
       })
       .catch();
 
-    getMonthlySaleChart(restId)
+    getMonthlySaleChart(res.data.restaurantId)
       .then((e) => {
         const t2 = e.data;
         const tmp2 = t2.map((d) => {
@@ -103,6 +106,7 @@ export const Sale_chart = () => {
         setMonthlySaleChart(tmp2);
       })
       .catch();
+    })
   }, []);
 
   return (

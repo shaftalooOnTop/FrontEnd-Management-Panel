@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getRestaurantOrders } from "../../Services/axios";
+import { getRestaurantOrders, getUser } from "../../Services/axios";
 import { currentResId } from "../../Services/consts";
 import { theme, ConfigProvider, DatePicker, Radio } from 'antd';
 import dayjs from 'dayjs';
@@ -41,7 +41,10 @@ export const Orders = ()=> {
     const onclickFilter = () => {
         console.log(from + ' ' + to + ' ' + filterOrders)
      /* setOrders() */
-        getRestaurantOrders(from, to, filterOrders)
+        getUser()
+        .then((res) => {
+            console.log(res.data.restaurantId);
+        getRestaurantOrders(from, to, filterOrders, res.data.restaurantId)
         .then((response) => {
             console.log(response.data)
             setOrders(response.data)
@@ -49,6 +52,7 @@ export const Orders = ()=> {
         .catch((error) => {
             console.log(error)
         })
+    })
     }
 
     const orders_gen = () => {

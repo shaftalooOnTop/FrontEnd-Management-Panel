@@ -130,11 +130,11 @@ export function getMonthlySaleChart(data){
     };
     return axios.get(url+"api/Managment/GetFoodSellChartDataMonth/"+data,config)
 }
-export function getRestaurantOrders(from, to, stat){
+export function getRestaurantOrders(from, to, stat, id){
     const config = {
         headers: { Authorization: `Bearer ${G("token")}` }
     };
-    return axios.get(url+'api/Managment/getOrdersByStatus?From='+from+'&To='+to+'&stat='+stat, config)
+    return axios.get(url+'api/Managment/getOrdersByStatus?From='+from+'&To='+to+'&stat='+stat+'&restaurantid='+id, config)
 }
 
 export function setStetusOrder(stat, id) {

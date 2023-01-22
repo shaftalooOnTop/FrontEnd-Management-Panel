@@ -194,3 +194,10 @@ export function getYearlyOrders (id){
     };
     return axios.get(url+"api/Order/TotalNumberOfyear?restaurantid="+id,config)
 }
+
+export function getRankTable(data){
+    const config = {
+        headers: { Authorization: `Bearer ${G("token")}` }
+    };
+    return axios.get(url+"api/Table/tablerank?restaurantid="+data,config)
+}

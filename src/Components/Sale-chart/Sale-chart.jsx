@@ -112,7 +112,7 @@ export const Sale_chart = () => {
   return (
     <div>
       <CanvasJSChart options={optionsDay} />
-      <CanvasJSChart options={optionsWeek} />
+      {/* <CanvasJSChart options={optionsWeek} /> */}
       <CanvasJSChart options={optionsMonth} />
     </div>
   );

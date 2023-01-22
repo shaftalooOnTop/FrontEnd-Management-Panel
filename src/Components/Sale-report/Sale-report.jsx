@@ -5,7 +5,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import { getProfit, getBusiestTime, getFoodSell, getDailyOrders, getMonthlyOrders, getYearlyOrders } from "../../Services/axios";
+import {
+  getProfit,
+  getBusiestTime,
+  getFoodSell,
+  getDailyOrders,
+  getMonthlyOrders,
+  getYearlyOrders,
+  getUser,
+  getRankTable,
+} from "../../Services/axios";
 import { url } from "../../Services/consts";
 
 export const Sale_report = () => {
@@ -54,51 +63,61 @@ export const Sale_report = () => {
   const [monthlyBusiestTime, setMonthlyBusiestTime] = useState(12);
 
   const [foods, setFoods] = useState();
+  const [tables, setTables] = useState();
 
   useEffect(() => {
-    getProfit(restId)
-      .then((e) => {
-        setDailyProfit(e.data.dailyProfit);
-        setMonthlyProfit(e.data.monthlyProfit);
-        setYearlyProfit(e.data.yearlyProfit);
-      })
-      .catch();
-    getDailyOrders(restId)
-      .then((e) => {
-        setDailyOrders(e.data);
-      })
-      .catch();
-      getMonthlyOrders(restId)
-      .then((e) => {
-        setMonthlyOrders(e.data);
-      })
-      .catch();
-      getYearlyOrders(restId)
-      .then((e) => {
-        setYearlyOrders(e.data);
-      })
-      .catch();
+    getUser().then((res) => {
+      getProfit(res.data.restaurantId)
+        .then((e) => {
+          setDailyProfit(e.data.dailyProfit);
+          setMonthlyProfit(e.data.monthlyProfit);
+          setYearlyProfit(e.data.yearlyProfit);
+        })
+        .catch();
+      getDailyOrders(res.data.restaurantId)
+        .then((e) => {
+          setDailyOrders(e.data);
+        })
+        .catch();
+      getMonthlyOrders(res.data.restaurantId)
+        .then((e) => {
+          setMonthlyOrders(e.data);
+        })
+        .catch();
+      getYearlyOrders(res.data.restaurantId)
+        .then((e) => {
+          setYearlyOrders(e.data);
+        })
+        .catch();
 
+      getBusiestTime(res.data.restaurantId)
+        .then((e) => {
+          setDailyBusiestTime(
+            e.data.dayHour.length > 0 ? e.data.dayHour[0] : 0
+          );
+          setWeeklyBusiestTime(
+            e.data.weekHour.length > 0 ? e.data.weekHour[0] : 0
+          );
+          setMonthlyBusiestTime(
+            e.data.monthHour.length > 0 ? e.data.monthHour[0] : 0
+          );
+        })
+        .catch();
 
-    getBusiestTime(restId)
-      .then((e) => {
-        setDailyBusiestTime(e.data.dayHour.length > 0 ? e.data.dayHour[0] : 0);
-        setWeeklyBusiestTime(
-          e.data.weekHour.length > 0 ? e.data.weekHour[0] : 0
-        );
-        setMonthlyBusiestTime(
-          e.data.monthHour.length > 0 ? e.data.monthHour[0] : 0
-        );
-      })
-      .catch();
-
-    getFoodSell(restId)
-      .then((e) => {
-        // console.log("Hello");
-        // console.log(e.key);
-        setFoods(e.data);
-      })
-      .catch();
+      getFoodSell(res.data.restaurantId)
+        .then((e) => {
+          // console.log("Hello");
+          console.log(e.data);
+          setFoods(e.data);
+        })
+        .catch();
+      getRankTable(res.data.restaurantId)
+        .then((e) => {
+          console.log(e.data)
+          setTables(e.data);
+        })
+        .catch();
+    });
   }, []);
 
   return (
@@ -114,15 +133,15 @@ export const Sale_report = () => {
                 backgroundColor: "#2A6877",
               }}
             >
-            <div className="card-header">Daily Profit</div>
+              <div className="card-header">Daily Profit</div>
               <div className="card-body">
                 <div>
                   <h5 className="card-title">{current_day}</h5>
-                  <p className="card-text">{dailyProfit} Toman {dailyOrders} Orders</p>
+                  <p className="card-text">
+                    {dailyProfit} Toman {dailyOrders} Orders
+                  </p>
                 </div>
               </div>
-              
-              
             </div>
 
             <div
@@ -136,7 +155,9 @@ export const Sale_report = () => {
               <div className="card-header">Monthly Profit</div>
               <div className="card-body">
                 <h5 className="card-title">{current_month}</h5>
-                <p className="card-text">{monthlyProfit} Toman {monthlyOrders} Orders</p>
+                <p className="card-text">
+                  {monthlyProfit} Toman {monthlyOrders} Orders
+                </p>
               </div>
             </div>
             <div
@@ -150,10 +171,11 @@ export const Sale_report = () => {
               <div className="card-header">Yearly Profit</div>
               <div className="card-body">
                 <h5 className="card-title">{current_year}</h5>
-                <p className="card-text">{yearlyProfit} Toman {yearlyOrders} Orders</p>
+                <p className="card-text">
+                  {yearlyProfit} Toman {yearlyOrders} Orders
+                </p>
               </div>
             </div>
-            
           </div>
           <div className="restBusi" style={{ display: "flex" }}>
             <div className="card text-black bg-warning mb-3 restBusi2">
@@ -259,18 +281,29 @@ export const Sale_report = () => {
           </div>
         </div>
         <div
-              className="card text-white  mb-5"
-              style={{
-                maxWidth: "20%",
-                minWidth: "20%",
-                backgroundColor: "#37505E",
-              }}
-            >
-              <div className="card-header">Rank Tables</div>
-              <div className="card-body">
-                <h5 className="card-title">First Tables</h5>
-                <p className="card-text">Test</p>
+          className="card text-white  mb-5"
+          style={{
+            maxWidth: "20%",
+            minWidth: "20%",
+            backgroundColor: "#37505E",
+          }}
+        >
+          <div className="card-header">Rank Tables</div>
+          <div className="card-body">
+            {tables?.slice(0, 3).map((x) => (
+              <div className="best-selling-all">
+                <img
+                  className="best-selling-img"
+                  src="https://static.rigg.uk/Files/casestudies/bistrotpierretables/sz/w960/bistrolargeroundrestauranttablewoodtopmetalbase.jpg"
+                  alt=""
+                ></img>
+                <div className="best-selling-details">
+                  <h6 className="card-text">Table {x.number}</h6>
+                  <p>Capacity: {x.capacity}</p>
+                </div>
               </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

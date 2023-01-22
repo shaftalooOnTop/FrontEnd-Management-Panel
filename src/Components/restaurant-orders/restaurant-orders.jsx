@@ -43,7 +43,6 @@ export const Orders = ()=> {
      /* setOrders() */
         getUser()
         .then((res) => {
-            console.log(res.data.restaurantId);
         getRestaurantOrders(from, to, filterOrders, res.data.restaurantId)
         .then((response) => {
             console.log(response.data)
